@@ -41,7 +41,7 @@ CREATE TABLE Category (
 
 -- Crear la tabla Shopping
 CREATE TABLE Shopping (
-    id SERIAL PRIMARY KEY,
+    id_shopping SERIAL PRIMARY KEY,
     client VARCHAR(255) REFERENCES Client(email),
     shopping_date DATE DEFAULT CURRENT_DATE,
     status VARCHAR(20) CHECK (status IN ('pending', 'sent', 'cart')),
