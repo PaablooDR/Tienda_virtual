@@ -56,3 +56,6 @@ CREATE TABLE Shopping_details (
     amount INT,
     total_price DECIMAL(10, 2)
 );
+
+-- Crear usuario admin en la tabla Admin
+INSERT INTO Admin (email, password, signature) VALUES ('admin', 'admin', NULL);

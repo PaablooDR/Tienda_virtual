@@ -6,9 +6,9 @@ class AdminController{
     }
 
     public function checkLogin(){
-        echo "Iria al modelo";
-        //Igular $POST
-        $admin = new Admin($user, $pass, null);
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+        $admin = new Admin($email, $password);
         if ($admin->checkLogin()){
             //Redireccion al menu de admin
         } else {
