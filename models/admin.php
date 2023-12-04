@@ -1,8 +1,15 @@
 <?php
-public class Admin{
+require_once("BBDD.php");
+class Admin extends BBDD{
     private $email;
     private $password;
     private $signature;
+    
+    //Constructor
+    public function __construct($email, $password){
+        $this->email = $email;
+        $this->password = $password;
+    }
 
     //Getters
     function getEmail() {
@@ -16,31 +23,36 @@ public class Admin{
     }
 
     //Setters
-    function getEmail($email) {
+    function setEmail($email) {
         $this->email = $email;
     }
-    function getPassword($password) {
+    function setPassword($password) {
         $this->password = $password;
     }
-    function getSignature($signature) {
+    function setSignature($signature) {
         $this->signature = $signature;
     }
 
     //Methods
     public function checkLogin(){
         try {
-            $conexion = new PDO("pgsql:host=localhost;dbname=PlateArt", "postgres", "root");
-            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $consulta = $conexion->query("SELECT * FROM Admin WHERE email=$email AND password=$password");
-            while ($fila = $consulta->fetch(PDO::FETCH_ASSOC)) {
-                // Procesar cada fila de resultados
-                print_r($fila);
+            $email = $this->email;
+            $password = $this->password;
+            $conexion = $this->conexion();
+            $stmt = $conexion->prepare("SELECT * FROM Admin WHERE email = :email AND password = :password");
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+            $stmt->execute();
+            $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if (count($resultado) > 0) {
+                return true;
+            }else{
+                return false;
             }
-            
-            // Recuerda cerrar la conexión
+            // Cerrar la conexión
             $conexion = null;
         } catch (PDOException $e) {
-            echo "Error de conexión: " . $e->getMessage();
+            echo "Error of connexion: " . $e->getMessage();
         }  
     }
 

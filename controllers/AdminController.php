@@ -1,5 +1,5 @@
 <?php
-require_once("model/Admin.php");
+require_once("models/admin.php");
 class AdminController{
     public function login(){
         require_once("views/admin/login.php");
@@ -9,13 +9,16 @@ class AdminController{
         $email = $_POST["email"];
         $password = $_POST["password"];
         $admin = new Admin($email, $password);
-        if ($admin->checkLogin()){
+        $usu = $admin->checkLogin();
+        if ($usu == true){
             //Redireccion al menu de admin
         } else {
-            //Muestra error del login y vuelve al login
+            echo "<script>
+                alert('Email or password are incorrect');
+            </script>";
+            echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=index.php?controller=Admin&action=login">';
         }
     }
-
 }
 
 ?>
