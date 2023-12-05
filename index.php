@@ -16,7 +16,7 @@
     }
     else{
         //Controlador per dedecte
-        $nombreController = "UserController";
+        $nombreController = "AdminController";
     }
     if (class_exists($nombreController)){
         $controlador = new $nombreController(); 
@@ -24,7 +24,7 @@
             $action = $_GET['action'];
         }
         else{
-            $action ="mostrarTodos";
+            $action ="stadistics";
         }
         $controlador->$action();   
     }else{

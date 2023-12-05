@@ -19,6 +19,14 @@ class AdminController{
             echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=index.php?controller=Admin&action=login">';
         }
     }
+
+    public function stadistics() {
+        require_once("views/admin/sidebar.php");
+    }
+
+    public function products() {
+        require_once("views/admin/sidebar.php");
+    }
 }
 
 ?>
