@@ -5,8 +5,8 @@ class Category extends BBDD{
     private $name;
     
     //Constructor
-    public function __construct($name){
-        //$this->code = $code;
+    public function __construct($code = NULL, $name){
+        $this->code = $code;
         $this->name = $name;
     }
 
@@ -28,12 +28,22 @@ class Category extends BBDD{
 
     //Methods
     public function addCategory() {
-        $name = $this->name;
-        $conexion = $this->conexion();
-        $stmt = $conexion->prepare("INSERT INTO Category VALUES (:name)");
-        $stmt->bindParam(':name', $name, PDO::PARAM_STR);
-        $stmt->execute();
+        try {
+            $name = $this->name;
+            $conexion = $this->conexion();
+            $stmt = $conexion->prepare("INSERT INTO Category (name) VALUES (:name)");
+            $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+            $success = $stmt->execute();
+            if ($success && $stmt->rowCount() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            echo "Error of connexion: " . $e->getMessage();
+        }
+        // Cerrar la conexión
+        $conexion = null;    
     }
-
 }
 ?>

@@ -1,5 +1,8 @@
 <?php
 require_once("models/admin.php");
+require_once("models/product.php");
+require_once("models/category.php");
+
 class AdminController {
     public function login() {
         require_once("views/admin/login.php");
@@ -10,8 +13,8 @@ class AdminController {
         $password = $_POST["password"];
         $admin = new Admin($email, $password);
         $usu = $admin->checkLogin();
-        if ($usu == true){
-            //Redireccion al menu de admin
+        if($usu == true) {
+            echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Admin&action=stadistics">';
         } else {
             echo "<script>
                 alert('Email or password are incorrect');
@@ -44,12 +47,13 @@ class AdminController {
     //Menu
     public function categories() {
         require_once("views/admin/sidebar.php");
+        require_once("views/admin/category.php");
         //Buscador + boton añadir categoria
         //Lista de categorias con posibilidad de modificar y desactivar
     }
 
     //Form
-    public function newCategories() {
+    public function newCategory() {
         require_once("views/admin/sidebar.php");
         require_once("views/admin/newCategory.php");
     }
@@ -57,13 +61,16 @@ class AdminController {
     //Add new category
     public function addCategory() {
         $name = $_POST['name'];
-        $category = new Category($name);
+        $category = new Category(NULL, $name);
         $cat = $category->addCategory();
         if($cat == true) {
+            echo "<script>
+                alert('Insert completed');
+            </script>";
             echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Admin&action=categories">';
         } else {
             echo "<script>
-                <alert>Insert failed</alert>
+                alert('Insert failed');
             </script>";
             echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Admin&action=categories">';
         }
