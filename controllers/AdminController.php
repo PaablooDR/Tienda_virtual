@@ -33,6 +33,7 @@ class AdminController {
     //Menu
     public function products() {
         require_once("views/admin/sidebar.php");
+        require_once("views/admin/product.php");
         //Buscador + boton añadir producto
         //Lista de productos con posibilidad de modificar y desactivar
     }
@@ -40,7 +41,12 @@ class AdminController {
     //Form
     public function newProduct() {
         require_once("views/admin/sidebar.php");
+
+        $product = new Product();
+        $categories = $product->obtainCategories();
+
         require_once("views/admin/newProduct.php");
+ 
     }
 
     //ADMIN CATEGORIES

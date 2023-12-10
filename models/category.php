@@ -31,7 +31,7 @@ class Category extends BBDD{
         try {
             $name = $this->name;
             $conexion = $this->conexion();
-            $stmt = $conexion->prepare("INSERT INTO Category (name) VALUES (:name)");
+            $stmt = $conexion->prepare("INSERT INTO Category (name) VALUES (:name);");
             $stmt->bindParam(':name', $name, PDO::PARAM_STR);
             $success = $stmt->execute();
             if ($success && $stmt->rowCount() > 0) {
