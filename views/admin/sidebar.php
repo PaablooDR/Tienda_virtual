@@ -1,5 +1,5 @@
 <div id="sidebar">
-    <div><img src="../../sources/logo.png" alt="logo"></div>
+    <div><img src="sources/logo.png" alt="logo" style="width: 150px;"></div>
     <a href="index.php?controller=Admin&action=stadistics"><div>Stadistics</div></a>
     <a href="index.php?controller=Admin&action=products"><div>Products</div></a>
     <a href="index.php?controller=Admin&action=categories"><div>Categories</div></a>
