@@ -23,7 +23,7 @@ CREATE TABLE Admin (
 
 -- Crear la tabla Product
 CREATE TABLE Product (
-    code SERIAL PRIMARY KEY,
+    code VARCHAR(255) PRIMARY KEY,
     name VARCHAR(100),
     description VARCHAR(255),
     category VARCHAR(50),
@@ -52,7 +52,7 @@ CREATE TABLE Shopping (
 CREATE TABLE Shopping_details (
     id SERIAL PRIMARY KEY,
     shopping SERIAL REFERENCES Shopping(id_shopping),
-    product SERIAL REFERENCES Product(code),
+    product VARCHAR(255) REFERENCES Product(code),
     amount INT,
     total_price DECIMAL(10, 2)
 );

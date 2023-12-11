@@ -41,12 +41,48 @@ class AdminController {
     //Form
     public function newProduct() {
         require_once("views/admin/sidebar.php");
-
-        $product = new Product();
-        $categories = $product->obtainCategories();
-
         require_once("views/admin/newProduct.php");
  
+    }
+
+    //Add new product
+    public function addProduct() {
+        $abbreviation1 = substr($_POST["category"], 0, 2);
+        $abbreviation2 = substr($_POST["name"], 0, 2);
+        $code = $abbreviation1 + '777-' + $abbreviation2;
+        $name = $_POST["name"];
+        $description = $_POST["description"];
+        $category = $_POST["category"];
+        if(is_uploaded_file($_FILES['foto']['tmp_name'])){
+            $directoryName = "sources/";
+            $infoFile = pathinfo($_FILES['foto']['name']);
+            $extension = strtolower($infoFile['extension']);
+            $finalName = $code.".".$extension;
+            $finalPosition = $directoryName.$finalName;
+            move_uploaded_file($_FILES['foto']['tmp_name'],$finalPosition);
+        }else{
+            echo "<p>No se ha podido subir la imagen</p>";
+        }
+        $price = $_POST["price"];
+        $stock = $_POST["stock"];
+        if(isset($_POST['outstanding'])){
+            $outstanding = 1;
+        }else{
+            $outstanding = 0;
+        }
+        $product = new Product($code, $name, $description, $category, $finalPosition, $price, $stock, $outstanding);
+        $pro = $product->addProduct();
+        if($pro == true) {
+            echo "<script>
+                alert('Insert completed');
+            </script>";
+            echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Admin&action=products">';
+        } else {
+            echo "<script>
+                alert('Insert failed');
+            </script>";
+            echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Admin&action=products">';
+        }
     }
 
     //ADMIN CATEGORIES

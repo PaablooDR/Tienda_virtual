@@ -27,6 +27,23 @@ class Category extends BBDD{
     }
 
     //Methods
+    public function obtainCategories() {
+        try {
+            $connection = $this->conexion();
+            $query = "SELECT * FROM Category";
+            $statement = $connection->query($query);
+
+            $categorias = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+            return $categorias;
+        } catch (PDOException $e) {
+            echo "Error of connexion: " . $e->getMessage();
+        }
+        // Cerrar la conexión
+        $conexion = null;
+        
+    }
+    
     public function addCategory() {
         try {
             $name = $this->name;
