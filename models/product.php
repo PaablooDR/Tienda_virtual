@@ -8,10 +8,11 @@ class Product extends BBDD{
     private $photo;
     private $price;
     private $stock;
+    private $active;
     private $outstanding;
     
     //Constructor
-    public function __construct($code, $name, $description, $category, $photo, $price, $stock, $outstanding){
+    public function __construct($code, $name, $description, $category, $photo, $price, $stock, $active, $outstanding){
         $this->code = $code;
         $this->name = $name;
         $this->description = $description;
@@ -19,6 +20,7 @@ class Product extends BBDD{
         $this->photo = $photo;
         $this->price = $price;
         $this->stock = $stock;
+        $this->active = $active;
         $this->outstanding = $outstanding;
     }
 
@@ -43,6 +45,9 @@ class Product extends BBDD{
     }
     function getStock() {
         return $this->stock;
+    }
+    function getActive() {
+        return $this->active;
     }
     function getOutstanding() {
         return $this->outstanding;
@@ -71,6 +76,9 @@ class Product extends BBDD{
     function setStock($stock) {
         $this->stock = $stock;
     }
+    function setActive($active) {
+        $this->active = $active;
+    }
     function setOutstanding($outstanding) {
         $this->outstanding = $outstanding;
     }
@@ -87,20 +95,21 @@ class Product extends BBDD{
             $photo = $this->photo;
             $price = $this->price;
             $stock = $this->stock;
+            $active = $this->active;
             $outstanding = $this->outstanding;
             $connect = $this->conexion();
-            $stmt = $connect->prepare("INSERT INTO Product (code, name, description, category, photo, price, stock, outstanding) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-            $success = $stmt->execute([$code, $name, $description, $category, $photo, $price, $stock, $outstanding]);
+            $stmt = $connect->prepare("INSERT INTO Product (code, name, description, category, photo, price, stock, active, outstanding) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $success = $stmt->execute([$code, $name, $description, $category, $photo, $price, $stock, $active, $outstanding]);
             if ($success && $stmt->rowCount() > 0) {
                 return true;
             } else {
                 return false;
             }
-            // Cerrar la conexión
-            $connect = null;
         } catch (PDOException $e) {
             echo "Error of connexion: " . $e->getMessage();
-        } 
+        }
+        // Cerrar la conexión
+        $connect = null; 
     }
 
 }

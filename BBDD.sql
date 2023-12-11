@@ -30,13 +30,15 @@ CREATE TABLE Product (
     photo VARCHAR(255),
     price DECIMAL(10, 2),
     stock INT,
+    active BOOLEAN,
     outstanding BOOLEAN
 );
 
 -- Crear la tabla Category
 CREATE TABLE Category (
     code SERIAL PRIMARY KEY,
-    name VARCHAR(50)
+    name VARCHAR(50),
+    active BOOLEAN
 );
 
 -- Crear la tabla Shopping
