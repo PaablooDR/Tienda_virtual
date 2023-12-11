@@ -15,13 +15,13 @@ require_once("models/category.php");
                 Name:<input type="text" name="name" placeholder="Name" maxlength="100" required><br>
                 Description:<input type="textarea" name="description" rows="4" cols="50" placeholder="Description" required><br>
 <?php
-                $categories = obtainCategories();
+                $categories = $this->obtainCategories();
                 
 
                 echo "Category:
                 <select name='category'>";
                     foreach ($categories as $category){
-                        echo "<option value=".$category['name']."</option>";
+                        echo "<option value=".$category['name'].">".$category['name']."</option>";
                     }
                 echo "</select><br>";
 ?>

@@ -47,7 +47,9 @@ class AdminController {
 
     //Add new product
     public function addProduct() {
-        $code = substr($_POST["category"], 0, 2) + '777-' + substr($_POST["name"], 0, 2);
+        $abbreviation1 = substr($_POST["category"], 0, 2);
+        $abbreviation2 = substr($_POST["name"], 0, 2);
+        $code = $abbreviation1 + '777-' + $abbreviation2;
         $name = $_POST["name"];
         $description = $_POST["description"];
         $category = $_POST["category"];
