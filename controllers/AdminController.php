@@ -42,8 +42,8 @@ class AdminController {
     public function newProduct() {
         require_once("views/admin/sidebar.php");
 
-        $product = new Product();
-        $categories = $product->obtainCategories();
+        $category = new Category();
+        $categories = $category->obtainCategories();
 
         require_once("views/admin/newProduct.php");
  
@@ -100,9 +100,11 @@ class AdminController {
     //Menu
     public function categories() {
         require_once("views/admin/sidebar.php");
+        $category = new Category();
+        $categories = $category->obtainCategories();
         require_once("views/admin/category.php");
         //Buscador + boton añadir categoria
-        //Lista de categorias con posibilidad de modificar y desactivar
+        
     }
 
     //Form

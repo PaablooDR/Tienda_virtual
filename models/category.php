@@ -5,7 +5,7 @@ class Category extends BBDD{
     private $name;
     
     //Constructor
-    public function __construct($code = NULL, $name){
+    public function __construct($code = NULL, $name = NULL){
         $this->code = $code;
         $this->name = $name;
     }
@@ -27,22 +27,21 @@ class Category extends BBDD{
     }
 
     //Methods
-    // public function obtainCategories() {
-    //     try {
-    //         $connection = $this->conexion();
-    //         $query = "SELECT * FROM Category";
-    //         $statement = $connection->query($query);
+    public function obtainCategories() {
+        try {
+            $connect = $this->conexion();
+            $query = "SELECT * FROM Category";
+            $statement = $connect->query($query);
 
-    //         $categorias = $statement->fetchAll(PDO::FETCH_ASSOC);
+            $categorias = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    //         return $categorias;
-    //     } catch (PDOException $e) {
-    //         echo "Error of connexion: " . $e->getMessage();
-    //     }
-    //     // Cerrar la conexión
-    //     $conexion = null;
-        
-    // }
+            return $categorias;
+        } catch (PDOException $e) {
+            echo "Error of connexion: " . $e->getMessage();
+        }
+        // Close connection
+        $connect = null;
+    }
     
     public function addCategory() {
         try {
