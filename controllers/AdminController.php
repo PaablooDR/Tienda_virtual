@@ -41,10 +41,6 @@ class AdminController {
     //Form
     public function newProduct() {
         require_once("views/admin/sidebar.php");
-
-        $product = new Product();
-        $categories = $product->obtainCategories();
-
         require_once("views/admin/newProduct.php");
  
     }

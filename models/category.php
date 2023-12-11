@@ -28,7 +28,7 @@ class Category extends BBDD{
 
     //Methods
     public function obtainCategories() {
-        // try {
+        try {
             $connection = $this->conexion();
             $query = "SELECT * FROM Category";
             $statement = $connection->query($query);
@@ -36,11 +36,11 @@ class Category extends BBDD{
             $categorias = $statement->fetchAll(PDO::FETCH_ASSOC);
 
             return $categorias;
-        // } catch (PDOException $e) {
-        //     echo "Error of connexion: " . $e->getMessage();
-        // }
-        // // Cerrar la conexión
-        // $conexion = null;
+        } catch (PDOException $e) {
+            echo "Error of connexion: " . $e->getMessage();
+        }
+        // Cerrar la conexión
+        $conexion = null;
         
     }
     
