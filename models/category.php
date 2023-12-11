@@ -68,5 +68,20 @@ class Category extends BBDD{
         // Cerrar la conexión
         $conexion = null;    
     }
+
+    //Desactivate category
+    public function desactivate() {
+        $code = $this->code;
+        try {
+            $connect = $this->conexion();
+            $stmt = $connect->prepare("UPDATE Category SET active = NOT active WHERE code = :code");
+            $stmt->bindParam(':code', $code, PDO::PARAM_INT);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo "Error of connexion: " . $e->getMessage();
+        }
+        // Close connection
+        $connect = null;
+    }
 }
 ?>
