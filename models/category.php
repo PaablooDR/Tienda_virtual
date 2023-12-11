@@ -3,11 +3,13 @@ require_once("BBDD.php");
 class Category extends BBDD{
     private $code;
     private $name;
+    private $active;
     
     //Constructor
-    public function __construct($code = NULL, $name = NULL){
+    public function __construct($code = NULL, $name = NULL, $active = NULL){
         $this->code = $code;
         $this->name = $name;
+        $this->active = $active;
     }
 
     //Getters
@@ -17,6 +19,9 @@ class Category extends BBDD{
     function getName() {
         return $this->name;
     }
+    function getActive() {
+        return $this->active;
+    }
 
     //Setters
     function setCode($code) {
@@ -24,6 +29,9 @@ class Category extends BBDD{
     }
     function setName($name) {
         $this->name = $name;
+    }
+    function setActive($active) {
+        $this->active = $active;
     }
 
     //Methods
@@ -47,9 +55,8 @@ class Category extends BBDD{
         try {
             $name = $this->name;
             $conexion = $this->conexion();
-            $stmt = $conexion->prepare("INSERT INTO Category (name) VALUES (:name);");
-            $stmt->bindParam(':name', $name, PDO::PARAM_STR);
-            $success = $stmt->execute();
+            $stmt = $conexion->prepare("INSERT INTO Category (name, active) VALUES (?, ?)");
+            $success = $stmt->execute([$name, 1]);
             if ($success && $stmt->rowCount() > 0) {
                 return true;
             } else {
