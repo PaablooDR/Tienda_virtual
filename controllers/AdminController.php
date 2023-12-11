@@ -111,6 +111,28 @@ class AdminController {
         echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Admin&action=products">';
     }
 
+     //Edit product
+    public function editProduct() {
+        if (isset($_GET['code'])){
+            require_once("views/admin/sidebar.php");
+            $code = $_GET['code'];
+            $product = new Product();
+            $product->setCode($code);
+            $product->initialize();
+            $data = $product->info();
+
+            $category = new Category();
+            $categories = $category->obtainCategories();
+            
+            require_once("views/admin/editProduct.php");
+        } else {
+            echo "<script>
+                alert('No identity');
+            </script>";
+            echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Admin&action=products">';
+        }
+    }
+
     //ADMIN CATEGORIES
     //Menu
     public function categories() {

@@ -13,7 +13,7 @@ echo "<form action='index.php?controller=Admin&action=desactivateProduct' method
             echo "<div>".$product['category_name']."</div>";
             echo "<div>".$product['price']."</div>";
             echo "<div style='background: grenn;'>".$product['stock']."</div>";
-            echo "<div><img src='sources/edit.png' alt='edit' style='width: 50px;'></div>";
+            echo "<a href='index.php?controller=Admin&action=editProduct&code=".$product['code']."'><div><img src='sources/edit.png' alt='edit' style='width: 50px;'></div></a>";
         echo "</div>";
     }
     echo "<input type='submit' name='desactivate' value='Change active'>";

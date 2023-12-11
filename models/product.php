@@ -156,5 +156,37 @@ class Product extends BBDD{
         $connect = null;
     }
 
+    //Initialize the attributs of the class
+    public function initialize() {
+        $code = $this->code;
+        try {
+            $connect = $this->conexion();
+            $stmt = $connect->prepare("SELECT name, description, category, photo, price, stock FROM Product WHERE code = :code");
+            $stmt->bindParam(':code', $code, PDO::PARAM_INT);
+            $res = $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($result) {
+                $this->setName($result['name']);
+                $this->setDescription($result['description']);
+                $this->setCategory($result['category']);
+                $this->setPhoto($result['photo']);
+                $this->setPrice($result['price']);
+                $this->setStock($result['stock']);
+            } else {
+                echo "Product not found.";
+            }
+        } catch (PDOException $e) {
+            echo "Error of connexion: " . $e->getMessage();
+        }
+        // Close connection
+        $connect = null;
+    }
+
+    //Product info
+    public function info() {
+        return [$this->code, $this->name, $this->description, $this->category, $this->photo, $this->price, $this->stock];
+    }
+
 }
 ?>
