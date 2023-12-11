@@ -86,6 +86,7 @@ class AdminController {
         }
     }
 
+    //Move image
     public function moveImage($name) {
         $originalName = $_FILES['photo']['name'];
         $imagen_ext = pathinfo($originalName, PATHINFO_EXTENSION);
@@ -126,6 +127,15 @@ class AdminController {
             </script>";
             echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Admin&action=categories">';
         }
+    }
+
+    //ADMIN ORDERS
+    //Menu
+    public function orders() {
+        require_once("views/admin/sidebar.php");
+        // require_once("views/admin/order.php");
+        //Buscador
+        //Lista de pedidos con posibilidad de modificar
     }
 }
 

@@ -90,9 +90,9 @@ class Product extends BBDD{
     //Methods
     public function obtainCategories() {
         try {
-            $connection = $this->conexion();
+            $connect = $this->conexion();
             $query = "SELECT * FROM Category";
-            $statement = $connection->query($query);
+            $statement = $connect->query($query);
 
             $categorias = $statement->fetchAll(PDO::FETCH_ASSOC);
 
@@ -101,10 +101,11 @@ class Product extends BBDD{
             echo "Error of connexion: " . $e->getMessage();
         }
         // Cerrar la conexión
-        $conexion = null;
+        $connect = null;
         
     }
 
+    //Insert product
     public function addProduct(){
         try {
             $code = $this->code;
@@ -115,8 +116,8 @@ class Product extends BBDD{
             $price = $this->price;
             $stock = $this->stock;
             $outstanding = $this->outstanding;
-            $conexion = $this->conexion();
-            $stmt = $conexion->prepare("INSERT INTO Product (code, name, description, category, photo, price, stock, outstanding) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            $connect = $this->conexion();
+            $stmt = $connect->prepare("INSERT INTO Product (code, name, description, category, photo, price, stock, outstanding) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
             $success = $stmt->execute([$code, $name, $description, $category, $photo, $price, $stock, $outstanding]);
             if ($success && $stmt->rowCount() > 0) {
                 return true;
@@ -124,7 +125,7 @@ class Product extends BBDD{
                 return false;
             }
             // Cerrar la conexión
-            $conexion = null;
+            $connect = null;
         } catch (PDOException $e) {
             echo "Error of connexion: " . $e->getMessage();
         } 
