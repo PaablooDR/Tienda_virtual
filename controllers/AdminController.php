@@ -98,6 +98,19 @@ class AdminController {
         return $imagen_path;
     }
 
+    //Desactivate product
+    public function desactivateProduct() {
+        if(isset($_POST['desactivate'])) {
+            if(isset($_POST['selectedItems'])) {
+                foreach ($_POST["selectedItems"] as $selectedItem) {
+                    $product = new Product($selectedItem);
+                    $product->desactivate();
+                }
+            }
+        }
+        echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Admin&action=products">';
+    }
+
     //ADMIN CATEGORIES
     //Menu
     public function categories() {

@@ -6,15 +6,17 @@
 echo "<form action='index.php?controller=Admin&action=desactivateProduct' method='post' enctype='multipart/form-data'>";
     foreach($products as $product) {
         echo "<div>";
+            echo "<div><input type='checkbox' name='selectedItems[]' value='".$product['code']."'></div>";
             echo "<div><img src='" . $product['photo'] . "' alt='" . $product['name'] . "' style='width: 150px;'></div>";
             echo "<div>".$product['name']."</div>";
             echo "<div>".$product['code']."</div>";
             echo "<div>".$product['category_name']."</div>";
             echo "<div>".$product['price']."</div>";
-            echo "<div>".$product['stock']."</div>";
+            echo "<div style='background: grenn;'>".$product['stock']."</div>";
+            echo "<div><img src='sources/edit.png' alt='edit' style='width: 50px;'></div>";
         echo "</div>";
     }
-    echo "<input type='submit' name='send' value='Delete'>";
+    echo "<input type='submit' name='desactivate' value='Change active'>";
 echo "</form>";
 
 ?>

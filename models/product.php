@@ -124,8 +124,8 @@ class Product extends BBDD{
         $connect = null; 
     }
 
-      //Obtain products
-      public function obtainProducts() {
+    //Obtain products
+    public function obtainProducts() {
         try {
             $connect = $this->conexion();
             $query = "SELECT p.*, c.name as category_name FROM Product p JOIN Category c ON p.category = c.code::varchar";
@@ -138,6 +138,21 @@ class Product extends BBDD{
             echo "Error of connexion: " . $e->getMessage();
         }
         //Close connection
+        $connect = null;
+    }
+
+    //Desactivate product
+    public function desactivate() {
+        $code = $this->code;
+        try {
+            $connect = $this->conexion();
+            $stmt = $connect->prepare("UPDATE Product SET active = NOT active WHERE code = :code");
+            $stmt->bindParam(':code', $code, PDO::PARAM_INT);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo "Error of connexion: " . $e->getMessage();
+        }
+        // Close connection
         $connect = null;
     }
 
