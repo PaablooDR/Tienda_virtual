@@ -41,36 +41,37 @@ class AdminController {
     //Form
     public function newProduct() {
         require_once("views/admin/sidebar.php");
+
+        $product = new Product();
+        $categories = $product->obtainCategories();
+
         require_once("views/admin/newProduct.php");
  
     }
 
     //Add new product
     public function addProduct() {
-        $abbreviation1 = substr($_POST["category"], 0, 2);
+        $array = explode(",", $_POST["category"]);
+        $category = $array[0];
+        $categoryName = $array[1];
+        $abbreviation1 = substr($categoryName, 0, 2);
         $abbreviation2 = substr($_POST["name"], 0, 2);
-        $code = $abbreviation1 + '777-' + $abbreviation2;
+        $code = $abbreviation1 . '777-' . $abbreviation2;
         $name = $_POST["name"];
         $description = $_POST["description"];
-        $category = $_POST["category"];
-        if(is_uploaded_file($_FILES['foto']['tmp_name'])){
-            $directoryName = "sources/";
-            $infoFile = pathinfo($_FILES['foto']['name']);
-            $extension = strtolower($infoFile['extension']);
-            $finalName = $code.".".$extension;
-            $finalPosition = $directoryName.$finalName;
-            move_uploaded_file($_FILES['foto']['tmp_name'],$finalPosition);
+        if(is_uploaded_file($_FILES['photo']['tmp_name'])){
+            $path = $this->moveImage($code);
         }else{
             echo "<p>No se ha podido subir la imagen</p>";
         }
         $price = $_POST["price"];
         $stock = $_POST["stock"];
-        if(isset($_POST['outstanding'])){
+        if($_POST['outstanding'] == true){
             $outstanding = 1;
         }else{
             $outstanding = 0;
         }
-        $product = new Product($code, $name, $description, $category, $finalPosition, $price, $stock, $outstanding);
+        $product = new Product($code, $name, $description, $category, $path, $price, $stock, $outstanding);
         $pro = $product->addProduct();
         if($pro == true) {
             echo "<script>
@@ -83,6 +84,15 @@ class AdminController {
             </script>";
             echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Admin&action=products">';
         }
+    }
+
+    public function moveImage($name) {
+        $originalName = $_FILES['photo']['name'];
+        $imagen_ext = pathinfo($originalName, PATHINFO_EXTENSION);
+        $imagen_path = 'sources/'. $name .'.'. $imagen_ext;
+        move_uploaded_file($_FILES['photo']['tmp_name'], $imagen_path);
+        
+        return $imagen_path;
     }
 
     //ADMIN CATEGORIES
