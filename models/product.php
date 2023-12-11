@@ -12,7 +12,19 @@ class Product extends BBDD{
     private $outstanding;
     
     //Constructor
-    public function __construct($code, $name, $description, $category, $photo, $price, $stock, $active, $outstanding){
+    // public function __construct($code, $name, $description, $category, $photo, $price, $stock, $active, $outstanding){
+    //     $this->code = $code;
+    //     $this->name = $name;
+    //     $this->description = $description;
+    //     $this->category = $category;
+    //     $this->photo = $photo;
+    //     $this->price = $price;
+    //     $this->stock = $stock;
+    //     $this->active = $active;
+    //     $this->outstanding = $outstanding;
+    // }
+
+    public function __construct($code=null, $name=null, $description=null, $category=null, $photo=null, $price=null, $stock=null, $active=1, $outstanding=0){
         $this->code = $code;
         $this->name = $name;
         $this->description = $description;
@@ -110,6 +122,23 @@ class Product extends BBDD{
         }
         // Cerrar la conexión
         $connect = null; 
+    }
+
+      //Obtain products
+      public function obtainProducts() {
+        try {
+            $connect = $this->conexion();
+            $query = "SELECT p.*, c.name as category_name FROM Product p JOIN Category c ON p.category = c.code::varchar";
+            $statement = $connect->query($query);
+
+            $products = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+            return $products;
+        } catch (PDOException $e) {
+            echo "Error of connexion: " . $e->getMessage();
+        }
+        //Close connection
+        $connect = null;
     }
 
 }

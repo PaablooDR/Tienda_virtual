@@ -66,13 +66,12 @@ class AdminController {
         }
         $price = $_POST["price"];
         $stock = $_POST["stock"];
-        $active = 1;
         if($_POST['outstanding'] == true){
             $outstanding = 1;
         }else{
             $outstanding = 0;
         }
-        $product = new Product($code, $name, $description, $category, $path, $price, $stock, $active, $outstanding);
+        $product = new Product($code, $name, $description, $category, $path, $price, $stock, $outstanding);
         $pro = $product->addProduct();
         if($pro == true) {
             echo "<script>
@@ -117,7 +116,7 @@ class AdminController {
     //Add new category
     public function addCategory() {
         $name = $_POST['name'];
-        $category = new Category(NULL, $name, 1);
+        $category = new Category(NULL, $name);
         $cat = $category->addCategory();
         if($cat == true) {
             echo "<script>
