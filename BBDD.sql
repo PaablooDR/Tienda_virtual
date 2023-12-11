@@ -23,7 +23,7 @@ CREATE TABLE Admin (
 
 -- Crear la tabla Product
 CREATE TABLE Product (
-    code SERIAL PRIMARY KEY,
+    code VARCHAR(255) PRIMARY KEY,
     name VARCHAR(100),
     description VARCHAR(255),
     category VARCHAR(50),
