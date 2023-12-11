@@ -52,7 +52,7 @@ CREATE TABLE Shopping (
 CREATE TABLE Shopping_details (
     id SERIAL PRIMARY KEY,
     shopping SERIAL REFERENCES Shopping(id_shopping),
-    product SERIAL REFERENCES Product(code),
+    product VARCHAR(255) REFERENCES Product(code),
     amount INT,
     total_price DECIMAL(10, 2)
 );
