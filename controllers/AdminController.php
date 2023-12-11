@@ -131,6 +131,24 @@ class AdminController {
         }
     }
 
+    //Desactivate category
+    public function desactivateCategory() {
+        $name = $_POST['name'];
+        $category = new Category(NULL, $name, 1);
+        $cat = $category->addCategory();
+        if($cat == true) {
+            echo "<script>
+                alert('Insert completed');
+            </script>";
+            echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Admin&action=categories">';
+        } else {
+            echo "<script>
+                alert('Insert failed');
+            </script>";
+            echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Admin&action=categories">';
+        }
+    }
+
     //ADMIN ORDERS
     //Menu
     public function orders() {
