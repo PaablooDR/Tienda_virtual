@@ -8,8 +8,8 @@
     <body>
         <div>
             <!-- <?php print_r($data); ?> -->
-            <form action="index.php?controller=Admin&action=updateCategory" method="post" enctype="multipart/form-data">
-                Code:<input type="text" name="code" placeholder="Code" value=<?php echo "$data[0]"; ?> maxlength="100" disabled><br>
+            <form action="index.php?controller=Admin&action=updateCategory&code=<?php echo "$data[0]"; ?>" method="post" enctype="multipart/form-data">
+                <h1><?php echo "$data[0]"; ?></h1>
                 Name:<input type="text" name="name" placeholder="Name" value=<?php echo "$data[1]"; ?> maxlength="100" required><br>
                 <input type="submit" name="send" value="Update">
             </form>

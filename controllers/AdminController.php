@@ -203,7 +203,7 @@ class AdminController {
     //Updatear category
     public function updateCategory() {
         if(isset($_POST['send'])) {
-            $code = $_POST['code'];
+            $code = $_GET['code'];
             $name = $_POST['name'];
             $category = new Category();
             $category->setName($name);
