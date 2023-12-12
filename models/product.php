@@ -203,8 +203,6 @@ class Product extends BBDD{
         }
         // Close connection
         $connect = null;
-
-        // return [$this->code, $this->name, $this->description, $this->category, $this->photo, $this->price, $this->stock];
     }
 
 }

@@ -1,9 +1,9 @@
 <!--Vista del admin a todo lo que puede hacer en productos-->
 
-<a href="index.php?controller=Admin&action=newProduct"><h3>New Product</h3></a>
+<a href="index.php?controller=Product&action=newProduct"><h3>New Product</h3></a>
 
 <?php
-echo "<form action='index.php?controller=Admin&action=desactivateProduct' method='post' enctype='multipart/form-data'>";
+echo "<form action='index.php?controller=Product&action=desactivateProduct' method='post' enctype='multipart/form-data'>";
     foreach($products as $product) {
         echo "<div>";
             echo "<div><input type='checkbox' name='selectedItems[]' value='".$product['code']."'></div>";
