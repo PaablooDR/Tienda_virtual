@@ -18,8 +18,8 @@
                     <?php endforeach; ?>
                 </select><br>
                 Photo:<input type="file" name="photo" accept=".jpg, .png, .JPEG" required><br>
-                Price:<input type="text" name="price" placeholder="Price" required><br>
-                Stock:<input type="text" name="stock" placeholder="Stock" required><br>
+                Price:<input type="number" name="price" placeholder="Price" required><br>
+                Stock:<input type="number" name="stock" placeholder="Stock" required><br>
                 <input type="checkbox" name="outstanding" value="outstanding">Outstanding<br>
                 <input type="submit" name="send" value="Enter">
             </form>
