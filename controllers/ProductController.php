@@ -16,12 +16,9 @@ class ProductController {
     //Form
     public function newProduct() {
         require_once("views/admin/sidebar.php");
-
         $category = new Category();
         $categories = $category->obtainCategories();
-
         require_once("views/admin/newProduct.php");
- 
     }
 
     //Add new product
@@ -67,7 +64,6 @@ class ProductController {
         $imagen_ext = pathinfo($originalName, PATHINFO_EXTENSION);
         $imagen_path = 'sources/'. $name .'.'. $imagen_ext;
         move_uploaded_file($_FILES['photo']['tmp_name'], $imagen_path);
-        
         return $imagen_path;
     }
 
@@ -93,10 +89,8 @@ class ProductController {
             $product->setCode($code);
             $product->initialize();
             $data = $product->info();
-
             $category = new Category();
             $categories = $category->obtainCategories();
-            
             require_once("views/admin/editProduct.php");
         } else {
             echo "<script>

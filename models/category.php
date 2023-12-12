@@ -38,12 +38,10 @@ class Category extends BBDD{
     //Obtain categories
     public function obtainCategories() {
         try {
-            $connect = $this->conexion();
+            $connect = $this->connect();
             $query = "SELECT * FROM Category";
             $statement = $connect->query($query);
-
             $categorias = $statement->fetchAll(PDO::FETCH_ASSOC);
-
             return $categorias;
         } catch (PDOException $e) {
             echo "Error of connexion: " . $e->getMessage();
@@ -56,8 +54,8 @@ class Category extends BBDD{
     public function addCategory() {
         try {
             $name = $this->name;
-            $conexion = $this->conexion();
-            $stmt = $conexion->prepare("INSERT INTO Category (name, active) VALUES (?, ?)");
+            $connect = $this->connect();
+            $stmt = $connect->prepare("INSERT INTO Category (name, active) VALUES (?, ?)");
             $success = $stmt->execute([$name, 1]);
             if ($success && $stmt->rowCount() > 0) {
                 return true;
@@ -68,14 +66,14 @@ class Category extends BBDD{
             echo "Error of connexion: " . $e->getMessage();
         }
         // Cerrar la conexión
-        $conexion = null;    
+        $connect = null;    
     }
 
     //Desactivate category
     public function desactivate() {
         $code = $this->code;
         try {
-            $connect = $this->conexion();
+            $connect = $this->connect();
             $stmt = $connect->prepare("UPDATE Category SET active = NOT active WHERE code = :code");
             $stmt->bindParam(':code', $code, PDO::PARAM_INT);
             $stmt->execute();
@@ -90,7 +88,7 @@ class Category extends BBDD{
     public function initialize() {
         $code = $this->code;
         try {
-            $connect = $this->conexion();
+            $connect = $this->connect();
             $stmt = $connect->prepare("SELECT name FROM Category WHERE code = :code");
             $stmt->bindParam(':code', $code, PDO::PARAM_INT);
             $res = $stmt->execute();
@@ -118,7 +116,7 @@ class Category extends BBDD{
         $code = $this->code;
         $name = $this->name;
         try {
-            $connect = $this->conexion();
+            $connect = $this->connect();
             $stmt = $connect->prepare("UPDATE Category SET name = :name WHERE code = :code");
             $stmt->bindParam(':name', $name, PDO::PARAM_STR);
             $stmt->bindParam(':code', $code, PDO::PARAM_INT);

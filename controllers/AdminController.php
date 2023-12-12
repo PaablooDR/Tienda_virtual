@@ -22,18 +22,5 @@ class AdminController {
             echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Admin&action=login">';
         }
     }
-
-    //ADMIN STADISTICS
-    
-
-    //ADMIN PRODUCTS
-    
-
-    //ADMIN CATEGORIES
-    
-
-    //ADMIN ORDERS
-    
 }
-
 ?>

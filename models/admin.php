@@ -38,7 +38,7 @@ class Admin extends BBDD{
         try {
             $email = $this->email;
             $password = $this->password;
-            $conexion = $this->conexion();
+            $conexion = $this->connect();
             $stmt = $conexion->prepare("SELECT * FROM Admin WHERE email = :email AND password = :password");
             $stmt->bindParam(':email', $email, PDO::PARAM_STR);
             $stmt->bindParam(':password', $password, PDO::PARAM_STR);

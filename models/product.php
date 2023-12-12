@@ -109,7 +109,7 @@ class Product extends BBDD{
             $stock = $this->stock;
             $active = $this->active;
             $outstanding = $this->outstanding;
-            $connect = $this->conexion();
+            $connect = $this->connect();
             $stmt = $connect->prepare("INSERT INTO Product (code, name, description, category, photo, price, stock, active, outstanding) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
             $success = $stmt->execute([$code, $name, $description, $category, $photo, $price, $stock, $active, $outstanding]);
             if ($success && $stmt->rowCount() > 0) {
@@ -127,7 +127,7 @@ class Product extends BBDD{
     //Obtain products
     public function obtainProducts() {
         try {
-            $connect = $this->conexion();
+            $connect = $this->connect();
             $query = "SELECT p.*, c.name as category_name FROM Product p JOIN Category c ON p.category = c.code::varchar";
             $statement = $connect->query($query);
 
@@ -145,7 +145,7 @@ class Product extends BBDD{
     public function desactivate() {
         $code = $this->code;
         try {
-            $connect = $this->conexion();
+            $connect = $this->connect();
             $stmt = $connect->prepare("UPDATE Product SET active = NOT active WHERE code = :code");
             $stmt->bindParam(':code', $code, PDO::PARAM_INT);
             $stmt->execute();
@@ -160,7 +160,7 @@ class Product extends BBDD{
     public function initialize() {
         $code = $this->code;
         try {
-            $connect = $this->conexion();
+            $connect = $this->connect();
             $stmt = $connect->prepare("SELECT name, description, category, photo, price, stock FROM Product WHERE code = :code");
             $stmt->bindParam(':code', $code, PDO::PARAM_INT);
             $res = $stmt->execute();
@@ -187,7 +187,7 @@ class Product extends BBDD{
     public function info() {
         $code = $this->category;
         try {
-            $connect = $this->conexion();
+            $connect = $this->connect();
             $stmt = $connect->prepare("SELECT name FROM Category WHERE code = :code");
             $stmt->bindParam(':code', $code, PDO::PARAM_INT);
             $result = $stmt->execute();

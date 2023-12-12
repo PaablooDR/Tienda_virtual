@@ -9,7 +9,6 @@ class CategoryController {
         $categories = $category->obtainCategories();
         require_once("views/admin/category.php");
         //Buscador + boton añadir categoria
-        
     }
 
     //Form
@@ -58,7 +57,6 @@ class CategoryController {
             $category->setCode($code);
             $category->initialize();
             $data = $category->info();
-            
             require_once("views/admin/editCategory.php");
         } else {
             echo "<script>
@@ -68,7 +66,7 @@ class CategoryController {
         }
     }
 
-    //Updatear category
+    //Update category
     public function updateCategory() {
         if(isset($_POST['send'])) {
             $code = $_GET['code'];
