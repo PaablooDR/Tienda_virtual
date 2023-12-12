@@ -108,9 +108,26 @@ class Category extends BBDD{
         $connect = null;
     }
 
-    //Product info
+    //Category info
     public function info() {
         return [$this->code, $this->name];
+    }
+
+    //Update category
+    public function update() {
+        $code = $this->code;
+        $name = $this->name;
+        try {
+            $connect = $this->conexion();
+            $stmt = $connect->prepare("UPDATE Category SET name = :name WHERE code = :code");
+            $stmt->bindParam(':name', $name, PDO::PARAM_INT);
+            $stmt->bindParam(':code', $code, PDO::PARAM_INT);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo "Error of connexion: " . $e->getMessage();
+        }
+        // Close connection
+        $connect = null;
     }
 }
 ?>

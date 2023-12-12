@@ -173,8 +173,8 @@ class AdminController {
         if(isset($_POST['desactivate'])) {
             if(isset($_POST['selectedItems'])) {
                 foreach ($_POST["selectedItems"] as $selectedItem) {
-                    $product = new Category($selectedItem);
-                    $product->desactivate();
+                    $category = new Category($selectedItem);
+                    $category->desactivate();
                 }
             }
         }
@@ -198,6 +198,19 @@ class AdminController {
             </script>";
             echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Admin&action=categories">';
         }
+    }
+
+    //Updatear category
+    public function updateCategory() {
+        if(isset($_POST['send'])) {
+            $code = $_POST['code'];
+            $name = $_POST['name'];
+            $category = new Category();
+            $category->setName($name);
+            $category->setCode($code);
+            $category->update();
+        }
+        echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Admin&action=categories">';
     }
 
     //ADMIN ORDERS
