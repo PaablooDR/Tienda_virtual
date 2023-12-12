@@ -186,9 +186,9 @@ class AdminController {
         if (isset($_GET['code'])){
             require_once("views/admin/sidebar.php");
             $code = $_GET['code'];
-            $product = new Category();
-            $product->setCode($code);
-            $product->initialize();
+            $category = new Category();
+            $category->setCode($code);
+            $category->initialize();
             $data = $category->info();
             
             require_once("views/admin/editCategory.php");
