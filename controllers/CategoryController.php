@@ -27,12 +27,12 @@ class CategoryController {
             echo "<script>
                 alert('Insert completed');
             </script>";
-            echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Admin&action=categories">';
+            echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Category&action=categories">';
         } else {
             echo "<script>
                 alert('Insert failed');
             </script>";
-            echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Admin&action=categories">';
+            echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Category&action=categories">';
         }
     }
 
@@ -46,7 +46,7 @@ class CategoryController {
                 }
             }
         }
-        echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Admin&action=categories">';
+        echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Category&action=categories">';
     }
 
     //Edit category
@@ -64,7 +64,7 @@ class CategoryController {
             echo "<script>
                 alert('No identity');
             </script>";
-            echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Admin&action=categories">';
+            echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Category&action=categories">';
         }
     }
 
@@ -78,7 +78,7 @@ class CategoryController {
             $category->setCode($code);
             $category->update();
         }
-        echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Admin&action=categories">';
+        echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Category&action=categories">';
     }
 }
 ?>
