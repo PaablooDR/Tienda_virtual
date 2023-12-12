@@ -111,7 +111,7 @@ class AdminController {
         echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Admin&action=products">';
     }
 
-     //Edit product
+    //Edit product
     public function editProduct() {
         if (isset($_GET['code'])){
             require_once("views/admin/sidebar.php");
@@ -179,6 +179,25 @@ class AdminController {
             }
         }
         echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Admin&action=categories">';
+    }
+
+    //Edit category
+    public function editCategory() {
+        if (isset($_GET['code'])){
+            require_once("views/admin/sidebar.php");
+            $code = $_GET['code'];
+            $product = new Category();
+            $product->setCode($code);
+            $product->initialize();
+            $data = $category->info();
+            
+            require_once("views/admin/editCategory.php");
+        } else {
+            echo "<script>
+                alert('No identity');
+            </script>";
+            echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Admin&action=categories">';
+        }
     }
 
     //ADMIN ORDERS

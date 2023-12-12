@@ -35,6 +35,7 @@ class Category extends BBDD{
     }
 
     //Methods
+    //Obtain categories
     public function obtainCategories() {
         try {
             $connect = $this->conexion();
@@ -51,6 +52,7 @@ class Category extends BBDD{
         $connect = null;
     }
     
+    //Insert category
     public function addCategory() {
         try {
             $name = $this->name;
@@ -82,6 +84,33 @@ class Category extends BBDD{
         }
         // Close connection
         $connect = null;
+    }
+
+    //Initialize the attributs of the class
+    public function initialize() {
+        $code = $this->code;
+        try {
+            $connect = $this->conexion();
+            $stmt = $connect->prepare("SELECT name FROM Category WHERE code = :code");
+            $stmt->bindParam(':code', $code, PDO::PARAM_INT);
+            $res = $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($result) {
+                $this->setName($result['name']);
+            } else {
+                echo "Category not found.";
+            }
+        } catch (PDOException $e) {
+            echo "Error of connexion: " . $e->getMessage();
+        }
+        // Close connection
+        $connect = null;
+    }
+
+    //Product info
+    public function info() {
+        return [$this->code, $this->name];
     }
 }
 ?>
