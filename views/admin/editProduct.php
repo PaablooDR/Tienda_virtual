@@ -8,7 +8,7 @@
     <body>
         <div>
             <form action="index.php?controller=Product&action=updateProduct&code=<?php echo "$data[0]"; ?>" method="post" enctype="multipart/form-data">
-                <?php print_r($data); ?>
+                <!-- <?php print_r($data); ?> -->
                 <h1><?php echo "$data[0]"; ?></h1>
                 <img src=<?php echo "$data[4]"; ?> alt="logo" style="width: 150px;"> <br>
                 Name:<input type="text" name="name" placeholder="Name" value="<?php echo "$data[1]"; ?>" maxlength="100" required><br>
