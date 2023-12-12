@@ -16,7 +16,7 @@
     }
     else{
         //Controlador per dedecte
-        $nombreController = "AdminController";
+        $nombreController = "StadisticsController";
     }
     if (class_exists($nombreController)){
         $controlador = new $nombreController(); 
