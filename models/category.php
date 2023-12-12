@@ -120,7 +120,7 @@ class Category extends BBDD{
         try {
             $connect = $this->conexion();
             $stmt = $connect->prepare("UPDATE Category SET name = :name WHERE code = :code");
-            $stmt->bindParam(':name', $name, PDO::PARAM_INT);
+            $stmt->bindParam(':name', $name, PDO::PARAM_STR);
             $stmt->bindParam(':code', $code, PDO::PARAM_INT);
             $stmt->execute();
         } catch (PDOException $e) {
