@@ -5,22 +5,22 @@ class CategoryController {
     //Menu
     public function categories() {
         require_once("views/admin/sidebar.php");
-        $categories = category::obtainCategories();
+        $categories = category::obtain();
         require_once("views/admin/category.php");
         //Buscador + boton añadir categoria
     }
 
     //Form
-    public function newCategory() {
+    public function new() {
         require_once("views/admin/sidebar.php");
         require_once("views/admin/newCategory.php");
     }
 
     //Add new category
-    public function addCategory() {
+    public function add() {
         $name = $_POST['name'];
         $category = new Category(NULL, $name, NULL);
-        $cat = $category->addCategory();
+        $cat = $category->add();
         if($cat == true) {
             echo "<script>
                 alert('Insert completed');
@@ -35,7 +35,7 @@ class CategoryController {
     }
 
     //Desactivate category
-    public function desactivateCategory() {
+    public function desactivate() {
         if(isset($_POST['desactivate'])) {
             if(isset($_POST['selectedItems'])) {
                 foreach ($_POST["selectedItems"] as $selectedItem) {
@@ -48,7 +48,7 @@ class CategoryController {
     }
 
     //Edit category
-    public function editCategory() {
+    public function edit() {
         if (isset($_GET['code'])){
             require_once("views/admin/sidebar.php");
             $code = $_GET['code'];
@@ -64,7 +64,7 @@ class CategoryController {
     }
 
     //Update category
-    public function updateCategory() {
+    public function update() {
         if(isset($_POST['send'])) {
             $code = $_GET['code'];
             $name = $_POST['name'];

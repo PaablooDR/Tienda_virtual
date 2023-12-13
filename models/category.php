@@ -36,7 +36,7 @@ class Category extends BBDD{
 
     //Methods
     //Insert category
-    public function addCategory() {
+    public function add() {
         try {
             $name = $this->name;
             $connect = BBDD::connect();
@@ -93,7 +93,7 @@ class Category extends BBDD{
 
     //Statics
     //Obtain categories
-    public static function obtainCategories() {
+    public static function obtain() {
         try {
             $connect = BBDD::connect();
             $query = "SELECT * FROM Category";
