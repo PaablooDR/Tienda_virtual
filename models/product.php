@@ -12,19 +12,7 @@ class Product extends BBDD{
     private $outstanding;
     
     //Constructor
-    // public function __construct($code, $name, $description, $category, $photo, $price, $stock, $active, $outstanding){
-    //     $this->code = $code;
-    //     $this->name = $name;
-    //     $this->description = $description;
-    //     $this->category = $category;
-    //     $this->photo = $photo;
-    //     $this->price = $price;
-    //     $this->stock = $stock;
-    //     $this->active = $active;
-    //     $this->outstanding = $outstanding;
-    // }
-
-    public function __construct($code=null, $name=null, $description=null, $category=null, $photo=null, $price=null, $stock=null, $active=1, $outstanding=0){
+    public function __construct($code, $name, $description, $category, $photo, $price, $stock, $active, $outstanding){
         $this->code = $code;
         $this->name = $name;
         $this->description = $description;
@@ -35,6 +23,18 @@ class Product extends BBDD{
         $this->active = $active;
         $this->outstanding = $outstanding;
     }
+
+    // public function __construct($code=null, $name=null, $description=null, $category=null, $photo=null, $price=null, $stock=null, $active=1, $outstanding=0){
+    //     $this->code = $code;
+    //     $this->name = $name;
+    //     $this->description = $description;
+    //     $this->category = $category;
+    //     $this->photo = $photo;
+    //     $this->price = $price;
+    //     $this->stock = $stock;
+    //     $this->active = $active;
+    //     $this->outstanding = $outstanding;
+    // }
 
     //Getters
     function getCode() {
@@ -124,22 +124,7 @@ class Product extends BBDD{
         $connect = null; 
     }
 
-    //Obtain products
-    public function obtainProducts() {
-        try {
-            $connect = $this->connect();
-            $query = "SELECT p.*, c.name as category_name FROM Product p JOIN Category c ON p.category = c.code::varchar";
-            $statement = $connect->query($query);
-
-            $products = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-            return $products;
-        } catch (PDOException $e) {
-            echo "Error of connexion: " . $e->getMessage();
-        }
-        //Close connection
-        $connect = null;
-    }
+    
 
     //Desactivate product
     public function desactivate() {
@@ -149,33 +134,6 @@ class Product extends BBDD{
             $stmt = $connect->prepare("UPDATE Product SET active = NOT active WHERE code = :code");
             $stmt->bindParam(':code', $code, PDO::PARAM_INT);
             $stmt->execute();
-        } catch (PDOException $e) {
-            echo "Error of connexion: " . $e->getMessage();
-        }
-        // Close connection
-        $connect = null;
-    }
-
-    //Initialize the attributs of the class
-    public function initialize() {
-        $code = $this->code;
-        try {
-            $connect = $this->connect();
-            $stmt = $connect->prepare("SELECT name, description, category, photo, price, stock FROM Product WHERE code = :code");
-            $stmt->bindParam(':code', $code, PDO::PARAM_INT);
-            $res = $stmt->execute();
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            if ($result) {
-                $this->setName($result['name']);
-                $this->setDescription($result['description']);
-                $this->setCategory($result['category']);
-                $this->setPhoto($result['photo']);
-                $this->setPrice($result['price']);
-                $this->setStock($result['stock']);
-            } else {
-                echo "Product not found.";
-            }
         } catch (PDOException $e) {
             echo "Error of connexion: " . $e->getMessage();
         }
@@ -205,5 +163,59 @@ class Product extends BBDD{
         $connect = null;
     }
 
+    //Statics
+    //Obtain products
+    public static function obtainProducts() {
+        try {
+            $connect = BBDD::connect();
+            $query = "SELECT p.*, c.name as category_name FROM Product p JOIN Category c ON p.category = c.code::varchar";
+            $statement = $connect->query($query);
+
+            $products = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+            return $products;
+        } catch (PDOException $e) {
+            echo "Error of connexion: " . $e->getMessage();
+        }
+        //Close connection
+        $connect = null;
+    }
+
+    //Initialize the attributs of the class
+    public static function initialize($code) {
+        try {
+            $connect = BBDD::connect();
+            $stmt = $connect->prepare("SELECT name, description, category, photo, price, stock FROM Product WHERE code = :code");
+            $stmt->bindParam(':code', $code, PDO::PARAM_INT);
+            $res = $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($result) {
+                return [$result['name'], $result['description'], $result['category'], $result['photo'], $result['price'], $result['stock']];
+            } else {
+                echo "Product not found.";
+            }
+        } catch (PDOException $e) {
+            echo "Error of connexion: " . $e->getMessage();
+        }
+        // Close connection
+        $connect = null;
+    }
+
+    //Move image
+    public static function moveImage($name) {
+        $originalName = $_FILES['photo']['name'];
+        $imagen_ext = pathinfo($originalName, PATHINFO_EXTENSION);
+        $imagen_path = 'sources/'. $name .'.'. $imagen_ext;
+        move_uploaded_file($_FILES['photo']['tmp_name'], $imagen_path);
+        return $imagen_path;
+    }
+
+    //Remove image
+    public static function removeImage($path) {
+        if (file_exists($path)) {
+            unlink($path);
+        }
+    }
 }
 ?>

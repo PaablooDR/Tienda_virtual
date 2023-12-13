@@ -6,8 +6,7 @@ class ProductController {
     //Menu
     public function products() {
         require_once("views/admin/sidebar.php");
-        $product = new Product();
-        $products = $product->obtainProducts();
+        $products = Product::obtainProducts();
         require_once("views/admin/product.php");
         //Buscador + boton añadir producto
         //Lista de productos con posibilidad de modificar y desactivar
@@ -16,8 +15,7 @@ class ProductController {
     //Form
     public function newProduct() {
         require_once("views/admin/sidebar.php");
-        $category = new Category();
-        $categories = $category->obtainCategories();
+        $categories = Category::obtainCategories();
         require_once("views/admin/newProduct.php");
     }
 
@@ -32,7 +30,7 @@ class ProductController {
         $name = $_POST["name"];
         $description = $_POST["description"];
         if(is_uploaded_file($_FILES['photo']['tmp_name'])){
-            $path = $this->moveImage($code);
+            $path = Product::moveImage($code);
         }else{
             echo "<p>No se ha podido subir la imagen</p>";
         }
@@ -43,7 +41,7 @@ class ProductController {
         }else{
             $outstanding = 0;
         }
-        $product = new Product($code, $name, $description, $category, $path, $price, $stock, $outstanding);
+        $product = new Product($code, $name, $description, $category, $path, $price, $stock, 1, $outstanding);
         $pro = $product->addProduct();
         if($pro == true) {
             echo "<script>
@@ -58,21 +56,12 @@ class ProductController {
         }
     }
 
-    //Move image
-    public function moveImage($name) {
-        $originalName = $_FILES['photo']['name'];
-        $imagen_ext = pathinfo($originalName, PATHINFO_EXTENSION);
-        $imagen_path = 'sources/'. $name .'.'. $imagen_ext;
-        move_uploaded_file($_FILES['photo']['tmp_name'], $imagen_path);
-        return $imagen_path;
-    }
-
     //Desactivate product
     public function desactivateProduct() {
         if(isset($_POST['desactivate'])) {
             if(isset($_POST['selectedItems'])) {
                 foreach ($_POST["selectedItems"] as $selectedItem) {
-                    $product = new Product($selectedItem);
+                    $product = new Product($selectedItem, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
                     $product->desactivate();
                 }
             }
@@ -85,12 +74,10 @@ class ProductController {
         if (isset($_GET['code'])){
             require_once("views/admin/sidebar.php");
             $code = $_GET['code'];
-            $product = new Product();
-            $product->setCode($code);
-            $product->initialize();
+            $ini = Product::initialize($code);
+            $product = new Product($code, $ini[0], $ini[1], $ini[2], $ini[3], $ini[4], $ini[5], NULL, NULL);
             $data = $product->info();
-            $category = new Category();
-            $categories = $category->obtainCategories();
+            $categories = Category::obtainCategories();
             require_once("views/admin/editProduct.php");
         } else {
             echo "<script>
