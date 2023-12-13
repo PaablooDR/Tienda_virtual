@@ -6,9 +6,10 @@ class Admin extends BBDD{
     private $signature;
     
     //Constructor
-    public function __construct($email, $password){
+    public function __construct($email, $password, $signature){
         $this->email = $email;
         $this->password = $password;
+        $this->signature = $signature;
     }
 
     //Getters

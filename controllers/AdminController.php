@@ -11,7 +11,7 @@ class AdminController {
     public function checkLogin() {
         $email = $_POST["email"];
         $password = $_POST["password"];
-        $admin = new Admin($email, $password);
+        $admin = new Admin($email, $password, NULL);
         $usu = $admin->checkLogin();
         if($usu == true) {
             echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Admin&action=stadistics">';

@@ -19,7 +19,7 @@ class CategoryController {
     //Add new category
     public function addCategory() {
         $name = $_POST['name'];
-        $category = new Category(NULL, $name);
+        $category = new Category(NULL, $name, NULL);
         $cat = $category->addCategory();
         if($cat == true) {
             echo "<script>
@@ -39,7 +39,7 @@ class CategoryController {
         if(isset($_POST['desactivate'])) {
             if(isset($_POST['selectedItems'])) {
                 foreach ($_POST["selectedItems"] as $selectedItem) {
-                    $category = new Category($selectedItem, NULL);
+                    $category = new Category($selectedItem, NULL, NULL);
                     $category->desactivate();
                 }
             }
@@ -68,7 +68,7 @@ class CategoryController {
         if(isset($_POST['send'])) {
             $code = $_GET['code'];
             $name = $_POST['name'];
-            $category = new Category($code, $name);
+            $category = new Category($code, $name, NULL);
             $category->update();
         }
         echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Category&action=categories">';
