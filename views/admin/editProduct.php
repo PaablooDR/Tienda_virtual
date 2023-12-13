@@ -7,7 +7,7 @@
     </head>
     <body>
         <div>
-            <form action="index.php?controller=Product&action=update&code=<?php echo "$data[0]"; ?>" method="post" enctype="multipart/form-data">
+            <form action="index.php?controller=Product&action=update&code=<?php echo "$data[0]"; ?>&photo=<?php echo "$data[4]"; ?>" method="post" enctype="multipart/form-data">
                 <!-- <?php print_r($data); ?> -->
                 <h1><?php echo "$data[0]"; ?></h1>
                 <img src=<?php echo "$data[4]"; ?> alt="logo" style="width: 150px;"> <br>
@@ -26,7 +26,7 @@
                         }
                     ?>
                 </select><br>
-                Photo:<input type="file" name="photo" accept=".jpg, .png, .JPEG"><br>
+                New photo:<input type="file" name="photo" accept=".jpg, .png, .JPEG"><br>
                 Price:<input type="number" name="price" placeholder="Price" value=<?php echo "$data[5]"; ?> required><br>
                 Stock:<input type="number" name="stock" placeholder="Stock" value=<?php echo "$data[6]"; ?> required><br>
                 <input type="submit" name="send" value="Enter">

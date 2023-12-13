@@ -69,7 +69,7 @@ class ProductController {
         echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Product&action=products">';
     }
 
-    //Edit product
+    //Form to edit product
     public function edit() {
         if (isset($_GET['code'])){
             require_once("views/admin/sidebar.php");
@@ -85,6 +85,31 @@ class ProductController {
             </script>";
             echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Product&action=products">';
         }
+    }
+
+    //Update product
+    public function update() {
+        if(isset($_POST['send'])) {
+            $code = $_GET['code'];
+            $path = $_GET['photo'];
+            $name = $_POST['name'];
+            $description = $_POST['description'];
+            $arrayCategory = explode(",", $_POST['category']);
+            $category = $arrayCategory[0];
+            $price = $_POST['price'];
+            $stock = $_POST['stock'];
+            if(is_uploaded_file($_FILES['photo']['tmp_name'])){
+                Product::removeImage($path);
+                $newPath = Product::moveImage($code);
+                $product = new Product($code, $name, $description, $category, $newPath, $price, $stock, NULL, NULL);
+            } else {
+                $product = new Product($code, $name, $description, $category, $path, $price, $stock, NULL, NULL);
+            }
+
+            
+            $product->update();
+        }
+        echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Product&action=products">';
     }
 }
 ?>

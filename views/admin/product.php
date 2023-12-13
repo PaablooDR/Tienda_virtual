@@ -13,7 +13,7 @@ echo "<form action='index.php?controller=Product&action=desactivate' method='pos
             echo "<div>".$product['category_name']."</div>";
             echo "<div>".$product['price']."</div>";
             echo "<div>".$product['stock']."</div>";
-            echo "<a href='index.php?controller=Product&action=edit&code=".$product['code']."'><div><img src='sources/web/edit.png' alt='edit' style='width: 50px;'></div></a>";
+            echo "<a href='index.php?controller=Product&action=edit&code=".$product['code']."&photo=".$product['photo']."'><div><img src='sources/web/edit.png' alt='edit' style='width: 50px;'></div></a>";
         echo "</div>";
     }
     echo "<input type='submit' name='desactivate' value='Change active'>";

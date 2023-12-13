@@ -161,6 +161,33 @@ class Product extends BBDD{
         $connect = null;
     }
 
+    //Update product
+    public function update() {
+        $code = $this->code;
+        $name = $this->name;
+        $description = $this->description;
+        $category = $this->category;
+        $photo = $this->photo;
+        $price = $this->price;
+        $stock = $this->stock;
+        try {
+            $connect = BBDD::connect();
+            $stmt = $connect->prepare("UPDATE Product SET name = :name, description = :description, category = :category, photo = :photo, price = :price, stock = :stock WHERE code = :code");
+            $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+            $stmt->bindParam(':description', $description, PDO::PARAM_STR);
+            $stmt->bindParam(':category', $category, PDO::PARAM_INT);
+            $stmt->bindParam(':photo', $photo, PDO::PARAM_STR);
+            $stmt->bindParam(':price', $price, PDO::PARAM_INT);
+            $stmt->bindParam(':stock', $stock, PDO::PARAM_STR);
+            $stmt->bindParam(':code', $code, PDO::PARAM_INT);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo "Error of connexion: " . $e->getMessage();
+        }
+        // Close connection
+        $connect = null;
+    }
+
     //Statics
     //Obtain products
     public static function obtain() {
