@@ -53,10 +53,7 @@ class CategoryController {
         if (isset($_GET['code'])){
             require_once("views/admin/sidebar.php");
             $code = $_GET['code'];
-            $category = new Category();
-            $category->setCode($code);
-            $category->initialize();
-            $data = $category->info();
+            $data = category::initialize($code);
             require_once("views/admin/editCategory.php");
         } else {
             echo "<script>

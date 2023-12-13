@@ -85,8 +85,7 @@ class Category extends BBDD{
     }
 
     //Initialize the attributs of the class
-    public function initialize() {
-        $code = $this->code;
+    public static function initialize($code) {
         try {
             $connect = $this->connect();
             $stmt = $connect->prepare("SELECT name FROM Category WHERE code = :code");
@@ -95,7 +94,7 @@ class Category extends BBDD{
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($result) {
-                $this->setName($result['name']);
+                $this->info();
             } else {
                 echo "Category not found.";
             }
