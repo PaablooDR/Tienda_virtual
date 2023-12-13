@@ -5,8 +5,7 @@ class CategoryController {
     //Menu
     public function categories() {
         require_once("views/admin/sidebar.php");
-        $category = new Category();
-        $categories = $category->obtainCategories();
+        $categories = category::obtainCategories();
         require_once("views/admin/category.php");
         //Buscador + boton añadir categoria
     }
@@ -40,7 +39,7 @@ class CategoryController {
         if(isset($_POST['desactivate'])) {
             if(isset($_POST['selectedItems'])) {
                 foreach ($_POST["selectedItems"] as $selectedItem) {
-                    $category = new Category($selectedItem);
+                    $category = new Category($selectedItem, NULL);
                     $category->desactivate();
                 }
             }
@@ -69,9 +68,7 @@ class CategoryController {
         if(isset($_POST['send'])) {
             $code = $_GET['code'];
             $name = $_POST['name'];
-            $category = new Category();
-            $category->setName($name);
-            $category->setCode($code);
+            $category = new Category($code, $name);
             $category->update();
         }
         echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Category&action=categories">';

@@ -6,7 +6,7 @@ class Category extends BBDD{
     private $active;
     
     //Constructor
-    public function __construct($code = NULL, $name = NULL, $active = NULL){
+    public function __construct($code, $name, $active){
         $this->code = $code;
         $this->name = $name;
         $this->active = $active;
@@ -35,26 +35,11 @@ class Category extends BBDD{
     }
 
     //Methods
-    //Obtain categories
-    public function obtainCategories() {
-        try {
-            $connect = $this->connect();
-            $query = "SELECT * FROM Category";
-            $statement = $connect->query($query);
-            $categorias = $statement->fetchAll(PDO::FETCH_ASSOC);
-            return $categorias;
-        } catch (PDOException $e) {
-            echo "Error of connexion: " . $e->getMessage();
-        }
-        // Close connection
-        $connect = null;
-    }
-    
     //Insert category
     public function addCategory() {
         try {
             $name = $this->name;
-            $connect = $this->connect();
+            $connect = BBDD::connect();
             $stmt = $connect->prepare("INSERT INTO Category (name, active) VALUES (?, ?)");
             $success = $stmt->execute([$name, 1]);
             if ($success && $stmt->rowCount() > 0) {
@@ -73,10 +58,48 @@ class Category extends BBDD{
     public function desactivate() {
         $code = $this->code;
         try {
-            $connect = $this->connect();
+            $connect = BBDD::connect();
             $stmt = $connect->prepare("UPDATE Category SET active = NOT active WHERE code = :code");
             $stmt->bindParam(':code', $code, PDO::PARAM_INT);
             $stmt->execute();
+        } catch (PDOException $e) {
+            echo "Error of connexion: " . $e->getMessage();
+        }
+        // Close connection
+        $connect = null;
+    }
+
+    //Category info
+    public function info() {
+        return [$this->code, $this->name];
+    }
+
+    //Update category
+    public function update() {
+        $code = $this->code;
+        $name = $this->name;
+        try {
+            $connect = BBDD::connect();
+            $stmt = $connect->prepare("UPDATE Category SET name = :name WHERE code = :code");
+            $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+            $stmt->bindParam(':code', $code, PDO::PARAM_INT);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo "Error of connexion: " . $e->getMessage();
+        }
+        // Close connection
+        $connect = null;
+    }
+
+    //Statics
+    //Obtain categories
+    public static function obtainCategories() {
+        try {
+            $connect = BBDD::connect();
+            $query = "SELECT * FROM Category";
+            $statement = $connect->query($query);
+            $categorias = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $categorias;
         } catch (PDOException $e) {
             echo "Error of connexion: " . $e->getMessage();
         }
@@ -98,28 +121,6 @@ class Category extends BBDD{
             } else {
                 echo "Category not found.";
             }
-        } catch (PDOException $e) {
-            echo "Error of connexion: " . $e->getMessage();
-        }
-        // Close connection
-        $connect = null;
-    }
-
-    //Category info
-    public function info() {
-        return [$this->code, $this->name];
-    }
-
-    //Update category
-    public function update() {
-        $code = $this->code;
-        $name = $this->name;
-        try {
-            $connect = $this->connect();
-            $stmt = $connect->prepare("UPDATE Category SET name = :name WHERE code = :code");
-            $stmt->bindParam(':name', $name, PDO::PARAM_STR);
-            $stmt->bindParam(':code', $code, PDO::PARAM_INT);
-            $stmt->execute();
         } catch (PDOException $e) {
             echo "Error of connexion: " . $e->getMessage();
         }
