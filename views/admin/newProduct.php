@@ -7,7 +7,7 @@
     </head>
     <body>
         <div>
-            <form action="index.php?controller=Product&action=addProduct" method="post" enctype="multipart/form-data">
+            <form action="index.php?controller=Product&action=add" method="post" enctype="multipart/form-data">
                 <h1>NEW PRODUCT</h1>
                 Name:<input type="text" name="name" placeholder="Name" maxlength="100" required><br>
                 Description:<input type="textarea" name="description" rows="4" cols="50" placeholder="Description" required><br>

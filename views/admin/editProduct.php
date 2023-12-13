@@ -7,7 +7,7 @@
     </head>
     <body>
         <div>
-            <form action="index.php?controller=Product&action=updateProduct&code=<?php echo "$data[0]"; ?>" method="post" enctype="multipart/form-data">
+            <form action="index.php?controller=Product&action=update&code=<?php echo "$data[0]"; ?>" method="post" enctype="multipart/form-data">
                 <!-- <?php print_r($data); ?> -->
                 <h1><?php echo "$data[0]"; ?></h1>
                 <img src=<?php echo "$data[4]"; ?> alt="logo" style="width: 150px;"> <br>

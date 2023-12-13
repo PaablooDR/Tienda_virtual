@@ -6,21 +6,21 @@ class ProductController {
     //Menu
     public function products() {
         require_once("views/admin/sidebar.php");
-        $products = Product::obtainProducts();
+        $products = Product::obtain();
         require_once("views/admin/product.php");
         //Buscador + boton añadir producto
         //Lista de productos con posibilidad de modificar y desactivar
     }
 
     //Form
-    public function newProduct() {
+    public function new() {
         require_once("views/admin/sidebar.php");
-        $categories = Category::obtainCategories();
+        $categories = Category::obtain();
         require_once("views/admin/newProduct.php");
     }
 
     //Add new product
-    public function addProduct() {
+    public function add() {
         $array = explode(",", $_POST["category"]);
         $category = $array[0];
         $categoryName = $array[1];
@@ -42,7 +42,7 @@ class ProductController {
             $outstanding = 0;
         }
         $product = new Product($code, $name, $description, $category, $path, $price, $stock, 1, $outstanding);
-        $pro = $product->addProduct();
+        $pro = $product->insert();
         if($pro == true) {
             echo "<script>
                 alert('Insert completed');
@@ -57,7 +57,7 @@ class ProductController {
     }
 
     //Desactivate product
-    public function desactivateProduct() {
+    public function desactivate() {
         if(isset($_POST['desactivate'])) {
             if(isset($_POST['selectedItems'])) {
                 foreach ($_POST["selectedItems"] as $selectedItem) {
@@ -70,14 +70,14 @@ class ProductController {
     }
 
     //Edit product
-    public function editProduct() {
+    public function edit() {
         if (isset($_GET['code'])){
             require_once("views/admin/sidebar.php");
             $code = $_GET['code'];
             $ini = Product::initialize($code);
             $product = new Product($code, $ini[0], $ini[1], $ini[2], $ini[3], $ini[4], $ini[5], NULL, NULL);
             $data = $product->info();
-            $categories = Category::obtainCategories();
+            $categories = Category::obtain();
             require_once("views/admin/editProduct.php");
         } else {
             echo "<script>

@@ -98,7 +98,7 @@ class Product extends BBDD{
 
     //Methods
     //Insert product
-    public function addProduct(){
+    public function insert(){
         try {
             $code = $this->code;
             $name = $this->name;
@@ -123,8 +123,6 @@ class Product extends BBDD{
         // Cerrar la conexión
         $connect = null; 
     }
-
-    
 
     //Desactivate product
     public function desactivate() {
@@ -165,7 +163,7 @@ class Product extends BBDD{
 
     //Statics
     //Obtain products
-    public static function obtainProducts() {
+    public static function obtain() {
         try {
             $connect = BBDD::connect();
             $query = "SELECT p.*, c.name as category_name FROM Product p JOIN Category c ON p.category = c.code::varchar";
@@ -206,7 +204,7 @@ class Product extends BBDD{
     public static function moveImage($name) {
         $originalName = $_FILES['photo']['name'];
         $imagen_ext = pathinfo($originalName, PATHINFO_EXTENSION);
-        $imagen_path = 'sources/'. $name .'.'. $imagen_ext;
+        $imagen_path = 'sources/products/'. $name .'.'. $imagen_ext;
         move_uploaded_file($_FILES['photo']['tmp_name'], $imagen_path);
         return $imagen_path;
     }
