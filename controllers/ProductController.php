@@ -26,9 +26,15 @@ class ProductController {
         $categoryName = $array[1];
         $abbreviation1 = substr($categoryName, 0, 2);
         $abbreviation2 = substr($_POST["name"], 0, 2);
-        $code = $abbreviation1 . '777-' . $abbreviation2;
+
+        $number = Product::count($category);
+        $abbreviation3 = Product::zeroFill($number+10);
+
+        $code = $abbreviation1 . $abbreviation3 . '-' . $abbreviation2;
+
         $name = $_POST["name"];
         $description = $_POST["description"];
+
         if(is_uploaded_file($_FILES['photo']['tmp_name'])){
             $path = Product::moveImage($code);
         }else{

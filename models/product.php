@@ -242,5 +242,39 @@ class Product extends BBDD{
             unlink($path);
         }
     }
+
+    //Count products from one category
+    public static function count($category) {
+        try {
+            $connect = BBDD::connect();
+            $stmt = $connect->prepare("SELECT COUNT(*) AS numProducts FROM Product WHERE category = :category;");
+            $stmt->bindParam(':category', $category, PDO::PARAM_INT);
+            $res = $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($result) {
+                return $result['numProducts'];
+            } else {
+                echo "Product not found.";
+            }
+        } catch (PDOException $e) {
+            echo "Error of connexion: " . $e->getMessage();
+        }
+        //Close connection
+        $connect = null;
+    }
+
+    //Zero fill
+    public static function zeroFill($number) {
+        $numberString = (string)$number;
+        $numberOfDigits = strlen($numberString);
+        if($numberOfDigits == 1) {
+            return "00" . $numberString;
+        } else if ($numberOfDigits == 2) {
+            return "0" . $numberString;
+        } else {
+            return $number;
+        }
+    }
 }
 ?>
