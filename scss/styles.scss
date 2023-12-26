@@ -2,12 +2,14 @@
 @import "mixins.scss";
 
 #sidebar {
+    font-family: $font-family-admin;
     background-color: black;
     color: white;
     width: 15%;
     font-size: large;
     ul {
         list-style: none;
+        flex-flow: column wrap;
         a {
             text-decoration: none;
             color: white;
@@ -18,5 +20,18 @@
         li {
             padding: 3%;
         }
+    }
+}
+
+#adminContent {
+    font-family: $font-family-admin;
+    background-color: $color-primary-admin;
+    #titleAdmin {
+        border-bottom: 2px solid black;
+    }
+    .list {
+        background-color: $color-list-admin;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }
 }
