@@ -1,0 +1,19 @@
+#sidebar {
+  background-color: black;
+  color: white;
+  width: 15%;
+  font-size: large;
+}
+#sidebar ul {
+  list-style: none;
+}
+#sidebar ul a {
+  text-decoration: none;
+  color: white;
+}
+#sidebar ul a:hover {
+  text-decoration: underline;
+}
+#sidebar ul li {
+  padding: 3%;
+}/*# sourceMappingURL=styles.css.map */

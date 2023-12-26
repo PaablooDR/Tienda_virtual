@@ -1,5 +1,7 @@
 <!--Vista del admin a todo lo que puede hacer en categorias-->
 
+<h1 id="titleAdmin">Categories</h1>
+
 <a href="index.php?controller=Category&action=new"><h3>New Category</h3></a>
 
 <?php

@@ -1,0 +1,22 @@
+@import "variables.scss";
+@import "mixins.scss";
+
+#sidebar {
+    background-color: black;
+    color: white;
+    width: 15%;
+    font-size: large;
+    ul {
+        list-style: none;
+        a {
+            text-decoration: none;
+            color: white;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        li {
+            padding: 3%;
+        }
+    }
+}
