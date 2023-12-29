@@ -5,9 +5,8 @@
 
     <a href="index.php?controller=Product&action=new"><h3>New Product</h3></a>
 
-
     <form action='index.php?controller=Product&action=desactivate' method='post' enctype='multipart/form-data'>
-        <div class="list">
+        <div id="headerList" class="list">
             <div>Select all</div>
             <div>Photo</div>
             <div>Name</div>

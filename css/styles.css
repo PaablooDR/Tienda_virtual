@@ -26,9 +26,21 @@
 }
 #adminContent #titleAdmin {
   border-bottom: 2px solid black;
+  font-weight: lighter;
+}
+#adminContent #headerList {
+  border-top: 0px;
 }
 #adminContent .list {
   background-color: #d9d9d9;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  border-top: 2px solid black;
+}
+#adminContent .list div {
+  text-align: center;
+}
+#adminContent .list div input {
+  transform: scale(2);
+  accent-color: #a1a1a1;
 }/*# sourceMappingURL=styles.css.map */
