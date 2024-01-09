@@ -117,5 +117,11 @@ class ProductController {
         }
         echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Product&action=products">';
     }
+
+    //Shop
+    //Principal page
+    public function principal() {
+        require_once("views/general/header.php");
+    }
 }
 ?>

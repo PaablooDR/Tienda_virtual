@@ -276,5 +276,7 @@ class Product extends BBDD{
             return $number;
         }
     }
+
+    
 }
 ?>
