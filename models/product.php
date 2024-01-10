@@ -277,6 +277,21 @@ class Product extends BBDD{
         }
     }
 
-    
+    //Outstanding productos
+    public static function outstandingProducts() {
+        try {
+            $connect = BBDD::connect();
+            $query = "SELECT p.*, c.name as category_name FROM Product p JOIN Category c ON p.category = c.code::varchar WHERE outstanding=true";
+            $statement = $connect->query($query);
+
+            $products = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+            return $products;
+        } catch (PDOException $e) {
+            echo "Error of connexion: " . $e->getMessage();
+        }
+        //Close connection
+        $connect = null;
+    }
 }
 ?>

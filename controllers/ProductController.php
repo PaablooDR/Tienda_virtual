@@ -122,6 +122,9 @@ class ProductController {
     //Principal page
     public function principal() {
         require_once("views/general/header.php");
+        $products = Product::outstandingProducts();
+        require_once("views/general/outstanding.php");
+        echo "<script src='js/carrusel.js'></script>";
     }
 }
 ?>

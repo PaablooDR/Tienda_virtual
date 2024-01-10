@@ -17,7 +17,7 @@
     }
     else{
         //Controlador per dedecte
-        $nombreController = "StadisticsController";
+        $nombreController = "ProductController";
     }
     if (class_exists($nombreController)){
         $controlador = new $nombreController(); 
@@ -25,7 +25,7 @@
             $action = $_GET['action'];
         }
         else{
-            $action ="stadistics";
+            $action ="principal";
         }
         $controlador->$action();   
     }else{
