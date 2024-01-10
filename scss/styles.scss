@@ -1,6 +1,10 @@
 @import "variables.scss";
 @import "mixins.scss";
 
+* {
+    font-family: $font-family-admin;
+}
+
 #sidebar {
     font-family: $font-family-admin;
     background-color: black;
@@ -24,7 +28,6 @@
 }
 
 #adminContent {
-    font-family: $font-family-admin;
     background-color: $color-primary-admin;
     #titleAdmin {
         border-bottom: 2px solid black;
@@ -50,17 +53,55 @@
 
 #header {
     background-color: black;
+    height: 15%;
+    ul {
+        list-style: none;
+        flex-flow: row;
+        a {
+            text-decoration: none;
+            color: white;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        li {
+            padding: 1%;
+            img {
+                width: 10%;
+            }
+        }
+    } 
 }
 
 #outstanding {
     #carousel {
-        max-width: 50px;
+        max-width: 200px;
         overflow: hidden;
         margin: 0 auto;
         img {
-            width: 50px;
-            height: 50px;
+            width: 100%;
+            height: auto;
         }
+    }
+    #outstandingList {
+        background-color: lightgray;
+        width: 20%;
+        padding: 2%;
+        a {
+            text-decoration: none;
+            color: black;
+            div {
+                border-radius: 2%;
+                background-color: white;
+                padding: 2%;
+                margin-bottom: 2%;
+                img {
+                    width: 120px;
+                    height: 162px;
+                }
+            }
+        }
+        
     }
 }
   

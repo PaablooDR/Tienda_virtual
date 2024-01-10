@@ -124,7 +124,7 @@ class ProductController {
         require_once("views/general/header.php");
         $products = Product::outstandingProducts();
         require_once("views/general/outstanding.php");
-        echo "<script src='js/carrusel.js'></script>";
+        echo "<script src='js/carousel.js'></script>";
     }
 }
 ?>
