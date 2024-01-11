@@ -53,10 +53,10 @@
 
 #header {
     background-color: black;
-    height: 15%;
     ul {
+        display: grid;
+        grid-template-columns: repeat(7, 14.28%);
         list-style: none;
-        flex-flow: row;
         a {
             text-decoration: none;
             color: white;
@@ -64,45 +64,72 @@
         a:hover {
             text-decoration: underline;
         }
-        li {
-            padding: 1%;
+        li:first-child {
             img {
-                width: 10%;
+                width: 40%;
+            }
+        }
+        li {
+            img {
+                width: 20%;
             }
         }
     } 
 }
 
 #outstanding {
+    display: flex;
+    background-image: url('../sources/web/salonIndex.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; 
     #carousel {
-        max-width: 200px;
+        width: 50%;
         overflow: hidden;
-        margin: 0 auto;
         img {
-            width: 100%;
+            width: 40%;
             height: auto;
+            margin: 5% auto;
+            border-radius: 10px;
         }
     }
-    #outstandingList {
-        background-color: lightgray;
-        width: 20%;
-        padding: 2%;
-        a {
-            text-decoration: none;
-            color: black;
-            div {
-                border-radius: 2%;
-                background-color: white;
-                padding: 2%;
-                margin-bottom: 2%;
-                img {
-                    width: 120px;
-                    height: 162px;
+    #outstandingProducts {
+        width: 50%;
+        #outstandingList {
+            width: 60%;
+            background-color: black;
+            padding: 2%;
+            margin: 5% auto;
+            overflow: scroll;
+            height: 70%;
+            overflow-x: hidden;
+            border-radius: 5px;
+            a {
+                text-decoration: none;
+                color: black;
+                .outstandingProduct {
+                    display: flex;
+                    border-radius: 5px;
+                    background-color: white;
+                    padding: 2%;
+                    margin-bottom: 2%;
+                    img {
+                        width: 25%;
+                        border-radius: 5px;
+                        margin-right: 3%;
+                    }
+                    #outstandingAttributes {
+                        button {
+                            background-color: black;
+                            color: white;
+                            border-radius: 5px;
+                        }
+                    }
                 }
             }
         }
-        
     }
 }
-  
+
+
   

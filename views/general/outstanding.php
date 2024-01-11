@@ -10,20 +10,25 @@
         } 
         ?>
     </div>
-    <div id="outstandingList">
-        <?php
-            foreach ($products as $product) {
-                ?>
-                <a href="index.php?controller=Product&action=buyProduct">
-                    <div id="<?php echo $product['code']; ?>">
-                        <img src="<?php echo $product['photo']; ?>" alt="<?php echo $product['name']; ?>">
-                        <h4><?php echo $product['name']; ?></h4>
-                        <p><?php echo $product['category_name']; ?></p>
-                        <p><?php echo $product['price']; ?></p>
-                    </div>
-                </a>
-                <?php
-            }
-        ?>
+    <div id="outstandingProducts">
+        <div id="outstandingList">
+            <?php
+                foreach ($products as $product) {
+                    ?>
+                    <a href="index.php?controller=Product&action=buyProduct">
+                        <div id="<?php echo $product['code']; ?>" class="outstandingProduct">
+                            <img src="<?php echo $product['photo']; ?>" alt="<?php echo $product['name']; ?>">
+                            <div id="outstandingAttributes">
+                                <h4><?php echo ucfirst($product['name']); ?></h4>
+                                <p><?php echo ucfirst($product['category_name']); ?></p>
+                                <p><?php echo $product['price']; ?>€</p>
+                                <button href="index.php?controller=Product&action=addCart">Add to cart</button>
+                            </div>
+                        </div>
+                    </a>
+                    <?php
+                }
+            ?>
+        </div>
     </div>
 </div>
