@@ -33,7 +33,7 @@
         border-bottom: 2px solid black;
         font-weight: lighter;
     }
-    #headerList {
+    #bodyList {
         border-top: 0px;
     }
     .list {
@@ -128,6 +128,14 @@
                 }
             }
         }
+    }
+}
+
+#section2{
+    display: flex;
+    flex-direction: row;
+    #coming_soon{
+        margin-left: 15vw;
     }
 }
 
