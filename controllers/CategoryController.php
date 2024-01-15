@@ -15,7 +15,7 @@ class CategoryController {
         if (isset($_POST['search'])) {
             $searchValue = $_POST['search'];
             $categories = category::search($searchValue);
-            // Renderiza la vista parcial con los resultados de la búsqueda
+            // Render the view with the results of the search
             require_once("views/admin/searchCategory.php");
         }
     }    

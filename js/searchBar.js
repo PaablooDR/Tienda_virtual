@@ -11,7 +11,7 @@ $(document).ready(function () {
                 $('#bodyList').html(response);
             },
             error: function () {
-                alert('Error en la solicitud AJAX');
+                alert('Error in the request with AJAX');
             }
         });
     });

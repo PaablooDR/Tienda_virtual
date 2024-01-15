@@ -102,7 +102,7 @@ class Category extends BBDD{
             $categories = $statement->fetchAll(PDO::FETCH_ASSOC);
             return $categories;
         } catch (PDOException $e) {
-            echo "Error de conexión: " . $e->getMessage();
+            echo "Error of connection: " . $e->getMessage();
         } finally {
             // Cierra la conexión
             $connect = null;
