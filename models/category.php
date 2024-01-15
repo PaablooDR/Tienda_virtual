@@ -91,6 +91,24 @@ class Category extends BBDD{
         $connect = null;
     }
 
+    //Search bar
+    public static function search($keyword) {
+        try {
+            $connect = BBDD::connect();
+            $query = "SELECT * FROM Category WHERE LOWER(name) LIKE LOWER(:keyword)";
+            $statement = $connect->prepare($query);
+            $statement->bindValue(':keyword', '%' . $keyword . '%', PDO::PARAM_STR);
+            $statement->execute();
+            $categories = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $categories;
+        } catch (PDOException $e) {
+            echo "Error de conexión: " . $e->getMessage();
+        } finally {
+            // Cierra la conexión
+            $connect = null;
+        }
+    }    
+
     //Statics
     //Obtain categories
     public static function obtain() {

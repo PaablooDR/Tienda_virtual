@@ -10,6 +10,16 @@ class CategoryController {
         //Buscador + boton añadir categoria
     }
 
+    //Search bar with Ajax
+    public function search() {
+        if (isset($_POST['search'])) {
+            $searchValue = $_POST['search'];
+            $categories = category::search($searchValue);
+            // Renderiza la vista parcial con los resultados de la búsqueda
+            require_once("views/admin/searchCategory.php");
+        }
+    }    
+
     //Form
     public function new() {
         require_once("views/admin/sidebar.php");
