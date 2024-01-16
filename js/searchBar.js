@@ -1,18 +1,37 @@
-$(document).ready(function () {
-    $('#search').keyup(function () {
-        var searchValue = $(this).val();
-        console.log(searchValue);
+//Take the name of the file
+var ubicacionCompleta = window.location.href;
+var url = new URL(ubicacionCompleta);
+var nombreDeArchivo = url.pathname.substring(url.pathname.lastIndexOf('/') + 1) + url.search;
 
-        $.ajax({
-            type: 'POST',
-            url: 'index.php?controller=Category&action=search', // Ruta al controlador de búsqueda
-            data: { search: searchValue },
-            success: function (response) {
-                $('#bodyList').html(response);
-            },
-            error: function () {
-                alert('Error in the request with AJAX');
-            }
-        });
+//Categories
+function busquedaCategory(searchValue) {
+    return new Promise((resolve, reject) => {
+      $.ajax({
+        type: 'POST',
+        url: 'index.php?controller=Category&action=search',
+        data: { search: searchValue },
+        success: function (response) {
+          resolve(response);
+        },
+        error: function () {
+          reject(new Error('Error in the request with AJAX'));
+        }
+      });
     });
-});
+  }
+  
+  if (nombreDeArchivo == 'index.php?controller=Category&action=categories') {
+    $(document).ready(function () {
+      $('#search').keyup(function () {
+        var searchValue = $(this).val();
+  
+        busquedaCategory(searchValue)
+          .then((response) => {
+            $('#bodyList').html(response);
+          })
+          .catch((error) => {
+            alert(error.message);
+          });
+      });
+    });
+  }
