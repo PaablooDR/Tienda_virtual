@@ -4,7 +4,7 @@
         <a href="index.php?controller=Stadistics&action=stadistics"><li>Stadistics</li></a>
         <a href="index.php?controller=Product&action=products"><li>Products</li></a>
         <a href="index.php?controller=Category&action=categories"><li>Categories</li></a>
-        <a href="index.php?controller=Orders&action=orders"><li>Orders</li></a>
+        <a href="index.php?controller=Orders&action=mostrar"><li>Orders</li></a>
         <a href="index.php?controller=User&action=users"><li>Users</li></a>
         <a href="index.php?controller=Admin&action=logout"><li>Log out</li></a>
     </ul>
