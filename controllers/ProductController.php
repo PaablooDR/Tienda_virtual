@@ -12,6 +12,16 @@ class ProductController {
         //Lista de productos con posibilidad de modificar y desactivar
     }
 
+    //Search bar with Ajax
+    public function search() {
+        if (isset($_POST['search'])) {
+            $searchValue = $_POST['search'];
+            $products = product::search($searchValue);
+            // Render the view with the results of the search
+            require_once("views/admin/searchProduct.php");
+        }
+    }   
+
     //Form
     public function new() {
         require_once("views/admin/sidebar.php");

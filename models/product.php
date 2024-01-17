@@ -188,6 +188,24 @@ class Product extends BBDD{
         $connect = null;
     }
 
+    //Search bar
+    public static function search($keyword) {
+        try {
+            $connect = BBDD::connect();
+            $query = "SELECT * FROM Product WHERE LOWER(name) LIKE LOWER(:keyword)";
+            $statement = $connect->prepare($query);
+            $statement->bindValue(':keyword', '%' . $keyword . '%', PDO::PARAM_STR);
+            $statement->execute();
+            $categories = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $categories;
+        } catch (PDOException $e) {
+            echo "Error of connection: " . $e->getMessage();
+        } finally {
+            // Cierra la conexión
+            $connect = null;
+        }
+    } 
+
     //Statics
     //Obtain products
     public static function obtain() {
