@@ -37,7 +37,7 @@ if (nombreDeArchivo == 'index.php?controller=Category&action=categories') {
 }
 
 //Products
-function busquedaCategory(searchValue) {
+function busquedaProduct(searchValue) {
   return new Promise((resolve, reject) => {
     $.ajax({
       type: 'POST',
@@ -58,7 +58,7 @@ if (nombreDeArchivo == 'index.php?controller=Product&action=products') {
     $('#search').keyup(function () {
       var searchValue = $(this).val();
 
-      busquedaCategory(searchValue)
+      busquedaProduct(searchValue)
         .then((response) => {
           $('#bodyList').html(response);
         })
