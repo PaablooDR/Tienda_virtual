@@ -4,7 +4,7 @@ require_once("models/category.php");
 
 class ProductController {
     //Menu
-    public function products() {
+    public function productsAdmin() {
         require_once("views/admin/sidebar.php");
         $products = Product::obtain();
         require_once("views/admin/product.php");
@@ -124,7 +124,13 @@ class ProductController {
         require_once("views/general/header.php");
         $products = Product::outstandingProducts();
         require_once("views/general/outstanding.php");
+        require_once("views/general/video.php");
         echo "<script src='js/carousel.js'></script>";
+    }
+    public function products(){
+        require_once("views/general/header.php");
+        $products = Product::obtain();
+        require_once("views/general/products/products.php");
     }
 }
 ?>

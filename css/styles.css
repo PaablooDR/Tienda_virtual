@@ -128,4 +128,27 @@
 }
 #section2 #coming_soon {
   margin-left: 15vw;
+}
+
+#productsView .productContainer {
+  position: relative;
+  margin: 10px;
+}
+#productsView .productContainer .imageOverlay {
+  position: relative;
+  display: inline-block;
+}
+#productsView .productContainer .imageOverlay .productImage {
+  height: 300px;
+  width: 200px;
+  display: block;
+}
+#productsView .productContainer .imageOverlay .productIcon {
+  position: absolute;
+  top: 10%;
+  left: 85%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 33px;
+  height: 33px;
 }/*# sourceMappingURL=styles.css.map */

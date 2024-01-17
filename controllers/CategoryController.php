@@ -3,7 +3,7 @@ require_once("models/category.php");
 
 class CategoryController {
     //Menu
-    public function categories() {
+    public function categoriesAdmin() {
         require_once("views/admin/sidebar.php");
         $categories = category::obtain();
         require_once("views/admin/category.php");
