@@ -1,5 +1,5 @@
 <?php
-    if(empty($categories)){
+    if(empty($products)){
         echo "<p>No results have been found related to your search</p>";
     }else{
 ?>

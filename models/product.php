@@ -196,8 +196,8 @@ class Product extends BBDD{
             $statement = $connect->prepare($query);
             $statement->bindValue(':keyword', '%' . $keyword . '%', PDO::PARAM_STR);
             $statement->execute();
-            $categories = $statement->fetchAll(PDO::FETCH_ASSOC);
-            return $categories;
+            $products = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $products;
         } catch (PDOException $e) {
             echo "Error of connection: " . $e->getMessage();
         } finally {

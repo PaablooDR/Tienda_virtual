@@ -16,7 +16,7 @@ class ProductController {
     public function search() {
         if (isset($_POST['search'])) {
             $searchValue = $_POST['search'];
-            $products = product::search($searchValue);
+            $products = Product::search($searchValue);
             // Render the view with the results of the search
             require_once("views/admin/searchProduct.php");
         }
