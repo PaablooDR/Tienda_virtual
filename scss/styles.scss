@@ -138,32 +138,97 @@
         margin-left: 15vw;
     }
 }
-#productsView{
-    .productContainer{
+#productsView {
+    .productContainer {
         position: relative;
-        margin:10px;
-        .imageOverlay{
-            position:relative;
+        margin: 10px;
+
+        .imageOverlay {
+            position: relative;
             display: inline-block;
-            .productImage{
-                height:300px;
-                width:200px;
-                display: block;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s; /* Agregando transiciones suaves */
+
+            &:hover {
+                transition: transform 0.3s, scale(1.3); /* Ajusta según tus necesidades */
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Efecto de sombra */
             }
-            .productIcon {
+
+            .productImage {
+                height: 227px;
+                width: 162px;
+                display: block;
+                transition: transform 0.3s; /* Agregando transición para la inclinación */
+            }
+
+            .iconContainer {
                 position: absolute;
-                top: 10%; 
-                left: 85%; 
-                transform: translate(-50%, -50%);
+                top: 5%;
+                left: 70%;
                 z-index: 1;
-                width:33px;
-                height: 33px;
+                transform-origin: top right;
+                transition: box-shadow 0.3s; /* Agregando una transición suave para el icono */
+                background-color: white;
+                border-radius: 50%;
+
+                &:hover {
+                    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+                }
+
+                .productIcon {
+                    display: block;
+                    width: 24px;
+                    height: 24px;
+                    padding: 5px;
+                }
             }
         }
-        
     }
-    
 }
+
+
+
+
+
+
+
+/*#productsView {
+    .productContainer {
+        position: relative;
+        margin: 10px;
+
+        .imageOverlay {
+            position: relative;
+            display: inline-block;
+
+            .productImage {
+                height: 300px;
+                width: 200px;
+                display: block;
+                transition: transform 0.3s, scale 0.3s; /* Agregando transiciones suaves 
+            }
+
+            .iconContainer {
+                position: absolute;
+                top: 8%;
+                left: 88%;
+                transform: translate(-50%, -50%);
+                z-index: 1;
+                border-radius: 50%; 
+                background-color: white;
+
+                .productIcon {
+                    display: block;
+                    width: 24px;
+                    height: 24px;
+                    padding: 5px;
+                }
+            }
+        }
+    }
+}*/
+    
+
 
 
   

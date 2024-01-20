@@ -137,7 +137,11 @@ class ProductController {
         require_once("views/general/video.php");
         echo "<script src='js/carousel.js'></script>";
     }
+
     public function products(){
+        echo "<script src='https://code.jquery.com/jquery-3.6.4.min.js'></script>";
+        echo "<script src='https://cdn.jsdelivr.net/npm/tilt.js@1.2.1/tilt.jquery.min.js'></script>";
+        echo "<script src='js/products.js'></script>";
         require_once("views/general/header.php");
         $products = Product::obtain();
         require_once("views/general/products/products.php");
