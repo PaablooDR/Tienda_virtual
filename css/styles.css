@@ -181,6 +181,11 @@
 #containerCategories #categoriesCenter #titleCategory {
   display: grid;
   justify-content: center;
+  font-size: 40px;
+  font-weight: 400;
+}
+#containerCategories #categoriesCenter h2 {
+  font-size: 28px;
 }
 #containerCategories #categoriesCenter .productsByCategory {
   display: grid;

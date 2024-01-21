@@ -11,7 +11,7 @@
 <body>
     <div id="containerCategories">
         <div id="categoriesCenter">
-            <div id="titleCategory"><h1>Categories</h1></div>
+            <div id="titleCategory">Categories</div>
 
             <?php foreach ($categories as $category): ?>
                 <div class="category">

@@ -196,8 +196,12 @@
         #titleCategory{
             display: grid;
             justify-content: center;
+            font-size: 40px;
+            font-weight: 400;
         }
-    
+        h2{
+            font-size: 28px;
+        }
         .productsByCategory{
             display: grid;
             grid-template-columns: repeat(6, 1fr);
