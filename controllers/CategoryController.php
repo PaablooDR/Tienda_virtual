@@ -2,6 +2,24 @@
 require_once("models/category.php");
 
 class CategoryController {
+
+    //Categories
+    public function categories() {
+        require_once "models/category.php";
+        require_once("views/general/header.php");
+        $categories = category::obtain();
+        // Obtener los productos por cada categoría
+        $productsByCategory = array();
+        foreach ($categories as $category) {
+            $categoryId = $category['code'];
+            $productsByCategory[$categoryId] = Category::getProductsByCategory($categoryId);
+        }
+
+        require_once "views/general/categories/categories.php";
+        
+    }
+
+
     //Menu
     public function categoriesAdmin() {
         require_once("views/admin/sidebar.php");

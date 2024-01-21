@@ -26,7 +26,7 @@ CREATE TABLE Product (
     code VARCHAR(255) PRIMARY KEY,
     name VARCHAR(100),
     description VARCHAR(255),
-    category VARCHAR(50),
+    category VARCHAR(50), --modificar
     photo VARCHAR(255),
     price DECIMAL(10, 2),
     stock INT,

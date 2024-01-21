@@ -185,7 +185,36 @@
         }
     }
 }
+#containerCategories{
+    display: flex;
+    justify-content: center;
 
+    #categoriesCenter{
+
+        width: 90%;
+
+        #titleCategory{
+            display: grid;
+            justify-content: center;
+        }
+    
+        .productsByCategory{
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            .productsIMG{
+                display: grid;
+                justify-content: center;
+                align-items: center;
+                background-color: rgb(0, 217, 255);
+                height: 270px;
+                border: 1px solid black;
+            }
+        }
+    }
+    
+
+}
 
 
 
