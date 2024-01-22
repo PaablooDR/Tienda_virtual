@@ -35,6 +35,18 @@ class Category extends BBDD{
     }
 
     //Methods
+    public static function getProductsByCategory($categoryId) {
+        $connect = BBDD::connect();
+
+        $queryProducts = "SELECT * FROM Product WHERE category = :categoryId LIMIT 5";
+        $statementProducts = $connect->prepare($queryProducts);
+        $statementProducts->bindParam(':categoryId', $categoryId);
+        $statementProducts->execute();
+
+        return $statementProducts->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
     //Insert category
     public function add() {
         try {
