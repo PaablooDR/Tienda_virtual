@@ -206,6 +206,24 @@ class Product extends BBDD{
         }
     } 
 
+    //Specific category
+    public static function specificCategory($code) {
+        try {
+            $connect = BBDD::connect();
+            $query = "SELECT p.*, c.name as category_name FROM Product p JOIN Category c ON p.category = c.code::varchar WHERE p.category LIKE :code";
+            $statement = $connect->prepare($query);
+            $statement->bindValue(':code', '%' . $code . '%', PDO::PARAM_STR);
+            $statement->execute();
+            $products = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $products;
+        } catch (PDOException $e) {
+            echo "Error of connection: " . $e->getMessage();
+        } finally {
+            // Cierra la conexión
+            $connect = null;
+        }
+    }
+
     //Statics
     //Obtain products
     public static function obtain() {

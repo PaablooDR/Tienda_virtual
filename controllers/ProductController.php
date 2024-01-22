@@ -22,6 +22,14 @@ class ProductController {
         }
     }   
 
+    //Single category
+    public function singleCategory() {
+        require_once("views/general/header.php");
+        $code = $_GET["id"];
+        $products = Product::specificCategory($code);
+        require_once("views/general/products/singleCategory.php");
+    }
+
     //Form
     public function new() {
         require_once("views/admin/sidebar.php");
