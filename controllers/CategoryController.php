@@ -28,6 +28,12 @@ class CategoryController {
         //Buscador + boton añadir categoria
     }
 
+    //Menu desplegable
+    public function showCategories() {
+        $categories = category::obtain();
+        require_once("views/general/categories/allCategories.php");
+    }
+
     //Search bar with Ajax
     public function search() {
         if (isset($_POST['search'])) {

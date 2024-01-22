@@ -214,6 +214,14 @@
   border: 1px solid black;
 }
 
+.dropdown-content {
+  display: none;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
 /*#productsView {
     .productContainer {
         position: relative;
