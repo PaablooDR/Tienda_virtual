@@ -127,6 +127,10 @@ class ProductController {
         }
         echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Product&action=products">';
     }
+    //Get a product with his ID
+    public function getProductById(){
+
+    }
 
     //Shop
     //Principal page
@@ -139,12 +143,14 @@ class ProductController {
     }
 
     public function products(){
-        echo "<script src='https://code.jquery.com/jquery-3.6.4.min.js'></script>";
-        echo "<script src='https://cdn.jsdelivr.net/npm/tilt.js@1.2.1/tilt.jquery.min.js'></script>";
-        echo "<script src='js/products.js'></script>";
         require_once("views/general/header.php");
         $products = Product::obtain();
         require_once("views/general/products/products.php");
+    }
+    public function buyProduct(){
+        require_once("views/general/header.php");
+        $products = Product::obtain();
+        require_once("views/general/products/buyProduct.php");
     }
 }
 ?>
