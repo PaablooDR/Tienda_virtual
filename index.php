@@ -9,7 +9,6 @@
         <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
         <script src='js/assets/tilt.jquery.js'></script>
         <script src='js/products.js'></script>
-        <script src='js/carousel.js'></script>
         <title>Index</title>
     </head>
     <body>
