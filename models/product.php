@@ -223,7 +223,43 @@ class Product extends BBDD{
         //Close connection
         $connect = null;
     }
-
+    //Obtain active products
+    public static function obtainActiveProducts() {
+        $connect = BBDD::connect();
+        $query = "SELECT * FROM product WHERE active = true";
+        $statement = $connect->query($query);
+    
+        // Verifica si la consulta fue exitosa
+        if ($statement) {
+            // Inicializa un array para almacenar objetos de tipo Product
+            $activeProducts = [];
+    
+            // Recorre los resultados y crea objetos Product
+            while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+                $product = new Product(
+                    $row['code'],
+                    $row['name'],
+                    $row['description'],
+                    $row['category'],
+                    $row['photo'],
+                    $row['price'],
+                    $row['stock'],
+                    $row['active'],
+                    $row['outstanding']
+                );
+    
+                // Agrega el objeto Product al array
+                $activeProducts[] = $product;
+            }
+    
+            // Devuelve el array de productos
+            return $activeProducts;
+        } else {
+            // Manejar el caso en el que la consulta no fue exitosa
+            echo "Error en la consulta SQL";
+            return [];
+        }
+    }
     //Initialize the attributs of the class
     public static function initialize($code) {
         try {
@@ -305,6 +341,22 @@ class Product extends BBDD{
             $products = $statement->fetchAll(PDO::FETCH_ASSOC);
 
             return $products;
+        } catch (PDOException $e) {
+            echo "Error of connexion: " . $e->getMessage();
+        }
+        //Close connection
+        $connect = null;
+    }
+    //Get product with code
+    public static function getProductByCode($code){
+        try {
+            $connect = BBDD::connect();
+            $query = "SELECT * FROM product WHERE code = '$code'";
+            $statement = $connect->query($query);
+
+            $product = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+            return $product;
         } catch (PDOException $e) {
             echo "Error of connexion: " . $e->getMessage();
         }

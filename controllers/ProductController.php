@@ -127,11 +127,6 @@ class ProductController {
         }
         echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Product&action=products">';
     }
-    //Get a product with his ID
-    public function getProductById(){
-
-    }
-
     //Shop
     //Principal page
     public function principal() {
@@ -144,12 +139,12 @@ class ProductController {
 
     public function products(){
         require_once("views/general/header.php");
-        $products = Product::obtain();
+        $products = Product::obtainActiveProducts();
         require_once("views/general/products/products.php");
     }
     public function buyProduct(){
         require_once("views/general/header.php");
-        $products = Product::obtain();
+        $product = Product::getProductByCode($_GET['productCode']);
         require_once("views/general/products/buyProduct.php");
     }
 }

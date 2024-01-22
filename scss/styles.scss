@@ -231,53 +231,13 @@
     
 
 }
-
-
-
-
-
-
-
-
-
-
-/*#productsView {
-    .productContainer {
-        position: relative;
-        margin: 10px;
-
-        .imageOverlay {
-            position: relative;
-            display: inline-block;
-
-            .productImage {
-                height: 300px;
-                width: 200px;
-                display: block;
-                transition: transform 0.3s, scale 0.3s; /* Agregando transiciones suaves 
-            }
-
-            .iconContainer {
-                position: absolute;
-                top: 8%;
-                left: 88%;
-                transform: translate(-50%, -50%);
-                z-index: 1;
-                border-radius: 50%; 
-                background-color: white;
-
-                .productIcon {
-                    display: block;
-                    width: 24px;
-                    height: 24px;
-                    padding: 5px;
-                }
-            }
+#buyProduct{
+    #productContainer{
+        #productImage{
+            height: 500px;
+            width:400px;
         }
     }
-}*/
-    
-
-
+}
 
   
