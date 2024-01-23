@@ -238,12 +238,6 @@
   font-weight: 200px;
 }
 
-#buyProduct #productContainer #productImage {
-  height: 500px;
-  width: 350px;
-  margin: 150px 0px 0px 150px;
-}
-
 #buyProduct {
   position: relative;
   width: 100%;
@@ -271,13 +265,120 @@
   z-index: 3;
   border-radius: 10px;
 }
-#buyProduct #productContainer #productContainer #productInfo {
-  margin: 50px;
+#buyProduct #productContainer #productDetails #productInfo {
+  margin: 10px 50px 50px 50px;
+}
+#buyProduct #productContainer #productDetails #productInfo #buttons {
+  display: flex;
+  gap: 20px;
+}
+#buyProduct #productContainer #productDetails #productInfo #buttons #purchaseProduct {
+  background-color: black;
+  color: white;
+  height: 50px;
+  margin-top: 3px;
+  padding: 0px 70px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+#buyProduct #productContainer #productDetails #productInfo #buttons #purchaseProduct:hover {
+  transform: scale(1.1);
+}
+#buyProduct #productContainer #productDetails #productInfo #buttons #iconContainer {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  background-color: white;
+  padding: 14px;
+  border-radius: 50%;
+}
+#buyProduct #productContainer #productDetails #productInfo #buttons #iconContainer #productIcon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  padding: 3px;
+  margin: 1px;
+}
+#buyProduct #productContainer #productDetails #productInfo #buttons #iconContainer:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  opacity: 1;
+}
+#buyProduct #productContainer #productDetails #productInfo #menu {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  right: -400px;
+  height: 100%;
+  width: 400px;
+  background-color: #fff;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+  transition: right 0.3s ease;
+}
+#buyProduct #productContainer #productDetails #productInfo #menu .drawer {
+  display: block;
+  padding: 40px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+#buyProduct #productContainer #productDetails #productInfo #menu .drawer .headerDrawer .closeDrawer {
+  align-self: flex-end;
+  margin-top: 10px;
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+#buyProduct #productContainer #productDetails #productInfo #menu .drawer .headerDrawer .closeDrawer:hover {
+  background-color: #eee;
+}
+#buyProduct #productContainer #productDetails #productInfo #menu #drawerOption1 #drawerInfo1 .drawer-element {
+  margin: 20px;
+}
+#buyProduct #productContainer #productDetails #productInfo #menu #drawerOption1 #drawerInfo1 .drawer-element .drawer-element-title {
+  font-weight: bold;
+  font-size: 20px;
+}
+#buyProduct #productContainer #productDetails #productInfo #menu #drawerOption2 #drawerInfo2 .drawer-element {
+  margin: 20px;
+}
+#buyProduct #productContainer #productDetails #productInfo #menu #drawerOption2 #drawerInfo2 .drawer-element .drawer-element-title {
+  font-weight: bold;
+  font-size: 20px;
+}
+#buyProduct #productContainer #productDetails #productInfo #menu #drawerOption3 #drawerInfo3 .drawer-element {
+  margin: 20px;
+}
+#buyProduct #productContainer #productDetails #productInfo #menu #drawerOption3 #drawerInfo3 .drawer-element .drawer-element-title {
+  font-weight: bold;
+  font-size: 20px;
+}
+#buyProduct #productContainer #productDetails #productInfo #drawerOptions {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  gap: 5px;
+}
+#buyProduct #productContainer #productDetails #productInfo #drawerOptions .openDrawer {
+  padding: 15px 100px;
+  border-width: 0;
+  border-style: none;
+  border-color: transparent;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+#buyProduct #productContainer #productDetails #productInfo #drawerOptions .openDrawer:hover {
+  transform: scale(1.1);
 }
 
 .dropdown-content {
   display: none;
 }
-.dropdown-content:hover .dropdown-content {
+
+.dropdown:hover .dropdown-content {
   display: block;
 }/*# sourceMappingURL=styles.css.map */
