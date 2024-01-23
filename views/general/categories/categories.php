@@ -21,10 +21,10 @@
                         <div class="productsByCategory">
                             <?php foreach ($productsByCategory[$category['code']] as $product): ?>
                                 <div class="productsIMG">
-                                    <strong><?php echo $product['name']; ?></strong>
+                                    <img src="<?php echo $product['photo']; ?>" alt="<?php echo $product['name']; ?>">
                                 </div>
                             <?php endforeach; ?>
-                            <div class="productsIMG">
+                            <div class="seeMoreProducts">
                                 <a href="">See more products</a>
                             </div>
                         </div>
