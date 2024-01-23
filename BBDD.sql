@@ -26,7 +26,7 @@ CREATE TABLE Product (
     code VARCHAR(255) PRIMARY KEY,
     name VARCHAR(100),
     description VARCHAR(255),
-    category INT(50), --VARCHAR -> INT
+    category INT(50) REFERENCES Category(code), --VARCHAR -> INT
     photo VARCHAR(255),
     price DECIMAL(10, 2),
     stock INT,

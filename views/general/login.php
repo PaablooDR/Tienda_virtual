@@ -1,4 +1,4 @@
-<div>
+<div id="login_signup">
     <form action="index.php?controller=User&action=checkLogin" method="post" enctype="multipart/form-data">
         <h1>LOGIN</h1>
         <input type="text" name="email" placeholder="Email" required><br>
