@@ -5,7 +5,7 @@ CREATE DATABASE PlateArt;
 \c PlateArt;
 
 -- Crear la tabla User
-CREATE TABLE User (  --client -> user
+CREATE TABLE Client (  
     email VARCHAR(255) PRIMARY KEY,
     telephone VARCHAR(15),
     name VARCHAR(50),
@@ -21,19 +21,6 @@ CREATE TABLE Admin (
     signature VARCHAR(255)
 );
 
--- Crear la tabla Product
-CREATE TABLE Product (
-    code VARCHAR(255) PRIMARY KEY,
-    name VARCHAR(100),
-    description VARCHAR(255),
-    category INT(50) REFERENCES Category(code), --VARCHAR -> INT
-    photo VARCHAR(255),
-    price DECIMAL(10, 2),
-    stock INT,
-    active BOOLEAN,
-    outstanding BOOLEAN
-);
-
 -- Crear la tabla Category
 CREATE TABLE Category (
     code SERIAL PRIMARY KEY,
@@ -41,10 +28,23 @@ CREATE TABLE Category (
     active BOOLEAN
 );
 
+-- Crear la tabla Product
+CREATE TABLE Product (
+    code VARCHAR(255) PRIMARY KEY,
+    name VARCHAR(100),
+    description VARCHAR(255),
+    category SERIAL REFERENCES Category(code), --VARCHAR -> INT
+    photo VARCHAR(255),
+    price DECIMAL(10, 2),
+    stock INT,
+    active BOOLEAN,
+    outstanding BOOLEAN
+);
+
 -- Crear la tabla Shopping
 CREATE TABLE Shopping (
     id_shopping SERIAL PRIMARY KEY,
-    user VARCHAR(255) REFERENCES User(email), --client -> user
+    client VARCHAR(255) REFERENCES Client(email), --client -> user
     shopping_date DATE DEFAULT CURRENT_DATE,
     status VARCHAR(20) CHECK (status IN ('pending', 'sent', 'cart')),
     total_price DECIMAL(10, 2)
@@ -55,7 +55,7 @@ CREATE TABLE Shopping_details (
     id SERIAL PRIMARY KEY,
     shopping SERIAL REFERENCES Shopping(id_shopping),
     product VARCHAR(255) REFERENCES Product(code),
-    price_per_product DECIMAL(10, 2) REFERENCES Product(price), --añadido
+    price_per_product DECIMAL(10, 2),
     amount INT,
     total_price DECIMAL(10, 2)
 );
