@@ -5,7 +5,7 @@ CREATE DATABASE PlateArt;
 \c PlateArt;
 
 -- Crear la tabla User
-CREATE TABLE User (
+CREATE TABLE User (  --client -> user
     email VARCHAR(255) PRIMARY KEY,
     telephone VARCHAR(15),
     name VARCHAR(50),
@@ -26,7 +26,7 @@ CREATE TABLE Product (
     code VARCHAR(255) PRIMARY KEY,
     name VARCHAR(100),
     description VARCHAR(255),
-    category INT(50), --modificar
+    category INT(50), --VARCHAR -> INT
     photo VARCHAR(255),
     price DECIMAL(10, 2),
     stock INT,
@@ -44,7 +44,7 @@ CREATE TABLE Category (
 -- Crear la tabla Shopping
 CREATE TABLE Shopping (
     id_shopping SERIAL PRIMARY KEY,
-    client VARCHAR(255) REFERENCES User(email),
+    user VARCHAR(255) REFERENCES User(email), --client -> user
     shopping_date DATE DEFAULT CURRENT_DATE,
     status VARCHAR(20) CHECK (status IN ('pending', 'sent', 'cart')),
     total_price DECIMAL(10, 2)
@@ -55,6 +55,7 @@ CREATE TABLE Shopping_details (
     id SERIAL PRIMARY KEY,
     shopping SERIAL REFERENCES Shopping(id_shopping),
     product VARCHAR(255) REFERENCES Product(code),
+    price_per_product DECIMAL(10, 2) REFERENCES Product(price), --añadido
     amount INT,
     total_price DECIMAL(10, 2)
 );
