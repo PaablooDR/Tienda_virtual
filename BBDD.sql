@@ -4,8 +4,8 @@ CREATE DATABASE PlateArt;
 -- Conectar a la base de datos PlateArt
 \c PlateArt;
 
--- Crear la tabla Client
-CREATE TABLE Client (
+-- Crear la tabla User
+CREATE TABLE User (
     email VARCHAR(255) PRIMARY KEY,
     telephone VARCHAR(15),
     name VARCHAR(50),
@@ -26,7 +26,7 @@ CREATE TABLE Product (
     code VARCHAR(255) PRIMARY KEY,
     name VARCHAR(100),
     description VARCHAR(255),
-    category VARCHAR(50), --modificar
+    category INT(50), --modificar
     photo VARCHAR(255),
     price DECIMAL(10, 2),
     stock INT,
@@ -44,7 +44,7 @@ CREATE TABLE Category (
 -- Crear la tabla Shopping
 CREATE TABLE Shopping (
     id_shopping SERIAL PRIMARY KEY,
-    client VARCHAR(255) REFERENCES Client(email),
+    client VARCHAR(255) REFERENCES User(email),
     shopping_date DATE DEFAULT CURRENT_DATE,
     status VARCHAR(20) CHECK (status IN ('pending', 'sent', 'cart')),
     total_price DECIMAL(10, 2)
