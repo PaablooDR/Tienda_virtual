@@ -62,3 +62,14 @@ CREATE TABLE Shopping_details (
 
 -- Crear usuario admin en la tabla Admin
 INSERT INTO Admin (email, password, signature) VALUES ('admin', 'admin', NULL);
+
+-- Crear categories
+INSERT INTO Category (name, active) VALUES ('Animals', true);
+
+INSERT INTO Category (name, active) VALUES ('Fantasy', true);
+
+INSERT INTO Category (name, active) VALUES ('Gaming', true);
+
+INSERT INTO Category (name, active) VALUES ('Manga&Anime', true);
+
+INSERT INTO Category (name, active) VALUES ('Movies', true);
