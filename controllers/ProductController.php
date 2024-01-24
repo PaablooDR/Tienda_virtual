@@ -71,12 +71,12 @@ class ProductController {
             echo "<script>
                 alert('Insert completed');
             </script>";
-            echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Product&action=products">';
+            echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Product&action=productsAdmin">';
         } else {
             echo "<script>
                 alert('Insert failed');
             </script>";
-            echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Product&action=products">';
+            echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Product&action=productsAdmin">';
         }
     }
 
