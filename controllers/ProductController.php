@@ -46,7 +46,7 @@ class ProductController {
         $abbreviation2 = substr($_POST["name"], 0, 2);
 
         $number = Product::count($category);
-        $abbreviation3 = Product::zeroFill($number+10);
+        $abbreviation3 = Product::zeroFill($number+1);
 
         $code = $abbreviation1 . $abbreviation3 . '-' . $abbreviation2;
 
