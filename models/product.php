@@ -229,7 +229,7 @@ class Product extends BBDD{
     public static function obtain() {
         try {
             $connect = BBDD::connect();
-            $query = "SELECT p.*, c.name as category_name FROM Product p JOIN Category c ON p.category = c.code::varchar";
+            $query = "SELECT p.*, c.name as category_name FROM Product p JOIN Category c ON p.category = c.code";
             $statement = $connect->query($query);
 
             $products = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -319,13 +319,13 @@ class Product extends BBDD{
     public static function count($category) {
         try {
             $connect = BBDD::connect();
-            $stmt = $connect->prepare("SELECT COUNT(*) AS numProducts FROM Product WHERE category = ':category';");
+            $stmt = $connect->prepare("SELECT COUNT(*) FROM Product WHERE category = :category");
             $stmt->bindParam(':category', $category, PDO::PARAM_INT);
             $res = $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($result) {
-                return $result['numProducts'];
+                return $result['count'];
             } else {
                 echo "Product not found.";
             }
@@ -353,7 +353,7 @@ class Product extends BBDD{
     public static function outstandingProducts() {
         try {
             $connect = BBDD::connect();
-            $query = "SELECT p.*, c.name as category_name FROM Product p JOIN Category c ON p.category = c.code::varchar WHERE outstanding=true";
+            $query = "SELECT p.*, c.name as category_name FROM Product p JOIN Category c ON p.category = c.code WHERE outstanding=true";
             $statement = $connect->query($query);
 
             $products = $statement->fetchAll(PDO::FETCH_ASSOC);
