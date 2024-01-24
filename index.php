@@ -14,27 +14,35 @@
     <body>
 <?php 
     require_once "autoload.php";
+    $url = $_SERVER['REQUEST_URI'];
+    $urlParts = explode('/', $url);
 
-    if (isset($_GET['controller'])){
+    // Verifica si la URL contiene "/admin"
+    if (in_array('admin', $urlParts)) {
+        // Si es así, establece el controlador y la acción para la parte de administrador
+        $nombreController = "AdminController";
+        $action = isset($urlParts[2]) ? $urlParts[2] : 'login';
+    } else if (isset($_GET['controller'])) {
+        // Si se proporciona un controlador a través de $_GET, úsalo
         $nombreController = $_GET['controller']."Controller";
-    }
-    else{
-        //Controlador per dedecte
+    } else {
+        // Controlador por defecto
         $nombreController = "ProductController";
     }
-    if (class_exists($nombreController)){
+    
+    if (class_exists($nombreController)) {
         $controlador = new $nombreController(); 
-        if(isset($_GET['action'])){
+        if (isset($_GET['action'])) {
             $action = $_GET['action'];
-        }
-        else{
-            $action ="principal";
+        } else {
+            $action = "principal";
         }
         $controlador->$action();   
-    }else{
+    } else {
         echo "No existe el controlador";
     }
-//   require_once "views/general/footer.html";
+    //   require_once "views/general/footer.html";
 ?>
+
     </body>
 </html>

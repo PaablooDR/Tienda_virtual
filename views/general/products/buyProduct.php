@@ -12,6 +12,11 @@
                         <h2><?php echo $productInfo['name'];?></h2>
                         <p><?php echo $productInfo['description'];?></p>
                         <p><?php echo $productInfo['price'];?> €</p>
+                        <div id="productAmount">
+                            <button class="amount-btn" id="rest">-</button>
+                            <p id="amountParagraph" product-amount="1" max-stock="<?php echo $productInfo['stock']; ?>" contenteditable="true">1</p>
+                            <button class="amount-btn" id="sum">+</button>
+                        </div>
                         <div id="buttons">
                             <button id="purchaseProduct">Purchase</button>
                             <div id="iconContainer">
@@ -72,11 +77,11 @@
                                     </div>
                                     <div class="drawer-element">
                                         <div class="drawer-element-title">Returns</div>
-                                        <div class="drawer-element-info">You may return a Displate within 100 calendar days of delivery and you will receive 100% refund (Displate needs to be sent at the customer's cost).</div>
+                                        <div class="drawer-element-info">You may return a PlateArt within 100 calendar days of delivery and you will receive 100% refund (PlateArt needs to be sent at the customer's cost).</div>
                                     </div>
                                     <div class="drawer-element">
                                         <div class="drawer-element-title">Gift-ready packaging</div>
-                                        <div class="drawer-element-info">Displates arrive in a stylish, eco-friendly box that’s packed with goodies!</div>
+                                        <div class="drawer-element-info">PlateArts arrive in a stylish, eco-friendly box that’s packed with goodies!</div>
                                     </div>
                                 </div>
                             </div>
@@ -98,13 +103,12 @@
                                     </div>
                                     <div class="drawer-element">
                                         <div class="gif"><img src="sources/mounting_system-03.gif" alt="GIF"></div>
-                                        <div class="drawer-element-title">Hang your Displate</div>
-                                        <div class="drawer-element-info">Position it any way you want and display yourself! You can swap it for another Displate in seconds and hang it using the same magnet.</div>
+                                        <div class="drawer-element-title">Hang your PlateArt</div>
+                                        <div class="drawer-element-info">Position it any way you want and display yourself! You can swap it for another PlateArt in seconds and hang it using the same magnet.</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
                     </div>
                 </div>
             </div>

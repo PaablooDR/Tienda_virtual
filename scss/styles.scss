@@ -5,6 +5,9 @@
     font-family: $font-family-admin;
     body{
         margin:0px;
+        &::-webkit-scrollbar{
+            width: 0px;
+        }
     }
 }
 
@@ -106,10 +109,13 @@
             background-color: black;
             padding: 2%;
             margin: 5% auto;
-            overflow: scroll;
+            overflow-y: auto;
             height: 70%;
             overflow-x: hidden;
             border-radius: 5px;
+            &::-webkit-scrollbar{
+                width: 0px;
+            }
             a {
                 text-decoration: none;
                 color: black;
@@ -283,6 +289,19 @@
             border-radius: 10px;
             #productInfo{
                 margin:10px 50px 50px 50px;
+                #productAmount{
+                    display: flex;
+                    align-items: center;
+                    .amount-btn {
+                        margin: 0 8px;  
+                        padding: 8px;
+                        cursor: pointer;
+                    }
+                    p {
+                        width: 8rem; 
+                        text-align: center;
+                    }
+                }
                 #buttons{
                     display: flex;
                     gap:20px;
@@ -338,6 +357,9 @@
                         padding: 40px;
                         max-height: 80vh; 
                         overflow-y: auto; 
+                        &::-webkit-scrollbar{
+                            width: 0px;
+                        }
                         .headerDrawer{
                             .closeDrawer {
                                 align-self: flex-end;
@@ -353,6 +375,7 @@
                         }
                     }
                     #drawerOption1{
+                        
                         #drawerInfo1{
                             .drawer-element{
                                 margin:20px;
@@ -364,6 +387,9 @@
                         }
                     }
                     #drawerOption2{
+                        ::-webkit-scrollbar{
+                            width: 0;
+                        }
                         #drawerInfo2{
                             .drawer-element{
                                 margin:20px;
@@ -375,6 +401,9 @@
                         }
                     }
                     #drawerOption3{
+                        ::-webkit-scrollbar{
+                            width: 0;
+                        }
                         #drawerInfo3{
                             .drawer-element{
                                 margin:20px;

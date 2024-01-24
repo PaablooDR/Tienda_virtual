@@ -4,6 +4,9 @@
 * body {
   margin: 0px;
 }
+* body::-webkit-scrollbar {
+  width: 0px;
+}
 
 #sidebar {
   font-family: Poppins;
@@ -101,10 +104,13 @@
   background-color: black;
   padding: 2%;
   margin: 5% auto;
-  overflow: scroll;
+  overflow-y: auto;
   height: 70%;
   overflow-x: hidden;
   border-radius: 5px;
+}
+#outstanding #outstandingProducts #outstandingList::-webkit-scrollbar {
+  width: 0px;
 }
 #outstanding #outstandingProducts #outstandingList a {
   text-decoration: none;
@@ -268,6 +274,19 @@
 #buyProduct #productContainer #productDetails #productInfo {
   margin: 10px 50px 50px 50px;
 }
+#buyProduct #productContainer #productDetails #productInfo #productAmount {
+  display: flex;
+  align-items: center;
+}
+#buyProduct #productContainer #productDetails #productInfo #productAmount .amount-btn {
+  margin: 0 8px;
+  padding: 8px;
+  cursor: pointer;
+}
+#buyProduct #productContainer #productDetails #productInfo #productAmount p {
+  width: 8rem;
+  text-align: center;
+}
 #buyProduct #productContainer #productDetails #productInfo #buttons {
   display: flex;
   gap: 20px;
@@ -324,6 +343,9 @@
   max-height: 80vh;
   overflow-y: auto;
 }
+#buyProduct #productContainer #productDetails #productInfo #menu .drawer::-webkit-scrollbar {
+  width: 0px;
+}
 #buyProduct #productContainer #productDetails #productInfo #menu .drawer .headerDrawer .closeDrawer {
   align-self: flex-end;
   margin-top: 10px;
@@ -342,12 +364,18 @@
   font-weight: bold;
   font-size: 20px;
 }
+#buyProduct #productContainer #productDetails #productInfo #menu #drawerOption2 ::-webkit-scrollbar {
+  width: 0;
+}
 #buyProduct #productContainer #productDetails #productInfo #menu #drawerOption2 #drawerInfo2 .drawer-element {
   margin: 20px;
 }
 #buyProduct #productContainer #productDetails #productInfo #menu #drawerOption2 #drawerInfo2 .drawer-element .drawer-element-title {
   font-weight: bold;
   font-size: 20px;
+}
+#buyProduct #productContainer #productDetails #productInfo #menu #drawerOption3 ::-webkit-scrollbar {
+  width: 0;
 }
 #buyProduct #productContainer #productDetails #productInfo #menu #drawerOption3 #drawerInfo3 .drawer-element {
   margin: 20px;

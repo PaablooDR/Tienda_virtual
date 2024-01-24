@@ -15,7 +15,7 @@
             <?php
                 foreach ($products as $product) {
                     ?>
-                    <a href="index.php?controller=Product&action=buyProduct">
+                    <a href="index.php?controller=Product&action=buyProduct&productCode=<?php echo $product['code'];?>">
                         <div id="<?php echo $product['code']; ?>" class="outstandingProduct">
                             <img src="<?php echo $product['photo']; ?>" alt="<?php echo $product['name']; ?>">
                             <div id="outstandingAttributes">

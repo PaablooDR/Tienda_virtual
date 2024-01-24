@@ -51,6 +51,60 @@ document.addEventListener("DOMContentLoaded", function() {
             drawer.style.display = "none";
         });
     }
+
+    var amountParagraph = document.getElementById('amountParagraph');
+    var sumButton = document.getElementById('sum');
+    var restButton = document.getElementById('rest');
+    var stockLimit = parseInt(amountParagraph.getAttribute('max-stock'), 10);
+
+    // Event listener para el botón de sumar
+    sumButton.addEventListener('click', function () {
+        incrementAmount();
+    });
+
+    // Event listener para el botón de restar
+    restButton.addEventListener('click', function () {
+        decrementAmount();
+    });
+
+    // Event listener para el cambio en el contenido del párrafo
+    amountParagraph.addEventListener('input', function () {
+        updateAmount();
+    });
+
+    // Event listener para el cambio de foco del párrafo
+    amountParagraph.addEventListener('blur', function () {
+        updateAmount();
+    });
+
+    // Función para incrementar la cantidad
+    function incrementAmount() {
+        var currentAmount = parseAmount();
+        if (!isNaN(currentAmount) && currentAmount < stockLimit) {
+            currentAmount++;
+            updateAmount(currentAmount);
+        }
+    }
+
+    // Función para decrementar la cantidad
+    function decrementAmount() {
+        var currentAmount = parseAmount();
+        if (!isNaN(currentAmount) && currentAmount > 1) {
+            currentAmount--;
+            updateAmount(currentAmount);
+        }
+    }
+
+    // Función para actualizar la cantidad en el DOM
+    function updateAmount(newAmount) {
+        var clampedAmount = Math.min(stockLimit, Math.max(1, newAmount));
+        amountParagraph.textContent = clampedAmount;
+    }
+
+    // Función para parsear la cantidad
+    function parseAmount() {
+        return parseFloat(amountParagraph.textContent) || 0;
+    }
 });
 
 
