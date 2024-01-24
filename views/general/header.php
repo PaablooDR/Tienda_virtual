@@ -1,6 +1,6 @@
 <div id="header">
     <ul>
-        <li><img src="sources/web/logo.png" alt="logo"></li>
+        <a href="index.php?controller=Product&action=principal"><li><img src="sources/web/logo.png" alt="logo"></li></a>
         <a href="index.php?controller=Product&action=products"><li>Products</li></a>
         <li class="dropdown">
             <a href="index.php?controller=Category&action=categories" class="dropbtn">Categories</a>

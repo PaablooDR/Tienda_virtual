@@ -46,7 +46,7 @@ class ProductController {
         $abbreviation2 = substr($_POST["name"], 0, 2);
 
         $number = Product::count($category);
-        $abbreviation3 = Product::zeroFill($number+10);
+        $abbreviation3 = Product::zeroFill($number+1);
 
         $code = $abbreviation1 . $abbreviation3 . '-' . $abbreviation2;
 
@@ -71,12 +71,12 @@ class ProductController {
             echo "<script>
                 alert('Insert completed');
             </script>";
-            echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Product&action=products">';
+            echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Product&action=productsAdmin">';
         } else {
             echo "<script>
                 alert('Insert failed');
             </script>";
-            echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Product&action=products">';
+            echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Product&action=productsAdmin">';
         }
     }
 

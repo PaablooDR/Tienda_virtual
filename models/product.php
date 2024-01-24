@@ -319,7 +319,7 @@ class Product extends BBDD{
     public static function count($category) {
         try {
             $connect = BBDD::connect();
-            $stmt = $connect->prepare("SELECT COUNT(*) AS numProducts FROM Product WHERE category = :category;");
+            $stmt = $connect->prepare("SELECT COUNT(*) AS numProducts FROM Product WHERE category = ':category';");
             $stmt->bindParam(':category', $category, PDO::PARAM_INT);
             $res = $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);

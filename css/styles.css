@@ -8,6 +8,10 @@
   width: 0px;
 }
 
+html {
+  height: 100%;
+}
+
 #sidebar {
   font-family: Poppins;
   background-color: black;
@@ -409,4 +413,40 @@
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+#background_ls {
+  height: 100vh;
+  background-color: darkgrey;
+}
+#background_ls #login_signup {
+  width: 30%;
+  height: 100vh;
+  background-color: white;
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#background_ls #login_signup form {
+  text-align: center;
+}
+#background_ls #login_signup form input {
+  border-radius: 5px;
+  border: 0px;
+  background-color: #D5D5D5;
+  margin-bottom: 4%;
+}
+#background_ls #login_signup form input[type=submit] {
+  background-color: black;
+  color: white;
+  margin-bottom: 0%;
+  padding: 3%;
+}
+#background_ls #login_signup form p a {
+  text-decoration: none;
+  color: black;
+}
+#background_ls #login_signup form p a:hover {
+  text-decoration: underline;
 }/*# sourceMappingURL=styles.css.map */
