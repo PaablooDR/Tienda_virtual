@@ -60,7 +60,7 @@ class ProductController {
         }
         $price = $_POST["price"];
         $stock = $_POST["stock"];
-        if($_POST['outstanding'] == true){
+        if(isset($_POST['outstanding'])){
             $outstanding = 1;
         }else{
             $outstanding = 0;
