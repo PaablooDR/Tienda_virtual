@@ -1,6 +1,9 @@
-<div id="background_ls">     
+<div id="ls_container">
+    <div id="background_ls">     
+        
+    </div>
     <div id="login_signup">
-        <form action="index.php?controller=User&action=checkSignUp" method="post" enctype="multipart/form-data">
+        <form action="index.php?controller=User&action=checkSignUp" autocomplete="off" method="post" enctype="multipart/form-data">
             <h1>SIGN UP</h1>
             <input type="email" name="email" placeholder="Email" maxlength="255" required><br>
             <input type="text" name="name" placeholder="Name" maxlength="50" required><br>

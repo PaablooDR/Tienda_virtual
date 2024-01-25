@@ -475,14 +475,20 @@ html {
     display: block;
 }  
 
-#background_ls {
-    height: 100vh;
-    background-color: darkgrey; 
+#ls_container {
+    display: flex;
+    #background_ls {
+        width: 70%;
+        height: 100vh;
+        background-color: darkgrey; 
+        img {
+            width: 22%;
+        }
+    }
     #login_signup { 
         width: 30%;
         height: 100vh;
         background-color: white;
-        float: right;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -499,6 +505,9 @@ html {
                 color: white;
                 margin-bottom: 0%;
                 padding: 3%;
+            }
+            .invalid {
+                border: 2px solid red;
             }
             p {
                 a {
