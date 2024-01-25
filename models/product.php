@@ -210,7 +210,7 @@ class Product extends BBDD{
     public static function specificCategory($code) {
         try {
             $connect = BBDD::connect();
-            $query = "SELECT p.*, c.name as category_name FROM Product p JOIN Category c ON p.category = c.code::varchar WHERE p.category LIKE :code";
+            $query = "SELECT p.*, c.name as category_name FROM Product p JOIN Category c ON p.category = c.code::integer WHERE CAST(p.category AS TEXT) LIKE :code";
             $statement = $connect->prepare($query);
             $statement->bindValue(':code', '%' . $code . '%', PDO::PARAM_STR);
             $statement->execute();
