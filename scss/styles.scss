@@ -15,51 +15,57 @@ html {
     height: 100%;
 }
 
-#sidebar {
-    font-family: $font-family-admin;
-    background-color: black;
-    color: white;
-    width: 15%;
-    font-size: large;
-    ul {
-        list-style: none;
-        flex-flow: column wrap;
-        a {
-            text-decoration: none;
-            color: white;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        li {
-            padding: 3%;
+#containerAdmin {
+    display: flex;
+    #sidebar {
+        font-family: $font-family-admin;
+        background-color: black;
+        color: white;
+        width: 15%;
+        font-size: large;
+        ul {
+            list-style: none;
+            flex-flow: column wrap;
+            a {
+                text-decoration: none;
+                color: white;
+            }
+            a:hover {
+                text-decoration: underline;
+            }
+            li {
+                padding: 3%;
+            }
         }
     }
-}
-
-#adminContent {
-    background-color: $color-primary-admin;
-    #titleAdmin {
-        border-bottom: 2px solid black;
-        font-weight: lighter;
-    }
-    #bodyList {
-        border-top: 0px;
-    }
-    .list {
-        background-color: $color-list-admin;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        border-top: 2px solid black;
-        div {
-            text-align: center;
-            input {
-                transform: scale(2);
-                accent-color: #a1a1a1;
+    
+    #adminContent {
+        width: 85%;
+        padding: 2%;
+        background-color: $color-primary-admin;
+        #titleAdmin {
+            border-bottom: 2px solid black;
+            font-weight: lighter;
+        }
+        #bodyList {
+            border-top: 0px;
+        }
+        .list {
+            background-color: $color-list-admin;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            border-top: 2px solid black;
+            div {
+                text-align: center;
+                input {
+                    transform: scale(2);
+                    accent-color: #a1a1a1;
+                }
             }
         }
     }
 }
+
 
 #header {
     background-color: black;

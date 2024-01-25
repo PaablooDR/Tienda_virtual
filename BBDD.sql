@@ -10,6 +10,7 @@ CREATE TABLE Client (
     telephone VARCHAR(15),
     name VARCHAR(50),
     surname VARCHAR(50),
+    dni VARCHAR(50),
     password VARCHAR(255),
     address VARCHAR(255)
 );
@@ -60,6 +61,13 @@ CREATE TABLE Shopping_details (
     total_price DECIMAL(10, 2)
 );
 
+CREATE TABLE Company (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50),
+    cif VARCHAR(50),
+    address VARCHAR (100)
+);
+
 -- Crear usuario admin en la tabla Admin
 INSERT INTO Admin (email, password, signature) VALUES ('admin', 'admin', NULL);
 
@@ -73,3 +81,6 @@ INSERT INTO Category (name, active) VALUES ('Gaming', true);
 INSERT INTO Category (name, active) VALUES ('Manga&Anime', true);
 
 INSERT INTO Category (name, active) VALUES ('Movies', true);
+
+-- Crear registro de empresa
+INSERT INTO Company (name, cif, address) VALUES ('PlateArt Corporations', 'H33243171', 'c/ de la Pineda, num. 33');
