@@ -138,6 +138,7 @@ class ProductController {
     //Shop
     //Principal page
     public function principal() {
+        $categories = category::obtain();
         require_once("views/general/header.php");
         $products = Product::outstandingProducts();
         require_once("views/general/outstanding.php");
