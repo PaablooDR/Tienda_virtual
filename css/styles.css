@@ -167,6 +167,7 @@ html {
   margin-bottom: 20px;
 }
 #productsView .productContainer .imageContainer {
+  height: 266px;
   position: relative;
   display: inline-block;
   overflow: hidden;

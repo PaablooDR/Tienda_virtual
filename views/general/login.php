@@ -12,4 +12,4 @@
             <p><a href="index.php?controller=User&action=signup">Sign up</a></p>
         </form>
     </div>
-</div>  
+</div>   
