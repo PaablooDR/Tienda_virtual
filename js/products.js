@@ -51,60 +51,88 @@ document.addEventListener("DOMContentLoaded", function() {
             drawer.style.display = "none";
         });
     }
-
-    var amountParagraph = document.getElementById('amountParagraph');
-    var sumButton = document.getElementById('sum');
-    var restButton = document.getElementById('rest');
-    var stockLimit = parseInt(amountParagraph.getAttribute('max-stock'), 10);
-
-    // Event listener para el botón de sumar
-    sumButton.addEventListener('click', function () {
-        incrementAmount();
-    });
-
-    // Event listener para el botón de restar
-    restButton.addEventListener('click', function () {
-        decrementAmount();
-    });
-
-    // Event listener para el cambio en el contenido del párrafo
-    amountParagraph.addEventListener('input', function () {
-        updateAmount();
-    });
-
-    // Event listener para el cambio de foco del párrafo
-    amountParagraph.addEventListener('blur', function () {
-        updateAmount();
-    });
-
-    // Función para incrementar la cantidad
-    function incrementAmount() {
-        var currentAmount = parseAmount();
-        if (!isNaN(currentAmount) && currentAmount < stockLimit) {
-            currentAmount++;
-            updateAmount(currentAmount);
-        }
-    }
-
-    // Función para decrementar la cantidad
-    function decrementAmount() {
-        var currentAmount = parseAmount();
-        if (!isNaN(currentAmount) && currentAmount > 1) {
-            currentAmount--;
-            updateAmount(currentAmount);
-        }
-    }
-
-    // Función para actualizar la cantidad en el DOM
-    function updateAmount(newAmount) {
-        var clampedAmount = Math.min(stockLimit, Math.max(1, newAmount));
-        amountParagraph.textContent = clampedAmount;
-    }
-
-    // Función para parsear la cantidad
-    function parseAmount() {
-        return parseFloat(amountParagraph.textContent) || 0;
-    }
 });
+function increaseCount(a, b) {
+    var input = b.previousElementSibling;
+    var value = parseInt(input.value, 10);
+    var maxStock = parseInt(input.getAttribute('max-stock'), 10);
+
+    if (isNaN(value) || value < 1) {
+        value = 1;
+    } else if (value >= maxStock) {
+        value = maxStock;
+    } else {
+        value++;
+    }
+
+    input.value = value;
+}
+
+function decreaseCount(a, b) {
+    var input = b.nextElementSibling;
+    var value = parseInt(input.value, 10);
+    var maxStock = parseInt(input.getAttribute('max-stock'), 10);
+
+    if (isNaN(value) || value <= 1) {
+        value = 1;
+    } else {
+        value--;
+    }
+
+    input.value = value;
+}
+
+function validateInput(input) {
+    var value = parseInt(input.value, 10);
+    var maxStock = parseInt(input.getAttribute('max-stock'), 10);
+
+    if (isNaN(value) || value < 1) {
+        input.value = 1;
+    } else if (value > maxStock) {
+        input.value = maxStock;
+    }
+}
+
+function handleKeyPress(event, input) {
+    var key = event.key;
+    
+    // Permitir números, tecla de retroceso y Enter
+    if (!/[0-9\n]/.test(key) && key !== 'Backspace') {
+        event.preventDefault();
+    }
+
+    if (key === 'Backspace') {
+        var selectionStart = input.selectionStart;
+        var selectionEnd = input.selectionEnd;
+    
+        console.log(key);
+        console.log(selectionStart);
+        console.log(selectionEnd);
+    
+        // Verificar que haya algo a la izquierda del cursor
+        if (selectionStart > 0 && selectionStart === selectionEnd) {
+            // Eliminar el carácter a la izquierda del cursor
+            var value = input.value;
+            input.value = value.slice(0, selectionStart - 1) + value.slice(selectionStart);
+            
+            // Colocar el cursor en la posición correcta después de eliminar el carácter
+            input.setSelectionRange(selectionStart - 1, selectionStart - 1);
+        } else {
+            // Si hay una selección, eliminar la selección
+            input.setRangeText('', selectionStart, selectionEnd, 'end');
+        }
+    
+        // Prevenir el comportamiento predeterminado del evento keypress
+        event.preventDefault();
+    }
+    
+    // Si se presiona Enter, realiza la validación
+    if (key === 'Enter') {
+        validateInput(input);
+        event.preventDefault();
+    }
+    
+}
+
 
 

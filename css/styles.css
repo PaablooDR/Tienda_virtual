@@ -60,25 +60,34 @@ html {
 
 #header {
   background-color: black;
+  padding: 30px;
 }
 #header ul {
-  display: grid;
-  grid-template-columns: repeat(7, 14.28%);
   list-style: none;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
 }
-#header ul a {
+#header ul a img {
+  max-height: 60px;
+  max-width: 30px;
+}
+#header ul li {
+  margin: 0 50px;
+  color: white;
+}
+#header ul li a {
   text-decoration: none;
   color: white;
 }
-#header ul a:hover {
-  text-decoration: underline;
+#header ul img {
+  max-height: 60px;
+  max-width: 30px;
 }
-#header ul li:first-child img {
-  width: 40%;
-}
-#header ul li img {
-  width: 20%;
+#header ul input {
+  margin: 0 0px;
+  padding: 5px 50px;
 }
 
 #outstanding {
@@ -88,7 +97,7 @@ html {
   background-position: center;
   background-repeat: no-repeat;
   height: 100%;
-  padding-bottom: 15vh;
+  padding-bottom: 27vh;
 }
 #outstanding #carousel {
   width: 50%;
@@ -262,18 +271,22 @@ html {
   height: 430px;
   width: 310px;
   margin: 90px 0px 50px 450px;
+  transition: transform 0.3s ease;
+}
+#buyProduct #productContainer #productImage:hover {
+  transform: scale(1.3);
 }
 #buyProduct #productContainer #productDetails {
-  background-color: whitesmoke;
   position: absolute;
   display: flex;
   top: 10%;
   left: 53%;
   width: 25%;
   height: 90%;
-  background-color: rgb(230, 230, 230);
+  background-color: rgb(217, 217, 217);
   z-index: 3;
   border-radius: 10px;
+  border: 1px solid grey;
 }
 #buyProduct #productContainer #productDetails #productInfo {
   margin: 10px 50px 50px 50px;
@@ -283,13 +296,24 @@ html {
   align-items: center;
 }
 #buyProduct #productContainer #productDetails #productInfo #productAmount .amount-btn {
-  margin: 0 8px;
+  margin: 5px 5px 10px 5px;
   padding: 8px;
   cursor: pointer;
+  border: none;
+  background-color: black;
+  color: white;
+  transition: transform 0.3s ease;
 }
-#buyProduct #productContainer #productDetails #productInfo #productAmount p {
-  width: 8rem;
+#buyProduct #productContainer #productDetails #productInfo #productAmount .amount-btn:hover {
+  transform: scale(1.1);
+}
+#buyProduct #productContainer #productDetails #productInfo #productAmount input {
+  width: 8.15rem;
   text-align: center;
+  border: none;
+  padding: 8px;
+  outline: none;
+  background-color: whitesmoke;
 }
 #buyProduct #productContainer #productDetails #productInfo #buttons {
   display: flex;

@@ -13,9 +13,9 @@
                         <p><?php echo $productInfo['description'];?></p>
                         <p><?php echo $productInfo['price'];?> €</p>
                         <div id="productAmount">
-                            <button class="amount-btn" id="rest">-</button>
-                            <p id="amountParagraph" product-amount="1" max-stock="<?php echo $productInfo['stock']; ?>" contenteditable="true">1</p>
-                            <button class="amount-btn" id="sum">+</button>
+                            <button class="amount-btn" id="rest" onclick="decreaseCount(event,this)">-</button>
+                            <input type="text" id="amountParagraph" value="1" max-stock="<?php echo $productInfo['stock']; ?>" onblur="validateInput(this)" onkeydown="handleKeyPress(event, this)"></input>
+                            <button class="amount-btn" id="sum" onclick="increaseCount(event,this)">+</button>
                         </div>
                         <div id="buttons">
                             <button id="purchaseProduct">Purchase</button>
