@@ -5,7 +5,7 @@ class CategoryController {
 
     //Categories
     public function categories() {
-        require_once "models/category.php";
+        $categories = category::obtain();
         require_once("views/general/header.php");
         $categories = category::obtain();
         // Obtener los productos por cada categoría

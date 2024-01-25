@@ -4,10 +4,6 @@
         <a href="index.php?controller=Product&action=products"><li>Products</li></a>
         <li class="dropdown">
             <a href="index.php?controller=Category&action=categories" class="dropbtn">Categories</a>
-<!-- <?php 
-            $categoryController = new CategoryController();
-            $categoryController->showCategories();
-?> -->
             <ul class="dropdown-content">
                 <?php foreach ($categories as $category): ?>
                     <li>
