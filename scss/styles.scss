@@ -529,5 +529,104 @@ html {
         }
     }
 }
+.principalContainerWhats{
+    display: flex;
+    justify-content: center;
+    .ContainerWhats{
+        width: 90%;
+        margin-top: 50px;
+        h1{
+            color: #000;
+            font-family: Poppins;
+            font-size: 48px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 150%; /* 72px */
+            margin-bottom: 50px;
+        }
+        .infoWhats{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            img{
+                width: 100%;
+            } 
+            p{
+                color: #000;
+                font-family: Poppins;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 150%; /* 27px */
+            }
+        }
+        #tittle2Whats{
+            margin-top: 80px;
+            display: grid;
+            justify-content: end;
+        }
+        .findPlate{
+            display: grid;
+            align-content: center;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            div{
+                background-color: rgb(152, 152, 255);
+                border: 1px solid black;
+                height: 200px;
+                
+            }
+            .seeMoreProducts{
+                display: grid;
+                justify-content: center;
+                align-items: center;
+                background-color:#F5F5F5 ;
+                
+                font-weight: 200;
+                font-size: 20px;
+                a{
+                    text-decoration: none; /* Quita el subrayado */
+                    color: black;
+                    font-weight: 200px;
+                }
+               
+                text-decoration-line: underline;
+               
+            }
+        }
+        
+    }
+}
+
+#AdminLogin{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $color-primary-admin;
+    div{
+        background-color: black;
+        width: 12%;
+        text-align: center;
+        img{
+            margin-top: -10%;
+        }
+        h1{
+            color: white;
+            margin-top: -15%;
+        }
+        hr{
+            color: white;
+            width: 72%;
+            margin-bottom: 15%;
+        }
+        form{
+            input{
+                margin-bottom: 10%;
+            }
+        }
+    }
+}
+
 
   

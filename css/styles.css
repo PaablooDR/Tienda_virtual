@@ -487,4 +487,96 @@ html {
 }
 #ls_container #login_signup form p a:hover {
   text-decoration: underline;
+}
+
+.principalContainerWhats {
+  display: flex;
+  justify-content: center;
+}
+.principalContainerWhats .ContainerWhats {
+  width: 90%;
+  margin-top: 50px;
+}
+.principalContainerWhats .ContainerWhats h1 {
+  color: #000;
+  font-family: Poppins;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 72px */
+  margin-bottom: 50px;
+}
+.principalContainerWhats .ContainerWhats .infoWhats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.principalContainerWhats .ContainerWhats .infoWhats img {
+  width: 100%;
+}
+.principalContainerWhats .ContainerWhats .infoWhats p {
+  color: #000;
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 27px */
+}
+.principalContainerWhats .ContainerWhats #tittle2Whats {
+  margin-top: 80px;
+  display: grid;
+  justify-content: end;
+}
+.principalContainerWhats .ContainerWhats .findPlate {
+  display: grid;
+  align-content: center;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+.principalContainerWhats .ContainerWhats .findPlate div {
+  background-color: rgb(152, 152, 255);
+  border: 1px solid black;
+  height: 200px;
+}
+.principalContainerWhats .ContainerWhats .findPlate .seeMoreProducts {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  background-color: #F5F5F5;
+  font-weight: 200;
+  font-size: 20px;
+  text-decoration-line: underline;
+}
+.principalContainerWhats .ContainerWhats .findPlate .seeMoreProducts a {
+  text-decoration: none; /* Quita el subrayado */
+  color: black;
+  font-weight: 200px;
+}
+
+#AdminLogin {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e9ecef;
+}
+#AdminLogin div {
+  background-color: black;
+  width: 12%;
+  text-align: center;
+}
+#AdminLogin div img {
+  margin-top: -10%;
+}
+#AdminLogin div h1 {
+  color: white;
+  margin-top: -15%;
+}
+#AdminLogin div hr {
+  color: white;
+  width: 72%;
+  margin-bottom: 15%;
+}
+#AdminLogin div form input {
+  margin-bottom: 10%;
 }/*# sourceMappingURL=styles.css.map */

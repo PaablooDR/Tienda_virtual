@@ -11,12 +11,24 @@
 <body>
     <div class="principalContainerWhats">
         <div class="ContainerWhats">
-            <h1>whatsaPlateArt</h1>
-            <div>
-                <p>PlateArt is a one-of-a-kind metal poster designed to capture your unique passions. We’ve created a 21st century canvas that’s sturdy, magnet mounted, and durable enough to withstand a lifetime of intense staring.</p>
-                <p>But staring is only half the fun! You can customize, collect, and rearrange them at will – it only takes 20 seconds to set them up with no power tools, no damages, no frustrations.</p>
+            <h1>What's a PlateArt</h1>
+            <div class="infoWhats">
+                <div>
+                    <p>PlateArt is a one-of-a-kind metal poster designed to capture your unique passions. We’ve created a 21st century canvas that’s sturdy, magnet mounted, and durable enough to withstand a lifetime of intense staring. <br><br>
+                    But staring is only half the fun! You can customize, collect, and rearrange them at will – it only takes 20 seconds to set them up with no power tools, no damages, no frustrations.</p>
+                </div>
+                <img src="sources/web/WhatsA.jpg" alt="Salon">
             </div>
-            <div><img src="sources/web/WhatsA.jpg" alt="Salon"></div>
+            <h1 id="tittle2Whats">Find a PlateArt you love!</h1>
+            <div class="findPlate">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div class="seeMoreProducts">
+                    <a href="#">See all posters</a>
+                </div>
+            </div>
         </div>
     </div>
 </body>
