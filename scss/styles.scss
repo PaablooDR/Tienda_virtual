@@ -83,6 +83,20 @@ html {
                 text-decoration: none; 
                 color: white; 
             }
+            .dropdown-content{
+                display: none;
+            }
+        }
+        .dropdown:hover {
+            .dropdown-content{
+                display: block;
+                list-style: none;
+                position: absolute;
+                background-color: black;
+                li {
+                    padding: 4%;
+                }
+            } 
         }
 
         img {
@@ -467,14 +481,7 @@ html {
             }
         } 
     }
-}
-
-.dropdown-content{
-    display: none;
-}
-  .dropdown:hover .dropdown-content{
-    display: block;
-}  
+} 
 
 #ls_container {
     display: flex;

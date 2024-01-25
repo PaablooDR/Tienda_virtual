@@ -81,6 +81,18 @@ html {
   text-decoration: none;
   color: white;
 }
+#header ul li .dropdown-content {
+  display: none;
+}
+#header ul .dropdown:hover .dropdown-content {
+  display: block;
+  list-style: none;
+  position: absolute;
+  background-color: black;
+}
+#header ul .dropdown:hover .dropdown-content li {
+  padding: 4%;
+}
 #header ul img {
   max-height: 60px;
   max-width: 30px;
@@ -430,14 +442,6 @@ html {
 }
 #buyProduct #productContainer #productDetails #productInfo #drawerOptions .openDrawer:hover {
   transform: scale(1.1);
-}
-
-.dropdown-content {
-  display: none;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
 }
 
 #ls_container {
