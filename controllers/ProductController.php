@@ -157,7 +157,8 @@ class ProductController {
         require_once("views/general/products/buyProduct.php");
     }
     public function plateart(){
-        require_once("views/general/WhatsaPlateArt.php");
+        require_once("views/general/header.php");
+        require_once("views/general/whatsaPlateArt.php");
     }
 }
 ?>
