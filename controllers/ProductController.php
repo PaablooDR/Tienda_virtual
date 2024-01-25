@@ -147,16 +147,19 @@ class ProductController {
     }
 
     public function products(){
+        $categories = category::obtain();
         require_once("views/general/header.php");
         $products = Product::obtainActiveProducts();
         require_once("views/general/products/products.php");
     }
     public function buyProduct(){
+        $categories = category::obtain();
         require_once("views/general/header.php");
         $product = Product::getProductByCode($_GET['productCode']);
         require_once("views/general/products/buyProduct.php");
     }
     public function plateart(){
+        $categories = category::obtain();
         require_once("views/general/header.php");
         require_once("views/general/whatsaPlateArt.php");
     }
