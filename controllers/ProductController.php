@@ -155,5 +155,8 @@ class ProductController {
         $product = Product::getProductByCode($_GET['productCode']);
         require_once("views/general/products/buyProduct.php");
     }
+    public function plateart(){
+        require_once("views/general/WhatsaPlateArt.php");
+    }
 }
 ?>
