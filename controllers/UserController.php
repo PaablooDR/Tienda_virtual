@@ -36,7 +36,6 @@ class UserController {
 
     public function signup() {
         require_once("views/general/signup.php");
-        echo "<script src='js/verifyInputs.js'></script>";
     }
 
     public function checkSignUp() {
