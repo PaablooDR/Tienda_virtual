@@ -1,7 +1,6 @@
 <div id="ls_container">
     <div id="background_ls">
-        <!-- <marquee loop scrollamount="20" scrolldelay="60"><img src="sources/products/anime_tatoos.jpg" /><img src="sources/products/autumn_anime.jpg" /></marquee> -->
-        <!-- <marquee scrollamount="20" scrolldelay="60"><img src="sources/products/autumn_anime.jpg" /></marquee> -->
+        
     </div>
     <div id="login_signup">
         <form action="index.php?controller=User&action=checkLogin" autocomplete="off" method="post" enctype="multipart/form-data">
