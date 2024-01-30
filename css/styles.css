@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   font-family: Poppins;
 }
@@ -65,44 +66,58 @@ html {
 #header {
   background-color: black;
   padding: 30px;
+  display: flex;
+  justify-content: center;
 }
-#header ul {
+#header #tamañoHeader {
+  width: 90%;
+}
+#header #tamañoHeader ul {
   list-style: none;
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: 14.28% 14.28% 14.28% 22.88% 24.28% 5% 5%;
   align-items: center;
 }
-#header ul a img {
-  max-height: 60px;
+#header #tamañoHeader ul a #logoPhoto {
+  width: 66px;
+  height: 66px;
+  max-height: 66px;
+  max-width: 66px;
+}
+#header #tamañoHeader ul a img {
+  max-height: 30px;
   max-width: 30px;
 }
-#header ul li {
+#header #tamañoHeader ul .marginHeader {
+  margin: 0;
+}
+#header #tamañoHeader ul li {
   margin: 0 50px;
   color: white;
 }
-#header ul li a {
+#header #tamañoHeader ul li a {
   text-decoration: none;
   color: white;
 }
-#header ul li .dropdown-content {
+#header #tamañoHeader ul li .dropdown-content {
   display: none;
 }
-#header ul .dropdown:hover .dropdown-content {
+#header #tamañoHeader ul .dropdown:hover .dropdown-content {
   display: block;
   list-style: none;
   position: absolute;
   background-color: black;
 }
-#header ul .dropdown:hover .dropdown-content li {
+#header #tamañoHeader ul .dropdown:hover .dropdown-content li {
   padding: 4%;
 }
-#header ul img {
-  max-height: 60px;
+#header #tamañoHeader ul img {
+  max-height: 30px;
   max-width: 30px;
 }
-#header ul input {
+#header #tamañoHeader ul input {
   margin: 0 0px;
   padding: 5px 50px;
 }
