@@ -4,7 +4,7 @@ CREATE DATABASE PlateArt;
 -- Conectar a la base de datos PlateArt
 \c PlateArt;
 
--- Crear la tabla User
+-- Crear la tabla Client
 CREATE TABLE Client (
     email VARCHAR(255) PRIMARY KEY,
     telephone VARCHAR(15),
@@ -85,3 +85,13 @@ INSERT INTO Category (name, active) VALUES ('Movies', true);
 
 -- Crear registro de empresa
 INSERT INTO Company (name, cif, address) VALUES ('PlateArt Corporations', 'H33243171', 'c/ de la Pineda, num. 33');
+
+-- Crear registro de la tabla Client
+INSERT INTO Client (email, telephone, name, surname, dni, password, address) VALUES ('lucas.moreno@gmail.com', '652639261', 'Lucas', 'Moreno', '48224324V', 'lucas', 'Cr/ Alfonso XII, num 8');
+
+-- Crear registro de la tabla Shooping
+INSERT INTO Shopping (client, status, total_price) VALUES ('lucas.moreno@gmail.com', 'pending', 50.00);
+
+-- Crear registro de la tabla Shooping_details
+INSERT INTO Shopping_details (shopping, product, price_per_product, amount, total_price) VALUES (1, 'An001-Ho', 10.00, 2, 20.00);
+INSERT INTO Shopping_details (shopping, product, price_per_product, amount, total_price) VALUES (1, 'An001-Ho', 30.00, 1, 30.00);
