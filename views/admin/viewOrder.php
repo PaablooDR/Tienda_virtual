@@ -23,6 +23,7 @@
         </ul>
 
         <p>Precio Total del Pedido: <?php echo $pedidoConDetalles['pedido']['total_price']; ?>€</p>
+        <a href="index.php?controller=Order&action=ticket&ticket=<?php echo $detalle['product']; ?>"><button>Ticket</button></a>
         <hr>
     <?php endforeach; ?>
 </div>

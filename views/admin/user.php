@@ -20,13 +20,13 @@
                     foreach ($users as $user) { 
     ?>
                         <div class='list'>
-                            <div><input type='checkbox' name='selectedItems[]' value='<?php echo $product['code']; ?>'></div>
-                            <div><?php echo $product['dni']; ?></div>
-                            <div><?php echo $product['email']; ?></div>
-                            <div><?php echo $product['name']; ?></div>
-                            <div><?php echo $product['surname']; ?></div>
-                            <div><?php echo $product['telephone']; ?></div>
-                            <div><?php echo $product['address']; ?></div>
+                            <div><input type='checkbox' name='selectedItems[]' value='<?php echo $user['code']; ?>'></div>
+                            <div><?php echo $user['dni']; ?></div>
+                            <div><?php echo $user['email']; ?></div>
+                            <div><?php echo $user['name']; ?></div>
+                            <div><?php echo $user['surname']; ?></div>
+                            <div><?php echo $user['telephone']; ?></div>
+                            <div><?php echo $user['address']; ?></div>
                         </div>
     <?php 
                     }

@@ -30,6 +30,11 @@ class OrdersController {
             echo "No se recibió el estado del pedido.";
         }
     }
+
+    public function ticket() {
+        $id_shopping = $_GET['ticket'];
+        
+    }
 }
 
 ?>
