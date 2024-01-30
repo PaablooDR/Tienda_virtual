@@ -4,7 +4,7 @@
     ?>
         <div class="productContainer">
             <div class="imageContainer">
-                <a href="index.php?controller=Product&action=buyProduct&productCode=<?php echo $product->getCode();?>"><img class="productImage" src="<?php echo $product->getPhoto(); ?>"></a>
+                <a href="index.php?controller=Product&action=buyProduct&productCode=<?php echo $product->getCode();?>" aria-label="Navigate to see the product"><img class="productImage" src="<?php echo $product->getPhoto(); ?>" alt="<?php echo $product->getDescription(); ?>"></a>
             </div>
             <div class="iconContainer">
                 <img class="productIcon" src="sources/web/addToCart.png">

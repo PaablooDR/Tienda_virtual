@@ -1,9 +1,9 @@
 <?php
+require_once "models/order.php";
 
 class OrdersController {
 
     public function mostrar() {
-        require_once "models/order.php";
         $pedido = new Order();
         $pedidosConDetalles = $pedido->obtenerPedidosConDetalles(); 
         
@@ -11,7 +11,6 @@ class OrdersController {
     }
 
     public function editar() {
-        require_once "models/order.php";
         $pedido = new Order();
         
         require_once "views/admin/editOrder.php";
@@ -22,7 +21,6 @@ class OrdersController {
             $nuevoEstado = $_POST['estado'];
             $idPedido = $_POST['id_pedido'];
 
-            require_once "models/order.php";
             $pedido = new Order();
             $pedido->cambiarEstado($idPedido, $nuevoEstado);
 
