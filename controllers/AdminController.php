@@ -29,5 +29,19 @@ class AdminController {
         session_destroy();
         echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Admin&action=login">';
     }
+
+    public function signature() {
+        require_once("views/admin/sidebar.php");
+        require_once("views/admin/signature.php");
+    }
+
+    public function saveSignature() {
+        if (isset($_POST['signature'])) {
+            $signature = $_POST['signature'];
+            Admin::saveSignature($signature);
+            // Render the view with the results of the search
+            require_once("views/admin/signature.php");
+        }
+    }
 }
 ?>
