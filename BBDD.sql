@@ -86,6 +86,8 @@ INSERT INTO Category (name, active) VALUES ('Movies', true);
 -- Crear registro de empresa
 INSERT INTO Company (name, cif, address) VALUES ('PlateArt Corporations', 'H33243171', 'c/ de la Pineda, num. 33');
 
+-- ESTO NO ESTA AÑADIDO A LA BBDD
+
 -- Crear registro de la tabla Client
 INSERT INTO Client (email, telephone, name, surname, dni, password, address) VALUES ('lucas.moreno@gmail.com', '652639261', 'Lucas', 'Moreno', '48224324V', 'lucas', 'Cr/ Alfonso XII, num 8');
 
