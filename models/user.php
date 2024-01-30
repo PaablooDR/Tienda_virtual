@@ -124,5 +124,21 @@ class User extends BBDD{
         }  
     }
 
+    public static function users() {
+        try {
+            $connect = BBDD::connect();
+            $query = "SELECT * FROM client";
+            $statement = $connect->query($query);
+            $users = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+            if(count($users) > 0) {
+                return $users;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            echo "Error of connexion: " . $e->getMessage();
+        } 
+    }
 }
 ?>
