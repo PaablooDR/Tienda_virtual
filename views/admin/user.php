@@ -1,7 +1,7 @@
 <div id="containerAdmin">
 <?php
         require_once("views/admin/sidebar.php");
-    ?>
+?>
 
     <div id="adminContent">
         <h1 id="titleAdmin">Users</h1>

@@ -31,7 +31,7 @@ class AdminController {
     }
 
     public function signature() {
-        require_once("views/admin/sidebar.php");
+        //require_once("views/admin/sidebar.php");
         require_once("views/admin/signature.php");
     }
 
