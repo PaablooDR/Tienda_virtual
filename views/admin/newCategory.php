@@ -9,8 +9,7 @@
         <div>
             <form action="index.php?controller=Category&action=add" method="post" enctype="multipart/form-data">
                 <h1>NEW CATEGORY</h1>
-                <!-- Code:<input type="text" name="code" placeholder="Code" maxlength="8" required><br> -->
-                Name:<input type="text" name="name" placeholder="Name" maxlength="100" required><br>
+                <label for="name">Name:</label><input type="text" name="name" placeholder="Name" maxlength="100" required><br>
                 <input type="submit" name="send" value="Enter">
             </form>
         </div>

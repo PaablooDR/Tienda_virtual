@@ -12,8 +12,8 @@
             <input type="number" name="telephone" placeholder="Telephone" maxlength="15" required><br>
             <input type="text" name="address" placeholder="Address" maxlength="255" required><br>
             <input type="password" name="password" placeholder="Password" maxlength="255" required><br>
-            <input type="submit" name="send" value="Sign up">
-            <p><a href="index.php?controller=User&action=login">Log in</a></p>
+            <input type="submit" name="send" value="Sign up" aria-label="Sign up button">
+            <p><a href="index.php?controller=User&action=login" aria-label="Navigate to Log in page">Log in</a></p>
         </form>
     </div>
 </div>

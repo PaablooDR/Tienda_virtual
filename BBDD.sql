@@ -61,6 +61,7 @@ CREATE TABLE Shopping_details (
     total_price DECIMAL(10, 2)
 );
 
+-- Crear la tabla Company
 CREATE TABLE Company (
     id SERIAL PRIMARY KEY,
     name VARCHAR(50),
