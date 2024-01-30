@@ -6,7 +6,7 @@
 ?>
         <div id="buyProduct" style="background-image: url('sources/web/salon1.jpg');">
             <div id="productContainer">
-                <img id="productImage" src="<?php echo $productInfo['photo'];?>">
+                <img id="productImage" src="<?php echo $productInfo['photo'];?>" alt="<?php echo $productInfo['description'];?>">
                 <div id="productDetails">
                     <div id="productInfo">
                         <h2><?php echo $productInfo['name'];?></h2>
@@ -18,15 +18,15 @@
                             <button class="amount-btn" id="sum" onclick="increaseCount(event,this)">+</button>
                         </div>
                         <div id="buttons">
-                            <button id="purchaseProduct">Purchase</button>
+                            <button id="purchaseProduct" aria-label="Buy and pay product">Purchase</button>
                             <div id="iconContainer">
                                 <img id="productIcon" src="sources/web/addToCart.png">
                             </div>
                         </div>
                         <div id="drawerOptions">
-                            <button class="openDrawer" data-drawer="drawerOption1">More info</button>
-                            <button class="openDrawer" data-drawer="drawerOption2">Shipping info</button>
-                            <button class="openDrawer" data-drawer="drawerOption3">Easy mount</button>
+                            <button class="openDrawer" data-drawer="drawerOption1" aria-label="Button to see more info about the product">More info</button>
+                            <button class="openDrawer" data-drawer="drawerOption2" aria-label="Button to see shopping info">Shipping info</button>
+                            <button class="openDrawer" data-drawer="drawerOption3" aria-label="Button to see the mount of the product">Easy mount</button>
                         </div>
                         <div id="menu">
                             <div class="drawer" id="drawerOption1">
