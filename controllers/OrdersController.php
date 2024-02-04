@@ -1,11 +1,11 @@
 <?php
 require_once "models/order.php";
+require_once "models/company.php";
 
 class OrdersController {
 
     public function mostrar() {
-        $pedido = new Order();
-        $pedidosConDetalles = $pedido->obtenerPedidosConDetalles(); 
+        $pedidosConDetalles = Order::obtenerPedidosConDetalles(); 
         
         require_once "views/admin/viewOrder.php";
     }
@@ -21,8 +21,7 @@ class OrdersController {
             $nuevoEstado = $_POST['estado'];
             $idPedido = $_POST['id_pedido'];
 
-            $pedido = new Order();
-            $pedido->cambiarEstado($idPedido, $nuevoEstado);
+            Order::cambiarEstado($idPedido, $nuevoEstado);
 
             header("Location: index.php?controller=Orders&action=mostrar");
             exit();
@@ -33,7 +32,10 @@ class OrdersController {
 
     public function ticket() {
         $id_shopping = $_GET['ticket'];
-        
+        $dataCompany = Company::info();
+        $company = new Company($dataCompany['id'], $dataCompany['name'], $dataCompany['cif'], $dataCompany['address']);
+        $dataOrder = Order::obtenerDetallesPedido($id_shopping); //Detalles
+        require_once "views/admin/ticket.php";
     }
 }
 

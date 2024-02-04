@@ -2,7 +2,7 @@
 
 require_once("BBDD.php");
 
-class Order extends BBDD {
+class Company extends BBDD {
     private $id;
     private $name;
     private $cif;
@@ -30,7 +30,35 @@ class Order extends BBDD {
         return $this->address;
     }
 
+    //Setters
+    function setId($id) {
+        $this->id = $id;
+    }
+    function setName($name) {
+        $this->name = $name;
+    }
+    function setCif($cif) {
+        $this->cif = $cif;
+    }
+    function setAddress($address) {
+        $this->address = $address;
+    }
     
-}
+    //Methods
+    public static function info() {
+        try {
+            $connect = BBDD::connect();
 
+            $query = "SELECT * FROM Company";
+            $statement = $connect->query($query);
+            $company = $statement->fetch(PDO::FETCH_ASSOC);
+            return $company;
+
+        } catch (PDOException $e) {
+            echo "Error of connexion: " . $e->getMessage();
+        }
+        // Cerrar la conexión
+        $connect = null;         
+    }
+}
 ?>
