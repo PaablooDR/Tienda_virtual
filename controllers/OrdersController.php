@@ -32,6 +32,11 @@ class OrdersController {
             echo "No se recibió el estado del pedido.";
         }
     }
+
+    public function cart(){
+        require_once "views/general/header.php";
+        require_once "views/general/cart/cart.php";
+    }
 }
 
 ?>

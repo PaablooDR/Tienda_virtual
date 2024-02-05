@@ -18,10 +18,12 @@
                             <button class="amount-btn" id="sum" onclick="increaseCount(event,this)">+</button>
                         </div>
                         <div id="buttons">
-                            <button id="purchaseProduct">Purchase</button>
-                            <div id="iconContainer">
-                                <img id="productIcon" src="sources/web/addToCart.png">
-                            </div>
+                            <a href="index.php?controller=Orders&action=cart&productId=<?php echo $productInfo['code'];?>&"><button id="purchaseProduct">Purchase</button></a>
+                            <a href="#">
+                                <div id="iconContainer">
+                                    <img id="productIcon" src="sources/web/addToCart.png">
+                                </div>
+                            </a>
                         </div>
                         <div id="drawerOptions">
                             <button class="openDrawer" data-drawer="drawerOption1">More info</button>
