@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   font-family: Poppins;
 }
@@ -12,48 +13,52 @@ html {
   height: 100%;
 }
 
-#sidebar {
+#containerAdmin {
+  display: flex;
+}
+#containerAdmin #sidebar {
   font-family: Poppins;
   background-color: black;
   color: white;
   width: 15%;
   font-size: large;
 }
-#sidebar ul {
+#containerAdmin #sidebar ul {
   list-style: none;
   flex-flow: column wrap;
 }
-#sidebar ul a {
+#containerAdmin #sidebar ul a {
   text-decoration: none;
   color: white;
 }
-#sidebar ul a:hover {
+#containerAdmin #sidebar ul a:hover {
   text-decoration: underline;
 }
-#sidebar ul li {
+#containerAdmin #sidebar ul li {
   padding: 3%;
 }
-
-#adminContent {
+#containerAdmin #adminContent {
+  width: 85%;
+  padding: 2%;
   background-color: #e9ecef;
 }
-#adminContent #titleAdmin {
+#containerAdmin #adminContent #titleAdmin {
   border-bottom: 2px solid black;
   font-weight: lighter;
 }
-#adminContent #bodyList {
+#containerAdmin #adminContent #bodyList {
   border-top: 0px;
 }
-#adminContent .list {
+#containerAdmin #adminContent .list {
   background-color: #d9d9d9;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   border-top: 2px solid black;
 }
-#adminContent .list div {
+#containerAdmin #adminContent .list div {
   text-align: center;
 }
-#adminContent .list div input {
+#containerAdmin #adminContent .list div input {
   transform: scale(2);
   accent-color: #a1a1a1;
 }
@@ -61,43 +66,58 @@ html {
 #header {
   background-color: black;
   padding: 30px;
+  display: flex;
+  justify-content: center;
 }
-#header ul {
+#header #tamañoHeader {
+  width: 90%;
+}
+#header #tamañoHeader ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
+  display: grid;
+  grid-template-columns: 14.28% 14.28% 14.28% 22.88% 24.28% 5% 5%;
   align-items: center;
 }
-#header ul a img {
-  max-height: 60px;
+#header #tamañoHeader ul a #logoPhoto {
+  width: 66px;
+  height: 66px;
+  max-height: 66px;
+  max-width: 66px;
+}
+#header #tamañoHeader ul a img {
+  max-height: 30px;
   max-width: 30px;
 }
-#header ul li {
+#header #tamañoHeader ul .marginHeader {
+  margin: 0;
+}
+#header #tamañoHeader ul li {
   margin: 0 50px;
   color: white;
 }
-#header ul li a {
+#header #tamañoHeader ul li a {
   text-decoration: none;
   color: white;
 }
-#header ul li .dropdown-content {
+#header #tamañoHeader ul li .dropdown-content {
   display: none;
 }
-#header ul .dropdown:hover .dropdown-content {
+#header #tamañoHeader ul .dropdown:hover .dropdown-content {
   display: block;
   list-style: none;
   position: absolute;
   background-color: black;
 }
-#header ul .dropdown:hover .dropdown-content li {
+#header #tamañoHeader ul .dropdown:hover .dropdown-content li {
   padding: 4%;
 }
-#header ul img {
-  max-height: 60px;
+#header #tamañoHeader ul img {
+  max-height: 30px;
   max-width: 30px;
 }
-#header ul input {
+#header #tamañoHeader ul input {
   margin: 0 0px;
   padding: 5px 50px;
 }
@@ -487,4 +507,96 @@ html {
 }
 #ls_container #login_signup form p a:hover {
   text-decoration: underline;
+}
+
+.principalContainerWhats {
+  display: flex;
+  justify-content: center;
+}
+.principalContainerWhats .ContainerWhats {
+  width: 90%;
+  margin-top: 50px;
+}
+.principalContainerWhats .ContainerWhats h1 {
+  color: #000;
+  font-family: Poppins;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 72px */
+  margin-bottom: 50px;
+}
+.principalContainerWhats .ContainerWhats .infoWhats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.principalContainerWhats .ContainerWhats .infoWhats img {
+  width: 100%;
+}
+.principalContainerWhats .ContainerWhats .infoWhats p {
+  color: #000;
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 27px */
+}
+.principalContainerWhats .ContainerWhats #tittle2Whats {
+  margin-top: 80px;
+  display: grid;
+  justify-content: end;
+}
+.principalContainerWhats .ContainerWhats .findPlate {
+  display: grid;
+  align-content: center;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+.principalContainerWhats .ContainerWhats .findPlate div {
+  background-color: rgb(152, 152, 255);
+  border: 1px solid black;
+  height: 200px;
+}
+.principalContainerWhats .ContainerWhats .findPlate .seeMoreProducts {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  background-color: #F5F5F5;
+  font-weight: 200;
+  font-size: 20px;
+  text-decoration-line: underline;
+}
+.principalContainerWhats .ContainerWhats .findPlate .seeMoreProducts a {
+  text-decoration: none; /* Quita el subrayado */
+  color: black;
+  font-weight: 200px;
+}
+
+#AdminLogin {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e9ecef;
+}
+#AdminLogin div {
+  background-color: black;
+  width: 12%;
+  text-align: center;
+}
+#AdminLogin div img {
+  margin-top: -10%;
+}
+#AdminLogin div h1 {
+  color: white;
+  margin-top: -15%;
+}
+#AdminLogin div hr {
+  color: white;
+  width: 72%;
+  margin-bottom: 15%;
+}
+#AdminLogin div form input {
+  margin-bottom: 10%;
 }/*# sourceMappingURL=styles.css.map */

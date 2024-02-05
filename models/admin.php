@@ -57,5 +57,21 @@ class Admin extends BBDD{
         }  
     }
 
+    public static function saveSignature($signature){
+        try{
+            $sign = base64_decode(str_replace('data:image/png;base64,', '', $signature));
+            $route = "sources/signature/signature.png";
+            file_put_contents($route, $sign);
+            $connect = BBDD::connect();
+            if (!$connect) {
+                die("Conexión fallida: " . mysqli_connect_error());
+            }        
+            $query = "UPDATE Admin SET signature = '$route' WHERE email = 'admin'";
+            $connect->query($query);
+            echo json_encode(['message' => 'Firma guardada exitosamente']);
+        }catch (Exception $e) {
+            echo json_encode(['message' => 'Error: ' . $e->getMessage()]);
+        }       
+    }
 }
 ?>
