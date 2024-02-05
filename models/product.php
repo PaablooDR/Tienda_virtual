@@ -299,6 +299,23 @@ class Product extends BBDD{
         $connect = null;
     }
 
+    // Hottests picks
+    public static function hottestPicks(){
+        try {
+            $connect = BBDD::connect();
+            $query = "SELECT p.*, c.name as category_name FROM Product p JOIN Category c ON p.category = c.code LIMIT 10";
+            $statement = $connect->query($query);
+
+            $products = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+            return $products;
+        } catch (PDOException $e) {
+            echo "Error of connexion: " . $e->getMessage();
+        }
+        //Close connection
+        $connect = null;
+    }
+
     //Move image
     public static function moveImage($name) {
         $originalName = $_FILES['photo']['name'];
