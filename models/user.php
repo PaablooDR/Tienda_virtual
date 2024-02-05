@@ -7,16 +7,18 @@ class User extends BBDD{
     private $telephone;
     private $address;
     private $password;
+    private $dni;
     
     
     //Constructor
-    public function __construct($email, $name, $surname, $telephone, $address, $password){
+    public function __construct($email, $name, $surname, $telephone, $address, $password, $dni){
         $this->email = $email;
         $this->name = $name;
         $this->surname = $surname;
         $this->telephone = $telephone;
         $this->address = $address;
         $this->password = $password;
+        $this->dni = $dni;
     }
 
     //Getters
@@ -38,6 +40,9 @@ class User extends BBDD{
     function getPassword() {
         return $this->password;
     }
+    function getDni() {
+        return $this->dni;
+    }
 
     //Setters
     function setEmail($email) {
@@ -57,6 +62,9 @@ class User extends BBDD{
     }
     function setPassword($password) {
         $this->password = $password;
+    }
+    function setDni($dni) {
+        $this->dni = $dni;
     }
 
     //Methods

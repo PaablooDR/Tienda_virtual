@@ -1,6 +1,7 @@
 <?php
 require_once "models/order.php";
 require_once "models/company.php";
+require_once "models/user.php";
 
 class OrdersController {
 
@@ -11,7 +12,7 @@ class OrdersController {
     }
 
     public function editar() {
-        $pedido = new Order();
+        //$pedido = new Order();
         
         require_once "views/admin/editOrder.php";
     }
@@ -34,7 +35,10 @@ class OrdersController {
         $id_shopping = $_GET['ticket'];
         $dataCompany = Company::info();
         $company = new Company($dataCompany['id'], $dataCompany['name'], $dataCompany['cif'], $dataCompany['address']);
-        $dataOrder = Order::obtenerDetallesPedido($id_shopping); //Detalles
+        $dataOrderDetails = Order::obtenerDetallesPedido($id_shopping); //
+        $dataOrder = Order::obtainOrderById($id_shopping);
+        $order = new Order($dataOrder['id_shopping'], $dataOrder['client'], $dataOrder['shopping_date'], $dataOrder['shopping_date'], $dataOrder['status'], $dataOrder['total_price'],);
+        $client = new User($dataOrder['email'], $dataOrder['name'], $dataOrder['surname'], $dataOrder['telephone'], $dataOrder['address'], null, $dataOrder['dni']);
         require_once "views/admin/ticket.php";
     }
 

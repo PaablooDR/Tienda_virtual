@@ -5,11 +5,21 @@ require_once("BBDD.php");
 class Order extends BBDD {
 
     private $id;
-    private $estado;
+    private $email_comprador;
     private $fecha_comanda;
     private $fecha_envio;
-    private $email_comprador;
+    private $estado;
     private $precio_total_pedido;
+
+    //Constructor
+    public function __construct($id, $email_comprador, $fecha_comanda, $fecha_envio, $estado, $precio_total_pedido){
+        $this->id = $id;
+        $this->email_comprador = $email_comprador;
+        $this->fecha_comanda = $fecha_comanda;
+        $this->fecha_envio = $fecha_envio;
+        $this->estado = $estado;
+        $this->precio_total_pedido = $precio_total_pedido;
+    }
 
     //Getters
     public function getId() {
@@ -87,6 +97,26 @@ class Order extends BBDD {
         $statement->bindParam(':nuevoEstado', $nuevoEstado);
         $statement->bindParam(':idPedido', $idPedido);
         $statement->execute();
+    }
+
+    public static function obtainOrderById($id) {
+        try {
+            $connect = BBDD::connect();
+            $stmt = $connect->prepare("SELECT * FROM Shopping s JOIN Client c ON s.client = c.email WHERE s.id_shopping=:id");
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $res = $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($result) {
+                return $result;
+            } else {
+                echo "Product not found.";
+            }
+        } catch (PDOException $e) {
+            echo "Error of connexion: " . $e->getMessage();
+        }
+        //Close connection
+        $connect = null;
     }
 }
 

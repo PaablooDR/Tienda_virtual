@@ -622,4 +622,60 @@ html {
   height: 100%;
   transition: transform 0.3s ease-in-out;
   border-radius: 2%;
+}
+
+#containerTicket {
+  width: 45%;
+  height: 100vh;
+  background-color: lightblue;
+  margin: 0 auto;
+  padding: 1% 3%;
+}
+#containerTicket #headerTicket {
+  display: flex;
+}
+#containerTicket #headerTicket #headerLeft {
+  width: 50%;
+}
+#containerTicket #headerTicket #headerRigth {
+  width: 50%;
+}
+#containerTicket #contentTicket #infoClient {
+  display: flex;
+}
+#containerTicket #contentTicket #infoClient div {
+  width: 50%;
+}
+#containerTicket #contentTicket #prices #headerPrices {
+  display: flex;
+  font-weight: bold;
+}
+#containerTicket #contentTicket #prices #headerPrices div {
+  padding: 1%;
+  width: 25%;
+}
+#containerTicket #contentTicket #prices .contentPrices {
+  display: flex;
+}
+#containerTicket #contentTicket #prices .contentPrices div {
+  padding: 1%;
+  width: 25%;
+}
+#containerTicket #contentTicket #prices #footerPrices {
+  display: flex;
+}
+#containerTicket #contentTicket #prices #footerPrices div:first-child {
+  width: 75%;
+}
+#containerTicket #contentTicket #prices #footerPrices div {
+  padding: 1%;
+  width: 25%;
+  border-top: 1px solid black;
+}
+#containerTicket #contentTicket #sign {
+  font-weight: bold;
+}
+#containerTicket #footerTicket button {
+  background-color: black;
+  color: white;
 }/*# sourceMappingURL=styles.css.map */

@@ -678,4 +678,65 @@ html {
     }
 }
 
-  
+#containerTicket {
+    width: 45%;
+    height: 100vh;
+    background-color: lightblue;
+    margin: 0 auto;
+    padding: 1% 3%;
+    #headerTicket {
+        display: flex;
+        //border-bottom: 2px solid black;
+        #headerLeft {
+            width: 50%;
+        }
+        #headerRigth {
+            width: 50%;
+        }
+    }
+    #contentTicket {
+        #infoClient {
+            display: flex;
+            div {
+                width: 50%;
+            }
+        }
+        #prices {
+            #headerPrices {
+                display: flex;
+                font-weight: bold;
+                div {
+                    padding: 1%;
+                    width: 25%;
+                }
+            }
+            .contentPrices {
+                display: flex;
+                div {
+                    padding: 1%;
+                    width: 25%;
+                }
+            }
+            #footerPrices {
+                display: flex;
+                div:first-child {
+                    width: 75%;
+                }
+                div {
+                    padding: 1%;
+                    width: 25%;
+                    border-top: 1px solid black;
+                }
+            }
+        }
+        #sign {
+            font-weight: bold;
+        }
+    }
+    #footerTicket {
+        button {
+            background-color: black;
+            color: white;
+        }
+    }
+}
