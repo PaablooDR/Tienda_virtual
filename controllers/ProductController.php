@@ -144,6 +144,8 @@ class ProductController {
         require_once("views/general/video.php");
         $hottestPicks = Product::hottestPicks();
         require_once("views/general/hottestPicks.php");
+        $otherCategories = Product::otherCategories();
+        require_once("views/general/otherCategories.php");
     }
 
     public function products(){
