@@ -157,6 +157,7 @@ class ProductController {
         require_once("views/general/header.php");
         $product = Product::getProductByCode($_GET['productCode']);
         require_once("views/general/products/buyProduct.php");
+        echo "<script src='./js/productDrawers.js'></script>";
     }
     public function plateart(){
         $categories = category::obtain();

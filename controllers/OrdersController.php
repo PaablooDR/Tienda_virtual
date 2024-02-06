@@ -41,11 +41,6 @@ class OrdersController {
         $client = new User($dataOrder['email'], $dataOrder['name'], $dataOrder['surname'], $dataOrder['telephone'], $dataOrder['address'], null, $dataOrder['dni']);
         require_once "views/admin/ticket.php";
     }
-
-    public function cart(){
-        require_once "views/general/header.php";
-        require_once "views/general/cart/cart.php";
-    }
 }
 
 ?>

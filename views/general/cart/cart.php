@@ -3,6 +3,10 @@
         <h1>Your cart</h1>
     </div>
     <div id="order-info">
-        
+        <div id="cartInfo">
+            <?php
+                
+            ?>
+        </div>
     </div>
 </div>
