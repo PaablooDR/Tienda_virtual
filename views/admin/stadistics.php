@@ -22,6 +22,13 @@
         <script id="productosPHP" type="application/json">
             <?php echo $productosPHP; ?>
         </script>
+        <?php 
+
+           foreach ($topFiveCategories as $categoryData) {
+                echo $categoryData;
+            }
+        ?>
+
     </div>
 
 </div>
