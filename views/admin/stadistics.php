@@ -3,9 +3,13 @@
         require_once("views/admin/sidebar.php")
     ?>
     <div id="adminContent">
-        <h1>Top Products</h1> <h1>Top Products</h1>
-        <canvas id="graficaEstadisticas" width="500" height="350" style="border: solid 1px black;"></canvas>
-        <canvas id="graficaEstadisticas2" width="500" height="350" style="border: solid 1px black;"></canvas>
+        <h1>Stadistics</h1>
+        <hr>
+        <div class="titleStadistics"><p>Top Products</p> <p>Top Categories</p></div>
+        <div class="titleStadistics">
+            <canvas id="graficaEstadisticas" class="graficaEstadisticasStyle" width="500" height="325"></canvas>
+            <canvas id="graficaEstadisticas2" class="graficaEstadisticasStyle" width="500" height="325"></canvas>
+        </div>
 
         <script src="js/stadistics.js"></script>
         <?php

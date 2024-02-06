@@ -741,9 +741,22 @@ html {
     }
 }
 
-#graficaEstadisticas{
-    background-color: white;
+#adminContent{
+    .titleStadistics{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        p{
+            font-size: 25px;
+        }
+    }
+    .graficaEstadisticasStyle{
+        background-color: white;
+        width: 80%;
+        height: auto;
+        
+    }
 }
+
 
 #otherCategories {
     text-align: center;
