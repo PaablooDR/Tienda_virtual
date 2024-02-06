@@ -53,7 +53,10 @@
         </div>
     </div>
     <div id="footerTicket">
-        <button>Download PDF</button>
-    </div>
+    <form action="index.php?controller=Orders&action=generarPDF" method="post">
+        <input type="hidden" name="htmlContent" value="<?php echo base64_encode($htmlContent); ?>">
+        <button type="submit">Download PDF</button>
+    </form>
+</div>
     
 </div>
