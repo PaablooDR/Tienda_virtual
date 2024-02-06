@@ -320,7 +320,7 @@ class Product extends BBDD{
     public static function otherCategories(){
         try {
             $connect = BBDD::connect();
-            $query = "SELECT c.name AS category_name, p.photo AS product_photo FROM Category c LEFT JOIN (SELECT DISTINCT ON (category) category, photo FROM Product WHERE active = true ORDER BY category, code) p ON c.code = p.category WHERE c.active = true";
+            $query = "SELECT c.code AS code, c.name AS name, p.photo AS photo FROM Category c LEFT JOIN (SELECT DISTINCT ON (category) category, photo FROM Product WHERE active = true ORDER BY category, code) p ON c.code = p.category WHERE c.active = true";
             $statement = $connect->query($query);
 
             $products = $statement->fetchAll(PDO::FETCH_ASSOC);

@@ -4,10 +4,12 @@
 <?php        
     foreach ($otherCategories as $otherCategory) {
 ?>   
-        <div>
-            <p><?php echo $otherCategory['category_name']; ?></p>
-            <img class="productImage" src="<?php echo $otherCategory['product_photo']; ?>" alt="<?php echo $otherCategory['category_name']; ?>">
-        </div>
+        <a href="index.php?controller=Product&action=singleCategory&id=<?php echo $otherCategory['code']; ?>" aria-label="Navigate to the category <?php echo $otherCategory['name']; ?>">
+            <div>
+                <p><?php echo $otherCategory['name']; ?></p>
+                <img class="productImage" src="<?php echo $otherCategory['photo']; ?>" alt="<?php echo $otherCategory['name']; ?>">
+            </div>
+        </a>
 <?php
     }
 ?>
