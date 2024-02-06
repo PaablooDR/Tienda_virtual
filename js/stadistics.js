@@ -11,11 +11,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // Configuración de la gráfica
     var alturaBarra = 30;
     var espacioEntreBarras = 20;
-    var anchoMaximo = 150;
-    var marginLeft = 100; // Margen a la izquierda para los nombres de los productos
+    var anchoMaximo = 200;
+    var marginLeft = 110; // Margen a la izquierda para los nombres de los productos
+    var marginTop = 50; // Margen superior para la gráfica
 
-    // Obtener datos desde el atributo de datos HTML
-    var datos = JSON.parse(document.getElementById("datosPHP").textContent);
+    var colores = ["#64ADFF", "#FFA07A", "#FFB6C1", "#90EE90", "#FF837F"];
 
     function dibujarGrafica() {
         
@@ -25,10 +25,10 @@ document.addEventListener("DOMContentLoaded", function () {
         // Dibuja cada barra
         for (var i = 0; i < datos.length; i++) {
             var anchoBarra = (datos[i] / Math.max(...datos)) * anchoMaximo;
-            var y = i * (alturaBarra + espacioEntreBarras);
+            var y = i * (alturaBarra + espacioEntreBarras)+ marginTop;
             var x = marginLeft;
 
-            ctx.fillStyle = "blue";
+            ctx.fillStyle = colores[i % colores.length];
             ctx.fillRect(x, y, anchoBarra, alturaBarra);
 
             ctx.fillStyle = "white";
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             ctx.fillStyle = "black";
             // Dibuja los nombres de los productos a la izquierda de las barras
-            ctx.fillText(productos[i], 0 , y + alturaBarra / 2);
+            ctx.fillText(productos[i], 50 , y + alturaBarra / 2);
         }
     }
 
