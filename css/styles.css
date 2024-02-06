@@ -682,4 +682,51 @@ html {
 
 #graficaEstadisticas {
   background-color: white;
+}
+
+#otherCategories {
+  text-align: center;
+}
+#otherCategories .productContainer {
+  width: 60%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+#otherCategories .productContainer div {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+  width: 200px;
+  height: 200px;
+  border-radius: 2%;
+}
+#otherCategories .productContainer div .productImage {
+  width: 100%;
+  height: 100%;
+  border-radius: 2%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#otherCategories .productContainer div::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+#otherCategories .productContainer div p {
+  font-weight: 500;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 16px;
+  z-index: 2;
+  margin: 0;
 }/*# sourceMappingURL=styles.css.map */

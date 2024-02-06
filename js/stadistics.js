@@ -91,5 +91,5 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    dibujarGrafica2();
+  
 });
