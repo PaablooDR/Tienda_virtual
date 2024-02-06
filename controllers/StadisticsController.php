@@ -1,9 +1,13 @@
 <?php
+require_once "models/stadistics.php";
+
 
 class StadisticsController {
     //Menu
     public function stadistics() {
-        require_once("views/admin/sidebar.php");
+        $topProductsNames = Stadistics::getTopFiveProductsNames(); 
+        $topProductsQuantities = Stadistics::getTopFiveProductsQuantities(); 
+        require_once("views/admin/stadistics.php");
     }
 }
 ?>

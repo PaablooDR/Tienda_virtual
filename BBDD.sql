@@ -96,4 +96,8 @@ INSERT INTO Shopping (client, status, total_price) VALUES ('lucas.moreno@gmail.c
 
 -- Crear registro de la tabla Shooping_details
 INSERT INTO Shopping_details (shopping, product, price_per_product, amount, total_price) VALUES (1, 'An001-Ho', 10.00, 2, 20.00);
-INSERT INTO Shopping_details (shopping, product, price_per_product, amount, total_price) VALUES (1, 'An001-Ho', 30.00, 1, 30.00);
+INSERT INTO Shopping_details (shopping, product, price_per_product, amount, total_price) VALUES (1, 'An001-Ho', 10.00, 1, 10.00);
+INSERT INTO Shopping_details (shopping, product, price_per_product, amount, total_price) VALUES (1, 'An002-Sa', 20.00, 2, 40.00);
+INSERT INTO Shopping_details (shopping, product, price_per_product, amount, total_price) VALUES (1, 'An003-El', 10.00, 2, 20.00);
+INSERT INTO Shopping_details (shopping, product, price_per_product, amount, total_price) VALUES (1, 'An004-Ni', 10.00, 4, 40.00);
+INSERT INTO Shopping_details (shopping, product, price_per_product, amount, total_price) VALUES (1, 'An005-Th', 10.00, 1, 10.00);
