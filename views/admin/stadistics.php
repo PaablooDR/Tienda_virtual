@@ -15,6 +15,8 @@
         <?php
             $datosPHP = json_encode($topProductsQuantities);
             $productosPHP = json_encode($topProductsNames);
+            $nameCategoriesPHP = json_encode($topFiveCategories);
+            $amountCategoriesPHP = json_encode($topFiveCategoriesAmount);
         ?>
         <script id="datosPHP" type="application/json">
             <?php echo $datosPHP; ?>
@@ -22,13 +24,13 @@
         <script id="productosPHP" type="application/json">
             <?php echo $productosPHP; ?>
         </script>
-        <?php 
-
-           foreach ($topFiveCategories as $categoryData) {
-                echo $categoryData;
-            }
-        ?>
-
+        <script id="nameCategoriesPHP" type="application/json">
+            <?php echo $nameCategoriesPHP; ?>
+        </script>
+        <script id="amountCategoriesPHP" type="application/json">
+            <?php echo $amountCategoriesPHP; ?>
+        </script>
+        
     </div>
 
 </div>

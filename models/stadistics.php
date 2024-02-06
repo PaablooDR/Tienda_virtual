@@ -96,6 +96,38 @@ class Stadistics extends BBDD {
         
 
     }
+
+    public static function getTopFiveCategoriesAmount(){
+        $query = "
+        SELECT SUM(sd.amount) AS total_quantity
+        FROM Shopping_details sd
+        JOIN Product p ON sd.product = p.code
+        JOIN Category c ON p.category = c.code
+        GROUP BY c.name
+        ORDER BY total_quantity DESC
+        LIMIT 5;
+        ";
+        try {
+            // Preparar la consulta utilizando PDO.
+            $statement = BBDD::connect()->prepare($query);
+            
+            // Ejecutar la consulta.
+            $statement->execute();
+
+            // Obtener los resultados en un array.
+            $topFiveCategoriesAmount = $statement->fetchAll(PDO::FETCH_COLUMN);
+
+            // Retornar los resultados.
+            return $topFiveCategoriesAmount;
+
+        } catch (PDOException $e) {
+            // Manejar errores en caso de fallo en la consulta.
+            // Puedes personalizar este bloque según tus necesidades.
+            return null;
+        }
+        
+
+    }
 }
 
 ?>

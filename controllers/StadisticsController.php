@@ -9,6 +9,8 @@ class StadisticsController {
         $topProductsQuantities = Stadistics::getTopFiveProductsQuantities(); 
 
         $topFiveCategories = Stadistics::getTopFiveCategories(); 
+        $topFiveCategoriesAmount = Stadistics::getTopFiveCategoriesAmount(); 
+
         require_once("views/admin/stadistics.php");
     }
 }
