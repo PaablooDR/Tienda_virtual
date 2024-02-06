@@ -11,7 +11,7 @@
                     <div id="productInfo">
                         <h2><?php echo $productInfo['name'];?></h2>
                         <p><?php echo $productInfo['description'];?></p>
-                        <p><?php echo $productInfo['price'];?> €</p>
+                        <p id="productPrice"><?php echo $productInfo['price'];?> €</p>
                         <div id="productAmount">
                             <button class="amount-btn" id="rest" onclick="decreaseCount(event,this)">-</button>
                             <input type="text" id="amountParagraph" value="1" max-stock="<?php echo $productInfo['stock']; ?>" onblur="validateInput(this)" onkeydown="handleKeyPress(event, this)"></input>
@@ -19,15 +19,11 @@
                         </div>
                         <div id="buttons">
                             <a href="index.php?controller=Orders&action=cart&productId=<?php echo $productInfo['code'];?>&"><button id="purchaseProduct">Purchase</button></a>
-                            <a href="#">
+                            <a href="#" id="addToCartLink">
                                 <div id="iconContainer">
                                     <img id="productIcon" src="sources/web/addToCart.png">
                                 </div>
                             </a>
-                            <button id="purchaseProduct" aria-label="Buy and pay product">Purchase</button>
-                            <div id="iconContainer">
-                                <img id="productIcon" src="sources/web/addToCart.png">
-                            </div>
                         </div>
                         <div id="drawerOptions">
                             <button class="openDrawer" data-drawer="drawerOption1" aria-label="Button to see more info about the product">More info</button>
