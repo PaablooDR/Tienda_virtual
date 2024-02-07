@@ -609,6 +609,8 @@ html {
 #hottestPicks {
   background-color: #f5f5f5;
   text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 #hottestPicks .productContainer {
   width: 60%;
