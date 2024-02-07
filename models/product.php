@@ -192,7 +192,7 @@ class Product extends BBDD{
     public static function search($keyword) {
         try {
             $connect = BBDD::connect();
-            $query = "SELECT p.*, c.name as category_name FROM Product p JOIN Category c ON p.category = c.code::varchar WHERE LOWER(p.name) LIKE LOWER(:keyword)";
+            $query = "SELECT p.*, c.name as category_name FROM Product p JOIN Category c ON p.category = c.code WHERE LOWER(p.name) LIKE LOWER(:keyword)";
             $statement = $connect->prepare($query);
             $statement->bindValue(':keyword', '%' . $keyword . '%', PDO::PARAM_STR);
             $statement->execute();
