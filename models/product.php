@@ -316,6 +316,23 @@ class Product extends BBDD{
         $connect = null;
     }
 
+    // Other categories
+    public static function otherCategories(){
+        try {
+            $connect = BBDD::connect();
+            $query = "SELECT c.code AS code, c.name AS name, p.photo AS photo FROM Category c LEFT JOIN (SELECT DISTINCT ON (category) category, photo FROM Product WHERE active = true ORDER BY category, code) p ON c.code = p.category WHERE c.active = true";
+            $statement = $connect->query($query);
+
+            $products = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+            return $products;
+        } catch (PDOException $e) {
+            echo "Error of connexion: " . $e->getMessage();
+        }
+        //Close connection
+        $connect = null;
+    }
+
     //Move image
     public static function moveImage($name) {
         $originalName = $_FILES['photo']['name'];

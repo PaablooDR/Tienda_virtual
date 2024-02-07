@@ -1,62 +1,66 @@
-<div id="containerTicket">
-    <h1>Order <?php echo $id_shopping;?> bill</h1>
-    <div id="headerTicket">
-        <div id="headerLeft">
-            <p><?php echo $company->getName();?></p>
-            <p><?php echo $company->getCif();?></p>
-            <p><?php echo $company->getAddress();?></p>
-        </div>
-        <div id="headerRight">
-            <img src="sources/web/logo.png" alt="logo" id="logoPhoto">
-        </div>
-    </div>
-    <div id="contentTicket">
-        <h4>Client information:</h4>
-        <div id="infoClient">
-            <div>
-                <p>DNI: <?php echo $client->getDni(); ?></p>
-                <p>Name: <?php echo $client->getName(); ?></p>
-                <p>Surname: <?php echo $client->getSurname(); ?></p>
-            </div>
-            <div>
-                <p>Email: <?php echo $client->getEmail(); ?></p>
-                <p>Address: <?php echo $client->getAddress(); ?></p>
-            </div>
-        </div>
-        <div id="prices">
-            <div id="headerPrices">
-                <div>Code product</div>
-                <div>Price per product</div>
-                <div>Amount</div>
-                <div>Import</div>
-            </div>
-            <?php
-            foreach($dataOrderDetails as $detail) {
-            ?>
-            <div class="contentPrices">
-                <div><?php echo $detail['product'] ?></div>
-                <div><?php echo $detail['price_per_product'] ?></div>
-                <div><?php echo $detail['amount'] ?></div>
-                <div><?php echo $detail['total_price'] ?></div>
-            </div>
-            <?php
-            }
-            ?>
-            <div id="footerPrices">
-                <div>Total price: </div>
-                <div><?php echo $order->getPrecioTotalPedido() ?></div>
-            </div>
-        </div>
-        <div id="sign">
-            <p>Sign:</p>
-            <img src="sources/signature/signature.png" alt="sign" id="signPhoto">
-        </div>
-    </div>
-    <div id="footerTicket">
-    <form action="index.php?controller=Orders&action=generarPDF" method="post">
-        <input type="hidden" name="htmlContent" value="<?php echo base64_encode($htmlContent); ?>">
-        <button type="submit">Download PDF</button>
-    </form>
-</div>
-    
-</div>
+<?php
+require_once './vendor/autoload.php';
+ob_start();
+
+$html2pdf = new \Spipu\Html2Pdf\Html2Pdf('P', 'A4', 'en');
+$content = '';
+
+// Inicio del HTML
+$content .= '<div id="containerTicket">';
+$content .= '<h1>Order ' . $id_shopping . ' bill</h1>';
+$content .= '<div id="headerTicket">';
+$content .= '<div id="headerLeft">';
+$content .= '<p>' . $company->getName() . '</p>';
+$content .= '<p>' . $company->getCif() . '</p>';
+$content .= '<p>' . $company->getAddress() . '</p>';
+$content .= '</div>';
+$content .= '<div id="headerRight">';
+$content .= '<img src="sources/web/logo.png" alt="logo" id="logoPhoto">';
+$content .= '</div>';
+$content .= '</div>';
+$content .= '<div id="contentTicket">';
+$content .= '<h4>Client information:</h4>';
+$content .= '<div id="infoClient">';
+$content .= '<div>';
+$content .= '<p>DNI: ' . $client->getDni() . '</p>';
+$content .= '<p>Name: ' . $client->getName() . '</p>';
+$content .= '<p>Surname: ' . $client->getSurname() . '</p>';
+$content .= '</div>';
+$content .= '<div>';
+$content .= '<p>Email: ' . $client->getEmail() . '</p>';
+$content .= '<p>Address: ' . $client->getAddress() . '</p>';
+$content .= '</div>';
+$content .= '</div>';
+$content .= '<div id="prices">';
+$content .= '<div id="headerPrices">';
+$content .= '<div>Code product</div>';
+$content .= '<div>Price per product</div>';
+$content .= '<div>Amount</div>';
+$content .= '<div>Import</div>';
+$content .= '</div>';
+
+// Ciclo para los detalles de la orden
+foreach ($dataOrderDetails as $detail) {
+    $content .= '<div class="contentPrices">';
+    $content .= '<div>' . $detail['product'] . '</div>';
+    $content .= '<div>' . $detail['price_per_product'] . '</div>';
+    $content .= '<div>' . $detail['amount'] . '</div>';
+    $content .= '<div>' . $detail['total_price'] . '</div>';
+    $content .= '</div>';
+}
+
+$content .= '<div id="footerPrices">';
+$content .= '<div>Total price: </div>';
+$content .= '<div>' . $order->getPrecioTotalPedido() . '</div>';
+$content .= '</div>';
+$content .= '</div>';
+$content .= '<div id="sign">';
+$content .= '<p>Sign:</p>';
+$content .= '<img src="sources/signature/signature.png" alt="sign" id="signPhoto">';
+$content .= '</div>';
+$content .= '</div>';
+$content .= '</div>';
+
+$html2pdf->writeHtml($content);
+$html2pdf->output($client->getDni() . "_" . $id_shopping . "_bill.pdf");
+?>

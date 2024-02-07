@@ -22,6 +22,8 @@ html {
   color: white;
   width: 15%;
   font-size: large;
+  height: 100vh;
+  position: fixed;
 }
 #containerAdmin #sidebar ul {
   list-style: none;
@@ -36,6 +38,9 @@ html {
 }
 #containerAdmin #sidebar ul li {
   padding: 3%;
+}
+#containerAdmin #invisibleSidebar {
+  width: 15%;
 }
 #containerAdmin #adminContent {
   width: 85%;
@@ -109,6 +114,7 @@ html {
   list-style: none;
   position: absolute;
   background-color: black;
+  z-index: 1;
 }
 #header #tamañoHeader ul .dropdown:hover .dropdown-content li {
   padding: 4%;
@@ -128,8 +134,7 @@ html {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100%;
-  padding-bottom: 27vh;
+  height: 100vh;
 }
 #outstanding #carousel {
   width: 50%;
@@ -146,11 +151,11 @@ html {
 }
 #outstanding #outstandingProducts #outstandingList {
   width: 60%;
-  background-color: black;
+  background-color: #c7bfbf;
   padding: 2%;
   margin: 5% auto;
   overflow-y: auto;
-  height: 70%;
+  height: 63%;
   overflow-x: hidden;
   border-radius: 5px;
 }
@@ -678,4 +683,106 @@ html {
 #containerTicket #footerTicket button {
   background-color: black;
   color: white;
+}
+
+#adminContent .titleStadistics {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+#adminContent .titleStadistics p {
+  font-size: 25px;
+}
+#adminContent .graficaEstadisticasStyle {
+  background-color: white;
+  width: 80%;
+  height: auto;
+}
+
+#otherCategories {
+  text-align: center;
+}
+#otherCategories .productContainer {
+  width: 60%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+#otherCategories .productContainer div {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+  width: 200px;
+  height: 200px;
+  border-radius: 2%;
+}
+#otherCategories .productContainer div .productImage {
+  width: 100%;
+  height: 100%;
+  border-radius: 2%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#otherCategories .productContainer div::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+#otherCategories .productContainer div p {
+  font-weight: 500;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 16px;
+  z-index: 2;
+  margin: 0;
+}
+
+#footer {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 10%;
+  background-color: black;
+  color: white;
+}
+#footer ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
+  align-items: center;
+}
+#footer ul #title {
+  font-size: 40px;
+  font-weight: 100;
+  letter-spacing: 40px;
+}
+#footer ul li {
+  list-style: none;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+}
+#footer ul li ul {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  max-width: 400px;
+  margin-top: 5%;
+  margin-left: -10%;
+}
+#footer ul li ul .icon {
+  height: 30px;
+  width: 30px;
+  border-radius: 7%;
+}
+#footer ul li ul #paypal {
+  height: 40px;
+  width: 100px;
+  border-radius: 7%;
 }/*# sourceMappingURL=styles.css.map */

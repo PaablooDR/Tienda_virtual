@@ -95,9 +95,11 @@ INSERT INTO Client (email, telephone, name, surname, dni, password, address) VAL
 INSERT INTO Shopping (client, status, total_price) VALUES ('lucas.moreno@gmail.com', 'pending', 50.00);
 
 -- Crear registro de la tabla Shooping_details
-INSERT INTO Shopping_details (shopping, product, price_per_product, amount, total_price) VALUES (1, 'An001-Ho', 10.00, 2, 20.00);
+INSERT INTO Shopping_details (shopping, product, price_per_product, amount, total_price) VALUES (1, 'An001-Ho', 10.00, 20, 20.00);
 INSERT INTO Shopping_details (shopping, product, price_per_product, amount, total_price) VALUES (1, 'An001-Ho', 10.00, 1, 10.00);
 INSERT INTO Shopping_details (shopping, product, price_per_product, amount, total_price) VALUES (1, 'An002-Sa', 20.00, 2, 40.00);
 INSERT INTO Shopping_details (shopping, product, price_per_product, amount, total_price) VALUES (1, 'An003-El', 10.00, 2, 20.00);
 INSERT INTO Shopping_details (shopping, product, price_per_product, amount, total_price) VALUES (1, 'An004-Ni', 10.00, 4, 40.00);
 INSERT INTO Shopping_details (shopping, product, price_per_product, amount, total_price) VALUES (1, 'An005-Th', 10.00, 1, 10.00);
+INSERT INTO Shopping_details (shopping, product, price_per_product, amount, total_price) VALUES (1, 'Fa004-Tr', 10.00, 4, 40.00);
+INSERT INTO Shopping_details (shopping, product, price_per_product, amount, total_price) VALUES (1, 'Fa005-Ro', 10.00, 1, 10.00);

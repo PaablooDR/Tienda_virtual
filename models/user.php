@@ -73,9 +73,9 @@ class User extends BBDD{
             $email = $this->email;
             $name = $this->name;
             $surname = $this->surname;
+            $dni = $this->dni;
             $telephone = $this->telephone;
             $address = $this->address;
-            //$password = $this->password;
             $password = password_hash($this->password, PASSWORD_BCRYPT);
             $connection = BBDD::connect();
             $stmt = $connection->prepare("SELECT * FROM Client WHERE email = :email");
@@ -83,8 +83,8 @@ class User extends BBDD{
             $stmt->execute();
             $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
             if (count($resultado) == 0) {
-                $stmt = $connection->prepare("INSERT INTO Client (email, name, surname, telephone, address, password) VALUES (?, ?, ?, ?, ?, ?)");
-                $success = $stmt->execute([$email, $name, $surname, $telephone, $address, $password]);
+                $stmt = $connection->prepare("INSERT INTO Client (email, name, surname, telephone, address, password, dni) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                $success = $stmt->execute([$email, $name, $surname, $telephone, $address, $password, $dni]);
                 if ($success) {
                     return true;
                 } else {
@@ -113,6 +113,7 @@ class User extends BBDD{
                         'email' => $email,
                         'name' => $result['name'],
                         'surname' => $result['surname'],
+                        'dni' => $result['dni'],
                         'telephone' => $result['telephone'],
                         'address' => $result['address'],
                         'password' => $result['password']

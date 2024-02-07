@@ -42,10 +42,11 @@ class UserController {
         $email = $_POST["email"];
         $name = $_POST["name"];
         $surname = $_POST["surname"];
+        $dni = $_POST["dni"];
         $telephone = $_POST["telephone"];
         $address = $_POST["address"];
         $password = $_POST["password"];
-        $user = new User($email, $name, $surname, $telephone, $address, $password);
+        $user = new User($email, $name, $surname, $telephone, $address, $password, $dni);
         $usu = $user->checkSignUp();
         if($usu) {
             echo '<script>alert("Registrado con exito");</script>';
