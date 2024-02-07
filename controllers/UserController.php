@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once("models/user.php");
 
 class UserController {
@@ -33,7 +32,7 @@ class UserController {
 
     public function logout() {
         session_destroy();
-        echo '<meta http-equiv="refreshcontent="0;url=index.php?controller=Product&action=principal">';
+        echo '<meta http-equiv="refresh"content="0;url=index.php?controller=Product&action=principal">';
     }
 
     public function signup() {
