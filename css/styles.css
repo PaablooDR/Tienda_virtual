@@ -109,6 +109,7 @@ html {
   list-style: none;
   position: absolute;
   background-color: black;
+  z-index: 1;
 }
 #header #tamañoHeader ul .dropdown:hover .dropdown-content li {
   padding: 4%;
