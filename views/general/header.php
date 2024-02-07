@@ -15,8 +15,13 @@
             </li>
             <a href="index.php?controller=Product&action=plateart"><li>What's a PlateArt</li></a>
             <li><input type="text" placeholder="Search for a theme..."></li>
-            <a href="index.php?controller=User&action=login"><li><img src="sources/web/cart.png" alt="shopping cart"></li></a>
-            <a href="index.php?controller=User&action=login" aria-label="Navigate to login"><li><img src="sources/web/user.png" alt="user"></li></a>
+            <a href="index.php?controller=User&action=cart"><li><img src="sources/web/cart.png" alt="shopping cart"></li></a>
+            
+            <?php if(!$_SESSION) {?>
+                <a href="index.php?controller=User&action=login" aria-label="Navigate to login"><li><img src="sources/web/user.png" alt="user"></li></a>
+            <?php } else {?>
+                <a href="index.php?controller=Orders&action=profile" aria-label="Navigate to your profile"><li><img src="sources/web/user.png" alt="user"></li></a>
+            <?php } ?>
         </ul>
     </div>
 </div>

@@ -46,6 +46,11 @@ class OrdersController {
         require_once "views/general/header.php";
         require_once "views/general/cart/cart.php";
     }
+    
+    public function profile() {
+        require_once("views/general/header.php");
+        require_once("views/general/profile.php");
+    }
 }
 
 ?>

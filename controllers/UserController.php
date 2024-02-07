@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once("models/user.php");
 
 class UserController {
@@ -19,7 +20,8 @@ class UserController {
         $password = $_POST["password"];
         $user = User::checkLogin($email, $password);
         if($user != false) {
-            $_SESSION["user"] = $user;
+            $usu = new User($user['email'], $user['name'], $user['surname'], $user['telephone'], $user['address'], null, $user['dni']);
+            $_SESSION["user"] = $usu;
             echo '<meta http-equiv="refresh"content="0;url=index.php?controller=Product&action=principal">';
         } else {
             echo "<script>
@@ -31,7 +33,7 @@ class UserController {
 
     public function logout() {
         session_destroy();
-        echo '<meta http-equiv="refreshcontent="0;url=index.php?controller=User&action=login">';
+        echo '<meta http-equiv="refreshcontent="0;url=index.php?controller=Product&action=principal">';
     }
 
     public function signup() {
