@@ -19,8 +19,7 @@ class UserController {
         $password = $_POST["password"];
         $user = User::checkLogin($email, $password);
         if($user != false) {
-            $usu = new User($user['email'], $user['name'], $user['surname'], $user['telephone'], $user['address'], null, $user['dni']);
-            $_SESSION["user"] = $usu;
+            $_SESSION["user"] = $user;
             echo '<meta http-equiv="refresh"content="0;url=index.php?controller=Product&action=principal">';
         } else {
             echo "<script>

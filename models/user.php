@@ -115,8 +115,7 @@ class User extends BBDD{
                         'surname' => $result['surname'],
                         'dni' => $result['dni'],
                         'telephone' => $result['telephone'],
-                        'address' => $result['address'],
-                        'password' => $result['password']
+                        'address' => $result['address']
                     ];
                     return $data;
                 }
