@@ -134,8 +134,7 @@ html {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100%;
-  padding-bottom: 27vh;
+  height: 100vh;
 }
 #outstanding #carousel {
   width: 50%;
@@ -152,11 +151,11 @@ html {
 }
 #outstanding #outstandingProducts #outstandingList {
   width: 60%;
-  background-color: black;
+  background-color: #c7bfbf;
   padding: 2%;
   margin: 5% auto;
   overflow-y: auto;
-  height: 70%;
+  height: 63%;
   overflow-x: hidden;
   border-radius: 5px;
 }
@@ -744,4 +743,46 @@ html {
   font-size: 16px;
   z-index: 2;
   margin: 0;
+}
+
+#footer {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 10%;
+  background-color: black;
+  color: white;
+}
+#footer ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
+  align-items: center;
+}
+#footer ul #title {
+  font-size: 40px;
+  font-weight: 100;
+  letter-spacing: 40px;
+}
+#footer ul li {
+  list-style: none;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+}
+#footer ul li ul {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  max-width: 400px;
+  margin-top: 5%;
+  margin-left: -10%;
+}
+#footer ul li ul .icon {
+  height: 30px;
+  width: 30px;
+  border-radius: 7%;
+}
+#footer ul li ul #paypal {
+  height: 40px;
+  width: 100px;
+  border-radius: 7%;
 }/*# sourceMappingURL=styles.css.map */
