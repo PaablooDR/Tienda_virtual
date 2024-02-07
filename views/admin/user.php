@@ -2,7 +2,7 @@
 <?php
         require_once("views/admin/sidebar.php");
 ?>
-
+    <div id="invisibleSidebar"></div>
     <div id="adminContent">
         <h1 id="titleAdmin">Users</h1>
 

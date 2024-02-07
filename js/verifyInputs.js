@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!validateTelephone()) isValid = false;
         if (!validateAddress()) isValid = false;
         if (!validatePassword()) isValid = false;
+        if (!validateDni()) isValid = false;
 
         if (isValid) {
             signUpForm.submit();
@@ -80,6 +81,40 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             passwordInput.classList.remove('invalid');
             return true;
+        }
+    }
+
+    function validateDni() {
+        let dniInput = signUpForm.querySelector("input[name='dni']");
+        let dniInputValue = dniInput.value.trim();
+
+        if (dniInputValue.includes("-") || dniInputValue.includes("_") || dniInputValue.includes("/") || dniInputValue.includes(".") || dniInputValue.includes(":") || dniInputValue.includes(",") || dniInputValue.includes(";") || dniInputValue.includes("*") || dniInputValue.includes("?") || dniInputValue.includes("!")) {
+            dniInput.classList.add('invalid');
+            return false;
+        } else {
+            if(comprobationDni(dniInputValue)) {
+                dniInput.classList.remove('invalid');
+                return true;
+            } else {
+                dniInput.classList.add('invalid');
+                return false;
+            }
+            
+        }
+    }
+
+    function comprobationDni(dni) {
+        let letters = 'TRWAGMYFPDXBNJZSQVHLCKE';
+        let number = dni.substring(0, 8);
+        if (/^\d+$/.test(number)) {
+            let remainder = parseInt(number) % 23;
+            if (dni.charAt(8).toUpperCase() === letters.charAt(remainder)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
         }
     }
 });

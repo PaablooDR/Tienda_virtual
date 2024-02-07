@@ -23,6 +23,8 @@ html {
         color: white;
         width: 15%;
         font-size: large;
+        height: 100vh;
+        position: fixed;
         ul {
             list-style: none;
             flex-flow: column wrap;
@@ -37,6 +39,10 @@ html {
                 padding: 3%;
             }
         }
+    }
+
+    #invisibleSidebar {
+        width: 15%;
     }
     
     #adminContent {

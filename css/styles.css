@@ -22,6 +22,8 @@ html {
   color: white;
   width: 15%;
   font-size: large;
+  height: 100vh;
+  position: fixed;
 }
 #containerAdmin #sidebar ul {
   list-style: none;
@@ -36,6 +38,9 @@ html {
 }
 #containerAdmin #sidebar ul li {
   padding: 3%;
+}
+#containerAdmin #invisibleSidebar {
+  width: 15%;
 }
 #containerAdmin #adminContent {
   width: 85%;
