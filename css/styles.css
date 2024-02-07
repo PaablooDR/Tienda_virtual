@@ -134,8 +134,7 @@ html {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100%;
-  padding-bottom: 27vh;
+  height: 100vh;
 }
 #outstanding #carousel {
   width: 50%;
@@ -152,11 +151,11 @@ html {
 }
 #outstanding #outstandingProducts #outstandingList {
   width: 60%;
-  background-color: black;
+  background-color: #c7bfbf;
   padding: 2%;
   margin: 5% auto;
   overflow-y: auto;
-  height: 70%;
+  height: 63%;
   overflow-x: hidden;
   border-radius: 5px;
 }
