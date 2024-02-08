@@ -118,6 +118,33 @@ class Order extends BBDD {
         //Close connection
         $connect = null;
     }
+
+    public static function obtainMyOrders(){
+        $email = $_SESSION["user"]["email"];
+        $query = "
+            SELECT * 
+            FROM Shopping
+            WHERE client = :email;
+        ";
+        try {
+            // Preparar la consulta utilizando PDO.
+            $statement = BBDD::connect()->prepare($query);
+            $statement -> bindParam(':email', $email, PDO::PARAM_INT);
+            // Ejecutar la consulta.
+            $statement->execute();
+
+            // Obtener los resultados en un array.
+            $myOrders = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+            // Retornar los resultados.
+            return $myOrders;
+
+        } catch (PDOException $e) {
+            // Manejar errores en caso de fallo en la consulta.
+            // Puedes personalizar este bloque según tus necesidades.
+            return null;
+        }
+    }
 }
 
 ?>

@@ -47,7 +47,9 @@ class OrdersController {
     }
     
     public function profile() {
+        $categories = category::obtain();
         require_once("views/general/header.php");
+        $myOrders = Order::obtainMyOrders(); 
         require_once("views/general/profile.php");
     }
 }
