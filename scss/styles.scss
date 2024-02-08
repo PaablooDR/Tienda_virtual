@@ -780,11 +780,11 @@ html {
             margin-bottom: 20px;
             width: 200px;
             height: 200px;
-            border-radius: 2%;
+            border-radius: 10px;
             .productImage {
                 width: 100%;
                 height: 100%;
-                border-radius: 2%;
+                border-radius: 10px;
                 object-fit: cover;
             }
             &::before {
@@ -849,6 +849,26 @@ html {
                     width: 100px;
                     border-radius: 7%;
                 }
+            }
+        }
+    }
+}
+
+#coming_soon_list {
+    .soon {
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        height: 185px;
+        width: 375px;
+        margin-bottom: 10px;
+        display: flex;
+        div{
+            margin-right: 10px;
+            display: block;
+            img{
+                border-radius: 10px;
+                height: 100%;
+                width: 140px;
             }
         }
     }
