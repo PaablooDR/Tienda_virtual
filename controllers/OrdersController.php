@@ -2,6 +2,7 @@
 require_once "models/order.php";
 require_once "models/company.php";
 require_once "models/user.php";
+require_once "models/category.php";
 
 class OrdersController {
 
