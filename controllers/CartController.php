@@ -23,10 +23,8 @@ class cartController{
     }
 
     public function cart(){
-        echo "<script src='./js/sendCart.js'></script>";
         require_once "views/general/header.php";
         require_once "views/general/cart/cart.php";
-        $this->obtainCartStorage();
     }
 }
 ?>

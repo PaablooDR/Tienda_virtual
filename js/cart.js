@@ -9,6 +9,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Conseguir el ID del producto
     const productId = urlParams.get('productCode');
 
+    const productImg = './sources/products/' + productId + '.jpg';
+
+    const productNameID = document.getElementById('productName');
+    const productName = productNameID.innerText;
     // Funcion para añadir productos al carrito (en localsotrage)
     function addToCart() {
         // Promesa para añadir al carrito, si da reject, es porque llega al maximo de stock
@@ -41,7 +45,9 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 // Se añade el nuevo producto con su informacion al local storage
                 existingCart.push({
+                    productName,
                     productId,
+                    productImg,
                     productAmount,
                     productPrice,
                     totalPrice

@@ -9,7 +9,7 @@
                 <img id="productImage" src="<?php echo $productInfo['photo'];?>" alt="<?php echo $productInfo['description'];?>">
                 <div id="productDetails">
                     <div id="productInfo">
-                        <h2><?php echo $productInfo['name'];?></h2>
+                        <h2 id="productName"><?php echo $productInfo['name'];?></h2>
                         <p><?php echo $productInfo['description'];?></p>
                         <p id="productPrice"><?php echo $productInfo['price'];?> €</p>
                         <div id="productAmount">
