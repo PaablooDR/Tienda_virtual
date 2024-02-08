@@ -31,7 +31,7 @@ class UserController {
 
     public function logout() {
         session_destroy();
-        echo '<meta http-equiv="refreshcontent="0;url=index.php?controller=User&action=login">';
+        echo '<meta http-equiv="refresh"content="0;url=index.php?controller=Product&action=principal">';
     }
 
     public function signup() {

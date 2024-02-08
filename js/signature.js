@@ -3,8 +3,10 @@ document.addEventListener('DOMContentLoaded', function () {
     var context = canvas.getContext('2d');
     var save = document.getElementById('saveSignature');
     var clear = document.getElementById('cleanSignature');
+    var eraserPencil = document.getElementById('eraserPencil');
 
     var drawing = false;
+    var isEraserActive = false;
 
     canvas.addEventListener('mousedown', function (e) {
         drawing = true;
@@ -21,7 +23,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function draw(e) {
-        context.lineWidth = 2;
+        if(isEraserActive==false){
+            context.lineWidth = 2;
+        }else{
+            context.lineWidth = 30;
+        }
         context.lineCap = 'round';
         context.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
         context.stroke();
@@ -50,6 +56,17 @@ document.addEventListener('DOMContentLoaded', function () {
         context.clearRect(0, 0, canvas.width, canvas.height);
     });
 
+    eraserPencil.addEventListener('click', function() {
+        isEraserActive = !isEraserActive;
+        if (isEraserActive) {
+            context.strokeStyle = '#e9ecef';
+            eraserPencil.textContent = "Pencil";
+        } else {
+            context.strokeStyle = '#000000';
+            eraserPencil.textContent = "Eraser";
+        }
+    });
+    
     clear.addEventListener('click', function() {
         context.clearRect(0, 0, canvas.width, canvas.height);
     });

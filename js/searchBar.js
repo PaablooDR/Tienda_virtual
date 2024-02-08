@@ -20,7 +20,7 @@ function busquedaCategory(searchValue) {
   });
 }
   
-if (nombreDeArchivo == 'index.php?controller=Category&action=categories') {
+if (nombreDeArchivo == 'index.php?controller=Category&action=categoriesAdmin') {
   $(document).ready(function () {
     $('#search').keyup(function () {
       var searchValue = $(this).val();
@@ -53,7 +53,7 @@ function busquedaProduct(searchValue) {
   });
 }
   
-if (nombreDeArchivo == 'index.php?controller=Product&action=products') {
+if (nombreDeArchivo == 'index.php?controller=Product&action=productsAdmin') {
   $(document).ready(function () {
     $('#search').keyup(function () {
       var searchValue = $(this).val();
