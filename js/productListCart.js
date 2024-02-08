@@ -19,20 +19,14 @@ function createCartContainer(){
         productImage.alt = product.productName;
         productImage.classList.add('productImg');
 
-        var deleteButton = createElement('button');
-        deleteButton.textContent = 'Delete';
-        deleteButton.addEventListener('click', function() {
-            removeFromCart(product.productId);
-            
+        var deleteButton = createButton('Delete', function(){
+            deleteProduct(product.productId);
+
             createCartContainer();
         });
 
-        var increaseButton = document.createElement('button');
-        increaseButton.textContent = '+';
-        increaseButton.addEventListener('click', function(){
-            updateProductAmount(product.productId,Math.max(0, product.productAmount + 1));
-
-            createCartContainer();
+        var increaseButton = createButton('+', function(){
+            updateProductAmount(product.productId,product.productAmount + 1);
         })
 
         var decreaseButton = document.createElement('button');
@@ -50,12 +44,20 @@ function createCartContainer(){
         productDiv.appendChild(decreaseButton);
         cartInfo.appendChild(productDiv);
     });
+
     function createButton(text,clickHandler) {
         var button = document.createElement('button');
         button.textContent = text;
         button.addEventListener('click', clickHandler);
         return button;
     }
+
+    function updateProductView(productId) {
+        var productAmountElement = document.querySelector(`#cartInfo [data-product-id="${productId}"] .productAmount`);
+        var productAmount = parseInt(productAmountElement.textContent);
+        productAmountElement.textContent = productAmount + 1;
+    }
+
     function deleteProduct(productId){
         var productsLocalStorage = JSON.parse(localStorage.getItem('cart')) || [];
         var updatedProducts = productsLocalStorage.filter(function(product){
