@@ -612,6 +612,9 @@ html {
   padding-top: 10px;
   padding-bottom: 10px;
 }
+#hottestPicks a {
+  color: black;
+}
 #hottestPicks .productContainer {
   width: 60%;
   margin: 0 auto;
