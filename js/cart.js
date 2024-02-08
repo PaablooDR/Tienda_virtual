@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 // Se añade el nuevo producto con su informacion al local storage
                 existingCart.push({
+                    maxStock,
                     productName,
                     productId,
                     productImg,
