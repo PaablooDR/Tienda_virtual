@@ -36,7 +36,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (newProductAmount <= maxStock) {
                     //Si no es mas grande que el stock maximo actualiza la informacion del carrito y la promesa se resuelve
                     existingCart[existingProductIndex].productAmount = newProductAmount;
-                    existingCart[existingProductIndex].totalPrice += productAmount * productPrice;
+                    existingCart[existingProductIndex].totalPrice += parseFloat((productAmount * productPrice).toFixed(2));
+                    existingCart[existingProductIndex].totalPrice = parseFloat(existingCart[existingProductIndex].totalPrice.toFixed(2));
                     resolve(existingCart);
                 } else {
                     // La promesa rejectea porque la cantidad total es mas grande que el stock maximo

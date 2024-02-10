@@ -888,3 +888,22 @@ html {
         }
     }
 }
+@mixin fade-out-slide-up($duration: 1.2s) {
+    animation: fadeOutSlideUp $duration ease-out;
+}
+
+@keyframes fadeOutSlideUp {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+}
+
+// Aplica el mixin a la clase deseada
+.fade-out-slide-up {
+    @include fade-out-slide-up;
+}

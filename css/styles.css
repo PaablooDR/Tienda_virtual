@@ -813,4 +813,18 @@ html {
 #cartContainer #order-container #cartInfo .product .productImg {
   height: 400px;
   width: 270px;
+}
+
+@keyframes fadeOutSlideUp {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+}
+.fade-out-slide-up {
+  animation: fadeOutSlideUp 1.2s ease-out;
 }/*# sourceMappingURL=styles.css.map */
