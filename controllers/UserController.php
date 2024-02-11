@@ -19,8 +19,10 @@ class UserController {
         $password = $_POST["password"];
         $user = User::checkLogin($email, $password);
         if($user != false) {
+            ?>
+            <script src='js/checkCart.js'></script>
+            <?php
             $_SESSION["user"] = $user;
-            echo '<meta http-equiv="refresh"content="0;url=index.php?controller=Product&action=principal">';
         } else {
             echo "<script>
                 alert('Email or password are incorrect');
