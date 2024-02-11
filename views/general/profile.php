@@ -1,6 +1,6 @@
 <div id="profile">
-
-    <h1>información personal</h1>
+    
+    <h1>Personal information</h1>
     <?php
         echo "Email: ".$_SESSION['user']['email']." "; 
         echo "Name: ".$_SESSION['user']['name']." ";
@@ -11,20 +11,29 @@
 
     <?php
         foreach ($myOrders as $Orders) {
+            $id = $Orders['id_shopping'];
             echo "<div>";
-            echo "<div>Cliente: " . $Orders['client'] . "</div>";
-            echo "<div>Fecha de compra: " . $Orders['shopping_date'] . "</div>";
-            echo "<div>Estado: " . $Orders['status'] . "</div>";
-            echo "<div>Precio total: " . $Orders['total_price'] . "</div>";
-            echo "<div> <button id='btn-open-popup'>Ver pedido</button></div>";
+            echo "<div>Code: " . $Orders['id_shopping'] . "</div>";
+            echo "<div>Shopping date: " . $Orders['shopping_date'] . "</div>";
+            echo "<div>Status: " . $Orders['status'] . "</div>";
+            echo "<div>Total price: " . $Orders['total_price'] . "</div>";
+            echo "<div> <button id='btn-open-popup'>Show order</button></div>";
+            echo "<div> <button id='btn-open-popup'>Download bill</button></div>";
             echo "</div>";
+            
+            echo "<dialog id='popup'>";
+                    foreach ($myOrdersDetailsArray[$id] as $orderDetail) {
+                        echo "<div>Product: ".$orderDetail['product']."</div>";
+                        echo "<div>Amount: ".$orderDetail['amount']."</div>";
+                        echo "<div>Price: ".$orderDetail['total_price']."€</div>";
+                       
+                    }
+            echo "<button id='btn-close-popup'>Close</button>";
+            echo "</dialog>";
         }
         
     ?>
-    <dialog id="popup">
-        <h1>Funciona</h1>
-        <button id='btn-close-popup'>Close</button>
-    </dialog>
+
 
 
     <a href="index.php?controller=User&action=logout"><button>Log out</button></a>

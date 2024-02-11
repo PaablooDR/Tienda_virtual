@@ -65,6 +65,7 @@ class OrdersController {
         $categories = category::obtain();
         require_once("views/general/header.php");
         $myOrders = Order::obtainMyOrders(); 
+        $myOrdersDetailsArray = Order::obtainMyOrdersDetails(); 
         require_once("views/general/profile.php");
     }
 }
