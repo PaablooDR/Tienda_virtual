@@ -810,9 +810,32 @@ html {
   width: 140px;
 }
 
-#cartContainer #order-container #cartInfo .product .productImg {
-  height: 400px;
-  width: 270px;
+#cartInfo {
+  margin-left: 30px;
+}
+#cartInfo .product {
+  margin: 30px;
+  width: 250px;
+  padding-right: 400px;
+}
+#cartInfo .product .productImg {
+  max-width: 170px;
+  max-height: 300px;
+  margin-right: 10px;
+}
+#cartInfo .product .product-info p {
+  margin: 0;
+  margin-right: 10px;
+}
+#cartInfo .product .quantity-controls {
+  margin-top: 10px;
+}
+#cartInfo .product .quantity-controls button {
+  margin: 0 5px;
+}
+#cartInfo .product .quantity-controls input {
+  width: 30px;
+  text-align: center;
 }
 
 @keyframes fadeOutSlideUp {

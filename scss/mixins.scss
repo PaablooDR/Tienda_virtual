@@ -1,0 +1,3 @@
+@mixin fade-out-slide-up($duration: 1.2s) {
+    animation: fadeOutSlideUp $duration ease-out;
+}

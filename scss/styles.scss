@@ -876,22 +876,43 @@ html {
         }
     }
 }
-#cartContainer{
-    #order-container{
-        #cartInfo{
-            .product{
-                .productImg{
-                    height: 400px;
-                    width:270px;
-                }
+#cartInfo {
+    margin-left:30px;
+    .product {
+        margin:30px;
+        width: 250px;
+        padding-right:400px;
+        .productImg {
+            max-width: 170px; // Ajustado
+            max-height: 300px; // Ajustado
+            margin-right: 10px;
+        }
+        .product-info {
+            
+  
+            p {
+                margin: 0;
+                margin-right: 10px;
+            }
+        }
+  
+        .quantity-controls {
+            margin-top: 10px;
+  
+            button {
+                margin: 0 5px;
+            }
+  
+            input {
+                width: 30px;
+                text-align: center;
             }
         }
     }
 }
-@mixin fade-out-slide-up($duration: 1.2s) {
-    animation: fadeOutSlideUp $duration ease-out;
-}
+  
 
+      
 @keyframes fadeOutSlideUp {
     0% {
         opacity: 1;

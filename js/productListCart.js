@@ -14,8 +14,7 @@ function createCartContainer(){
         productsLocalStorage.forEach(function(product) {
             var productDiv = document.createElement('div');
             productDiv.classList.add('product');
-            productDiv.id = product.productId;
-
+            productDiv.id = 'container' + product.productId;
             productDiv.innerHTML = `    
                 <img src='${product.productImg}' class='productImg' alt='${product.productName}' >
                 <p>Product: ${product.productName}</p>
@@ -23,7 +22,7 @@ function createCartContainer(){
                 <p>Total price: <span id='totalPrice${product.productId}'>${product.totalPrice}</span></p>
                 <div class="quantity-controls">
                     <button class="decrease-btn" data-product-id="${product.productId}">-</button>
-                    <input type="number" id='${product.productId}' value='${product.productAmount}' min='1' max='${product.maxStock}'/>
+                    <input type="text" id='${product.productId}' value='${product.productAmount}' min='1' max='${product.maxStock}'/>
                     <button class="increase-btn" data-product-id="${product.productId}">+</button>
                 </div>
             `;
@@ -59,6 +58,7 @@ function createCartContainer(){
         document.querySelectorAll('.quantity-controls input').forEach(function(input) {
             input.addEventListener('input', function() {
                 handleQuantityChange(input.dataset.productId, 0); // 0 para indicar que no hay cambio, solo se valida y ajusta el valor
+                this.value = this.value.replace(/[^\d]/g, ''); // Elimina caracteres no numéricos
             });
             input.addEventListener('blur', function() {
                 handleBlur(input);
@@ -85,7 +85,7 @@ function deleteProduct(productId){
 function deleteProductAndUpdateUI(productId) {
     deleteProduct(productId)
         .then(function() {
-            var productDiv = document.getElementById(productId);
+            var productDiv = document.getElementById('container' + productId);
             if (productDiv) {
                 // Establece la propiedad display para ocultar el elemento
                 productDiv.style.display = 'none';
@@ -122,7 +122,7 @@ function handleQuantityChange(productId, change) {
 
     if (product) { // Asegúrate de que el producto exista
         var currentAmount = parseInt(product.productAmount);
-        var input = document.getElementById(productId);
+        var input = document.getElementById(`${product.productId}`);
 
         if (!isNaN(currentAmount)) { // Asegúrate de que currentAmount sea un número
             var newAmount = currentAmount + change;
@@ -176,22 +176,19 @@ function handleBlur(input) {
 
     if (product) {
         var currentAmount = parseInt(input.value);
-        if (isNaN(currentAmount) || currentAmount < 1) {
-            // Si el valor no es un número o es menor que 1, establecer en 1
-            input.value = 1;
-            currentAmount = 1;
-        } else if (currentAmount > product.maxStock) {
-            // Si el valor es mayor que el stock máximo, establecer en el máximo stock
-            input.value = product.maxStock;
-            currentAmount = product.maxStock;
-        }
 
-        // Actualizar el producto solo si la cantidad ha cambiado
-        if (currentAmount !== product.productAmount) {
-            product.productAmount = currentAmount;
-            updateProductInLocalStorage(product);
-            updateButtonState(product);
-            updateTotalPrice(product);
+        // Validaciones para asegurarse de que el valor sea un número y está en el rango correcto
+        if (!isNaN(currentAmount) && currentAmount >= 1 && currentAmount <= product.maxStock) {
+            // Actualizar el producto solo si la cantidad ha cambiado
+            if (currentAmount !== product.productAmount) {
+                product.productAmount = currentAmount;
+                updateProductInLocalStorage(product);
+                updateButtonState(product);
+                updateTotalPrice(product);
+            }
+        } else {
+            // Restaurar el valor anterior si no es válido o es 0
+            input.value = product.productAmount || 1;
         }
     }
 }
