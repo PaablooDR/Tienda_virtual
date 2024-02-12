@@ -928,3 +928,12 @@ html {
 .fade-out-slide-up {
     @include fade-out-slide-up;
 }
+
+#profile {
+    .orders-div{
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        background-color: #F5F5F5;
+        border: 1px solid black;
+    }
+}
