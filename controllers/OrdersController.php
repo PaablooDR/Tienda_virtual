@@ -44,6 +44,20 @@ class OrdersController {
     }
     public function cart(){
         require_once "views/general/header.php";
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Recoger la información del carrito enviado desde el cliente
+            $cart = $_POST['cart'];
+
+            // Procesar el carrito (por ejemplo, insertarlo en la base de datos)
+            // Aquí puedes escribir tu código para manejar la inserción en la base de datos
+            // Ejemplo:
+            //$this->insertarCarritoEnBaseDeDatos($carrito);
+
+            $_SESSION['cart'] = $cart;
+        } else {
+            // Manejar la solicitud de otra manera (opcional)
+            echo 'Método no permitido';
+        } 
         require_once "views/general/cart/cart.php";
     }
     
@@ -51,6 +65,7 @@ class OrdersController {
         $categories = category::obtain();
         require_once("views/general/header.php");
         $myOrders = Order::obtainMyOrders(); 
+        $myOrdersDetailsArray = Order::obtainMyOrdersDetails(); 
         require_once("views/general/profile.php");
     }
 }

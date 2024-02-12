@@ -145,6 +145,43 @@ class Order extends BBDD {
             return null;
         }
     }
+    public static function obtainMyOrdersDetails(){
+
+        $myOrdersDetailsArray = array();
+
+        $myOrders = self::obtainMyOrders();
+
+        foreach ($myOrders as $order) {
+            $id = $order['id_shopping'];
+
+            $orderDetails = array();
+
+            $query = "
+                SELECT * 
+                FROM shopping_details
+                WHERE shopping = :id;
+            ";
+            try {
+                // Preparar la consulta utilizando PDO.
+                $statement = BBDD::connect()->prepare($query);
+                $statement -> bindParam(':id', $id, PDO::PARAM_INT);
+                // Ejecutar la consulta.
+                $statement->execute();
+
+                // Obtener los resultados en un array.
+                $orderDetails = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+
+                $myOrdersDetailsArray[$id] = $orderDetails;
+
+            } catch (PDOException $e) {
+                // Manejar errores en caso de fallo en la consulta.
+                // Puedes personalizar este bloque según tus necesidades.
+                return null;
+            }
+        }
+        return $myOrdersDetailsArray;
+    }
 }
 
 ?>
