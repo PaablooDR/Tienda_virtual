@@ -42,24 +42,22 @@ class OrdersController {
         $client = new User($dataOrder['email'], $dataOrder['name'], $dataOrder['surname'], $dataOrder['telephone'], $dataOrder['address'], null, $dataOrder['dni']);
         require_once("views/admin/ticket.php");
     }
-    public function cart(){
-        require_once "views/general/header.php";
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Recoger la información del carrito enviado desde el cliente
-            $cart = $_POST['cart'];
 
-            // Procesar el carrito (por ejemplo, insertarlo en la base de datos)
-            // Aquí puedes escribir tu código para manejar la inserción en la base de datos
-            // Ejemplo:
-            //$this->insertarCarritoEnBaseDeDatos($carrito);
+    // public function cart(){
+    //     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    //         // Recoger la información del carrito enviado desde el cliente
+    //         $cart = $_POST['cart'];
+    //         $totalPrice = $_POST['totalPrice'];
 
-            $_SESSION['cart'] = $cart;
-        } else {
-            // Manejar la solicitud de otra manera (opcional)
-            echo 'Método no permitido';
-        } 
-        require_once "views/general/cart/cart.php";
-    }
+            
+    //         $_SESSION['cart'] = $cart;
+    //         $_SESSION['totalPrice'] = $totalPrice;
+    //     } else {
+    //         // Manejar la solicitud de otra manera (opcional)
+    //         echo 'Método no permitido';
+    //     }
+    //     //echo '<meta http-equiv="refresh"content="0;url=index.php?controller=Product&action=principal">';
+    // }
     
     public function profile() {
         $categories = category::obtain();

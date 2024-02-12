@@ -1,5 +1,6 @@
 <?php
 require_once("models/user.php");
+require_once("models/order.php");
 
 class UserController {
     //Menu
@@ -19,10 +20,19 @@ class UserController {
         $password = $_POST["password"];
         $user = User::checkLogin($email, $password);
         if($user != false) {
-            ?>
-            <script src='js/checkCart.js'></script>
-            <?php
+            //echo "<script src='js/checkCart.js'></script>";
             $_SESSION["user"] = $user;
+            //if (isset($_SESSION['cart']) && isset($_SESSION['totalPrice'])) {
+            //     $existingCart = Order::checkExistantCart($_SESSION['user']['email']);
+            //     if($existingCart == false) {
+            //         $newId = Order::insertNewOrder($_SESSION['user']['email'], $_POST['totalPrice']);
+            //         Order::insertShoppingDetails($newId, $_POST['cart']);
+            //     } else {
+            //         Order::updateTotalPrice($_SESSION['user']['email'], $_POST['totalPrice']);
+            //         Order::insertShoppingDetails($existingCart, $_POST['cart']);
+            //     }
+            //}
+            echo '<meta http-equiv="refresh"content="0;url=index.php?controller=Product&action=principal">';
         } else {
             echo "<script>
                 alert('Email or password are incorrect');
