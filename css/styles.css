@@ -850,4 +850,11 @@ html {
 }
 .fade-out-slide-up {
   animation: fadeOutSlideUp 1.2s ease-out;
+}
+
+#profile .orders-div {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  background-color: #F5F5F5;
+  border: 1px solid black;
 }/*# sourceMappingURL=styles.css.map */

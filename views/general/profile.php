@@ -12,7 +12,7 @@
     <?php
         foreach ($myOrders as $Orders) {
             $id = $Orders['id_shopping'];
-            echo "<div>";
+            echo "<div class='orders-div'>";
             echo "<div>Code: " . $Orders['id_shopping'] . "</div>";
             echo "<div>Shopping date: " . $Orders['shopping_date'] . "</div>";
             echo "<div>Status: " . $Orders['status'] . "</div>";
