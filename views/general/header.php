@@ -16,7 +16,7 @@
             <a href="index.php?controller=Product&action=plateart"><li>What's a PlateArt</li></a>
             <li>
                 <input type="text" placeholder="Search for a theme..." id="search">
-                <div id="bodyList"></div>
+                <div class="searchTheme" id="bodyList"></div>
             </li>
             <a href="index.php?controller=Cart&action=cart"><li><img src="sources/web/cart.png" alt="shopping cart"></li></a>
             <?php if(!$_SESSION) {?>

@@ -209,7 +209,7 @@ class Product extends BBDD{
     public static function search2($keyword) {
         try {
             $connect = BBDD::connect();
-            $query = "SELECT code, name FROM Product WHERE LOWER(name) LIKE LOWER(:keyword)";
+            $query = "SELECT code, name FROM Product WHERE LOWER(name) LIKE LOWER(:keyword) LIMIT 10";
             $statement = $connect->prepare($query);
             $statement->bindValue(':keyword', '%' . $keyword . '%', PDO::PARAM_STR);
             $statement->execute();

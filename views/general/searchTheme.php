@@ -4,7 +4,7 @@
     }else{
         foreach ($products as $product) { 
 ?>
-            <a href="index.php?controller=Product&action=buyProduct&productCode=<?php echo $product['code']; ?>"><?php echo $product['name']; ?></a>
+            <a href="index.php?controller=Product&action=buyProduct&productCode=<?php echo $product['code']; ?>"><p><?php echo $product['name']; ?></p></a>
 <?php 
         }
     } 
