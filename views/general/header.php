@@ -14,7 +14,10 @@
                 </ul>
             </li>
             <a href="index.php?controller=Product&action=plateart"><li>What's a PlateArt</li></a>
-            <li><input type="text" placeholder="Search for a theme..."></li>
+            <li>
+                <input type="text" placeholder="Search for a theme..." id="search">
+                <div id="bodyList"></div>
+            </li>
             <a href="index.php?controller=Cart&action=cart"><li><img src="sources/web/cart.png" alt="shopping cart"></li></a>
             <?php if(!$_SESSION) {?>
                 <a href="index.php?controller=User&action=login" aria-label="Navigate to login"><li><img src="sources/web/user.png" alt="user"></li></a>
@@ -24,3 +27,5 @@
         </ul>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="js/searchBar.js"></script>

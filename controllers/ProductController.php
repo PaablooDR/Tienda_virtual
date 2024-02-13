@@ -19,10 +19,20 @@ class ProductController {
             // Render the view with the results of the search
             require_once("views/admin/searchProduct.php");
         }
-    }   
+    } 
+    
+    public function search2() {
+        if (isset($_POST['search2'])) {
+            $searchValue = $_POST['search2'];
+            $products = Product::search2($searchValue);
+            // Render the view with the results of the search
+            require_once("views/general/searchTheme.php");
+        }
+    }
 
     //Single category
     public function singleCategory() {
+        $categories = category::obtain();
         require_once("views/general/header.php");
         $code = $_GET["id"];
         $products = Product::specificCategory($code);
