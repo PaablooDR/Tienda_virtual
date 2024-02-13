@@ -930,10 +930,32 @@ html {
 }
 
 #profile {
-    .orders-div{
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        background-color: #F5F5F5;
-        border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    #profile-div{
+        width: 90%;
+        .user-info{
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            padding-bottom: 40px;
+
+        }
+        .orders-div{
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            background-color: #F5F5F5;
+            border: 1px solid black;
+        }
+        #popup{
+            width: 30%;
+        }
+        #popup::backdrop{
+            background-color: rgba(0, 0, 0, 0.55);
+        }
+        #popup-div{
+            display: grid;
+            grid-template-columns: 40% 40% 20%;
+        }
+            
     }
 }
