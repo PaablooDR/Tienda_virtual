@@ -182,6 +182,70 @@ class Order extends BBDD {
         }
         return $myOrdersDetailsArray;
     }
+    
+    // public static function checkExistantCart($client) {
+    //     try {
+    //         $connect = BBDD::connect();
+    //         $stmt = $connect->prepare("SELECT * FROM Shopping WHERE client=:client AND status='cart'");
+    //         $stmt->bindParam(':client', $client, PDO::PARAM_INT);
+    //         $stmt->execute();
+    //         $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    //         if ($result) {
+    //             return $result['id_shopping'];
+    //         } else {
+    //             return false;
+    //         }
+    //     } catch (PDOException $e) {
+    //         echo "Error of connexion: " . $e->getMessage();
+    //     }
+    //     //Close connection
+    //     $connect = null;
+    // }
+
+    // public static function updateTotalPrice($user, $morePrice) {
+    //     try {
+    //         $connect = BBDD::connect();
+    //         $stmt = $connect->prepare("UPDATE Shopping SET total_price=total_price+:more WHERE status='cart' AND client=:user");
+    //         $stmt->bindParam(':more', $morePrice, PDO::PARAM_STR);
+    //         $stmt->bindParam(':user', $user, PDO::PARAM_STR);
+    //         $stmt->execute();
+    //     } catch (PDOException $e) {
+    //         echo "Error of connexion: " . $e->getMessage();
+    //     }
+    //     //Close connection
+    //     $connect = null;
+    // }
+
+    // public static function insertNewOrder($user, $totalPrice) {
+    //     try {
+    //         $connect = BBDD::connect();
+    //         $stmt = $connect->prepare("INSERT INTO Shopping (client, shopping_date, status, total_price) VALUES (?, NOW(), 'cart', ?)");
+    //         $success = $stmt->execute([$user, $totalPrice]);
+
+    //         $id_shopping = $connect->lastInsertId();
+
+    //         return $id_shopping;
+    //     } catch (PDOException $e) {
+    //         echo "Error of connexion: " . $e->getMessage();
+    //     }
+    //     //Close connection
+    //     $connect = null;
+    // }
+
+    // public static function insertShoppingDetails($id_shopping, $cart) {
+    //     try {
+    //         foreach($cart as $detail) { 
+    //             $connect = BBDD::connect();
+    //             $stmt = $connect->prepare("INSERT INTO shopping_details (shopping, product, price_per_product, amount, total_price) VALUES (?, ?, ?, ?, ?)");
+    //             $success = $stmt->execute([$id_shopping, $detail['productId'], $detail['productAmount'], $detail['totalPrice']]);
+    //         }
+    //     } catch (PDOException $e) {
+    //         echo "Error of connexion: " . $e->getMessage();
+    //     }
+    //     //Close connection
+    //     $connect = null;
+    // }
 }
 
 ?>

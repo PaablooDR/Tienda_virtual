@@ -943,4 +943,44 @@ html {
 }
 .fade-out-slide-up {
   animation: fadeOutSlideUp 1.2s ease-out;
+}
+
+#profile {
+  display: flex;
+  justify-content: center;
+}
+#profile #profile-div {
+  width: 90%;
+}
+#profile #profile-div .user-info {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding-bottom: 40px;
+}
+#profile #profile-div .orders-div {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  background-color: #F5F5F5;
+  border: 1px solid black;
+}
+#profile #profile-div #popup {
+  width: 30%;
+}
+#profile #profile-div #popup::backdrop {
+  background-color: rgba(0, 0, 0, 0.55);
+}
+#profile #profile-div #popup-div {
+  display: grid;
+  grid-template-columns: 40% 40% 20%;
+}
+#profile #profile-div #btn-close-popup {
+  margin-top: 5%;
+}
+
+.searchTheme {
+  display: block;
+  position: absolute;
+  background-color: black;
+  z-index: 1;
+  width: 14%;
 }/*# sourceMappingURL=styles.css.map */

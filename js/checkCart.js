@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () { 
-    async function sentCartToServer(cart) {
+    async function sentCartToServer(cart, totalPrice) {
         return new Promise(function(resolve, reject) {
             let xhr = new XMLHttpRequest();
             xhr.open('POST', 'index.php?controller=Orders&action=cart', true);
@@ -15,27 +15,33 @@ document.addEventListener("DOMContentLoaded", function () {
             xhr.onerror = function() {
                 reject('Connection error');
             };
-            xhr.send('cart=' + encodeURIComponent(cart));
+            // Send the cart and the total price to php
+            xhr.send('cart=' + encodeURIComponent(cart) + '&totalPrice=' + encodeURIComponent(totalPrice));
         });
     }
     
-    // Obtain the cart from de localStorage
+    // Obtain the cart and the total price from localStorage
     let cart = localStorage.getItem('cart');
+    let totalPrice = localStorage.getItem('totalPrice');
     console.log(cart);
+    console.log(totalPrice);
     
-    if (cart) {
+    if (cart && totalPrice) {
         (async function() {
             try {
-                await sentCartToServer(cart);
-                console.log('cart sent correctly');
-                // When the cart is shipped, the cart in localstroge is deleted
+                await sentCartToServer(cart, totalPrice);
+                console.log('Cart and toal price sent correctly');
+                console.log(cart);
+                console.log(totalPrice);
+                // When the cart and the total price are sent, both will be remove
                 localStorage.removeItem('cart');
-                window.location.href = 'index.php?controller=Product&action=principal';
+                localStorage.removeItem('totalPrice');
             } catch (error) {
                 console.error(error);
             }
         })();
     } else {
-        window.location.href = 'index.php?controller=Product&action=principal';
-    }  
+        // If some of the steps fail 
+        //window.location.href = 'index.php?controller=Product&action=principal';
+    }
 });
