@@ -876,15 +876,86 @@ html {
         }
     }
 }
-#cartContainer{
-    #order-container{
-        #cartInfo{
-            .product{
-                .productImg{
-                    height: 400px;
-                    width:270px;
-                }
+#cartInfo {
+    margin-left:30px;
+    .product {
+        margin:30px;
+        width: 250px;
+        padding-right:400px;
+        .productImg {
+            max-width: 170px; // Ajustado
+            max-height: 300px; // Ajustado
+            margin-right: 10px;
+        }
+        .product-info {
+            
+  
+            p {
+                margin: 0;
+                margin-right: 10px;
             }
         }
+  
+        .quantity-controls {
+            margin-top: 10px;
+  
+            button {
+                margin: 0 5px;
+            }
+  
+            input {
+                width: 30px;
+                text-align: center;
+            }
+        }
+    }
+}
+  
+
+      
+@keyframes fadeOutSlideUp {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+}
+
+// Aplica el mixin a la clase deseada
+.fade-out-slide-up {
+    @include fade-out-slide-up;
+}
+
+#profile {
+    display: flex;
+    justify-content: center;
+    #profile-div{
+        width: 90%;
+        .user-info{
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            padding-bottom: 40px;
+
+        }
+        .orders-div{
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            background-color: #F5F5F5;
+            border: 1px solid black;
+        }
+        #popup{
+            width: 30%;
+        }
+        #popup::backdrop{
+            background-color: rgba(0, 0, 0, 0.55);
+        }
+        #popup-div{
+            display: grid;
+            grid-template-columns: 40% 40% 20%;
+        }
+            
     }
 }
