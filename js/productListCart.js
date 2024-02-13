@@ -2,6 +2,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Esta función se ejecutará cuando la página esté completamente cargada
     createCartContainer();
+    updateTotalPriceAllProducts();
 });
 function createCartContainer(){
     var productsLocalStorage = JSON.parse(localStorage.getItem('cart')) || [];
@@ -13,22 +14,28 @@ function createCartContainer(){
     }else{
         productsLocalStorage.forEach(function(product) {
             var productDiv = document.createElement('div');
-            productDiv.classList.add('product');
+            productDiv.classList.add('product-container');
             productDiv.id = 'container' + product.productId;
             productDiv.innerHTML = `    
                 <img src='${product.productImg}' class='productImg' alt='${product.productName}' >
-                <p>Product: ${product.productName}</p>
-                <p>Price: ${product.productPrice}</p>
-                <p>Total price: <span id='totalPrice${product.productId}'>${product.totalPrice}</span></p>
-                <div class="quantity-controls">
-                    <button class="decrease-btn" data-product-id="${product.productId}">-</button>
-                    <input type="text" id='${product.productId}' value='${product.productAmount}' min='1' max='${product.maxStock}'/>
-                    <button class="increase-btn" data-product-id="${product.productId}">+</button>
+
+                <div class="product-details">
+                    <p class="product-name">${product.productName}</p>
+                    <p class="product-price">${product.productPrice} $</p>
+                    
+                    <div class="quantity-controls">
+                        <button class="decrease-btn" data-product-id="${product.productId}">-</button>
+                        <input type="text" id='${product.productId}' value='${product.productAmount}' min='1' max='${product.maxStock}'/>
+                        <button class="increase-btn" data-product-id="${product.productId}">+</button>
+                    </div>
+
+                    <p class="total-price">Total price: <span id='totalPrice${product.productId}'>${product.totalPrice}</span> $</p>
                 </div>
+
+                <button class="delete-btn" data-product-id="${product.productId}">X</button>
             `;
 
-            var deleteButton = document.createElement('button');
-            deleteButton.innerText = "x";
+            var deleteButton = productDiv.querySelector('.delete-btn');
             deleteButton.addEventListener('click', function(){
                 productDiv.classList.add('fade-out-slide-up');
                 // Espera a que termine la animación antes de eliminar el elemento
@@ -37,7 +44,6 @@ function createCartContainer(){
                 }, 1000);
             });
 
-            productDiv.appendChild(deleteButton);
             cartInfo.appendChild(productDiv);
             updateButtonState(product);
         });
@@ -66,6 +72,7 @@ function createCartContainer(){
             input.addEventListener('keydown', function(event) {
                 if (event.key === 'Enter') {
                     handleBlur(input);
+                    event.preventDefault();
                 }
             });
         });
@@ -94,6 +101,7 @@ function deleteProductAndUpdateUI(productId) {
                 // Espera a que termine la animación antes de eliminar el elemento
                 setTimeout(function() {
                     productDiv.remove();
+                    updateTotalPriceAllProducts();
                 }, 0.4); // Ajusta el tiempo de espera según la duración de tu animación
             }
         })
@@ -115,6 +123,8 @@ function updateProductInLocalStorage(updatedProduct) {
     localStorage.setItem('cart', JSON.stringify(updatedProducts));
 
     console.log(JSON.parse(localStorage.getItem('cart')));
+
+    updateTotalPriceAllProducts();
 }
 
 function handleQuantityChange(productId, change) {
@@ -191,4 +201,12 @@ function handleBlur(input) {
             input.value = product.productAmount || 1;
         }
     }
+}
+function updateTotalPriceAllProducts() {
+    var productsLocalStorage = JSON.parse(localStorage.getItem('cart')) || [];
+    var totalPrice = productsLocalStorage.reduce(function(acc, product) {
+        return acc + product.totalPrice;
+    }, 0);
+
+    document.getElementById('totalCartPrice').textContent = totalPrice.toFixed(2) + '$';
 }

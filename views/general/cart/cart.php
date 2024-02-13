@@ -7,6 +7,10 @@
         </div>
     </div>
     <div id="order-info">
-        
+        <div id="cartDetails">
+            <h2>Cart Details</h2>
+            <p>Total price: <span id="totalCartPrice">0.00 $</span></p>
+            <button id="buyButton"><a href="index.php?controller=User&action=login">Purchase</a></button>
+        </div>
     </div>
 </div>
