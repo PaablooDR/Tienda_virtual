@@ -1017,6 +1017,8 @@ html {
   border: 1px solid black;
 }
 #profile #profile-div .orders-div div {
+  display: grid;
+  place-items: center;
   height: 50px;
 }
 #profile #profile-div #popup {

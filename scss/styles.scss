@@ -1092,6 +1092,8 @@ html {
             background-color: #F5F5F5;
             border: 1px solid black;
             div{
+                display: grid;
+                place-items: center;
                 height: 50px;
             }
         }
