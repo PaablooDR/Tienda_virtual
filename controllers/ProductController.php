@@ -163,7 +163,7 @@ class ProductController {
         $categories = category::obtain();
         require_once("views/general/header.php");
         $products = Product::obtainActiveProducts();
-        require_once("views/general/products/products.php");
+        require_once("views/general/products/products.php");    
     }
     public function buyProduct(){
         $categories = category::obtain();
