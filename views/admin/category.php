@@ -12,11 +12,13 @@
         <input type="text" id="search">
 
         <form action='index.php?controller=Category&action=desactivate' method='post' enctype='multipart/form-data'>
-            <div id="bodyList" class="list">
-                <div>Select all</div>
-                <div>Code</div>
-                <div>Name</div>
-                <div>Edit</div>
+            <div id="bodyList">
+                <div class="list">
+                    <div>Select all</div>
+                    <div>Code</div>
+                    <div>Name</div>
+                    <div>Edit</div>
+                </div>    
     <?php
                 foreach ($categories as $category) {
     ?>

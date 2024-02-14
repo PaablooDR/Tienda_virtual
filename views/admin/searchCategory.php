@@ -3,10 +3,12 @@
         echo "<p>No results have been found related to your search</p>";
     }else{
 ?>
-        <div>Select all</div>
-        <div>Code</div>
-        <div>Name</div>
-        <div>Edit</div>
+        <div class="list">
+            <div>Select all</div>
+            <div>Code</div>
+            <div>Name</div>
+            <div>Edit</div>
+        </div> 
 <?php
         foreach ($categories as $category) {
 ?>

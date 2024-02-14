@@ -13,15 +13,17 @@
         <input type="text" id="search">
 
         <form action='index.php?controller=Product&action=desactivate' method='post' enctype='multipart/form-data'>
-            <div id="bodyList" class="list">
-                <div>Select all</div>
-                <div>Photo</div>
-                <div>Name</div>
-                <div>Code</div>
-                <div>Category</div>
-                <div>Price</div>
-                <div>Stock</div>
-                <div>Edit</div>
+            <div id="bodyList">
+                <div class="list">
+                    <div>Select all</div>
+                    <div>Photo</div>
+                    <div>Name</div>
+                    <div>Code</div>
+                    <div>Category</div>
+                    <div>Price</div>
+                    <div>Stock</div>
+                    <div>Edit</div>
+                </div>
     <?php
                 foreach ($products as $product) { 
     ?>
