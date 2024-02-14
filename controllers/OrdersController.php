@@ -51,10 +51,14 @@ class OrdersController {
                 $existingCart = Order::checkExistantCart($_SESSION['user']['email']);
                 if($existingCart == false) {
                     $newId = Order::insertNewOrder($_SESSION['user']['email'], $_POST['totalPrice']);
-                    Order::insertShoppingDetails($newId, $cart);
+                    foreach($cart as $detail) { 
+                        Order::insertShoppingDetails($newId, $detail);
+                    }
                 } else {
                     Order::updateTotalPrice($_SESSION['user']['email'], $_POST['totalPrice']);
-                    Order::insertShoppingDetails($existingCart, $cart);
+                    foreach($cart as $detail) { 
+                        Order::insertShoppingDetails($existingCart, $detail);
+                    }
                 }
                 $_SESSION['cart'] = $cart;
             }

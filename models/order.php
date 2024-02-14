@@ -233,18 +233,20 @@ class Order extends BBDD {
         $connect = null;
     }
 
-    public static function insertShoppingDetails($id_shopping, $cart) {
+    public static function insertShoppingDetails($id_shopping, $detail) {
         try {
-            foreach($cart as $detail) { 
-                $connect = BBDD::connect();
-                $stmt = $connect->prepare("INSERT INTO shopping_details (shopping, product, price_per_product, amount, total_price) VALUES (?, ?, ?, ?, ?)");
-                $success = $stmt->execute([$id_shopping, $detail['productId'], $detail['productPrice'], $detail['productAmount'], $detail['totalPrice']]);
-            }
+            $connect = BBDD::connect();
+            $stmt = $connect->prepare("INSERT INTO shopping_details (shopping, product, price_per_product, amount, total_price) VALUES (?, ?, ?, ?, ?)");
+            $success = $stmt->execute([$id_shopping, $detail['productId'], $detail['productPrice'], $detail['productAmount'], $detail['totalPrice']]);
         } catch (PDOException $e) {
             echo "Error of connexion: " . $e->getMessage();
         }
         //Close connection
         $connect = null;
+    }
+
+    public static function existingShoppingDetail($id_shopping, $idProduct) {
+
     }
 }
 
