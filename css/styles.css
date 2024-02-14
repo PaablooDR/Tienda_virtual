@@ -53,7 +53,7 @@ html {
   width: 85%;
   padding: 2%;
   background-color: #e9ecef;
-  height: 100vh;
+  height: 95vh;
 }
 #containerAdmin #adminContent #titleAdmin {
   border-bottom: 2px solid black;
@@ -1009,4 +1009,8 @@ html {
   background-color: black;
   z-index: 1;
   width: 14%;
+}
+
+.orderContainer {
+  border: 1px solid black;
 }/*# sourceMappingURL=styles.css.map */
