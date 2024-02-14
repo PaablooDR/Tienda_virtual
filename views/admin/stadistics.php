@@ -4,6 +4,7 @@
     ?>
     <div id="invisibleSidebar"></div>
     <div id="adminContent">
+        
         <h1>Stadistics</h1>
         <hr>
         <div class="titleStadistics"><p>Top Products</p> <p>Top Categories</p></div>
