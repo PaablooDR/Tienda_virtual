@@ -1011,9 +1011,13 @@ html {
 }
 #profile #profile-div .orders-div {
   display: grid;
+  place-items: center;
   grid-template-columns: repeat(6, 1fr);
   background-color: #F5F5F5;
   border: 1px solid black;
+}
+#profile #profile-div .orders-div div {
+  height: 50px;
 }
 #profile #profile-div #popup {
   width: 30%;
