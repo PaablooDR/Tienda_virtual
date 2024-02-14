@@ -8,7 +8,7 @@
         <link rel="stylesheet" type="text/css" href="./css/styles.css">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
         <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
-        <script src='js/assets/tilt.jquery.js'></script>
+        <script src='./js/assets/tilt.jquery.js'></script>
         <script src='./js/products.js'></script>
         <script type="module" src='js/cart.js'></script>
         <title>Index</title>
