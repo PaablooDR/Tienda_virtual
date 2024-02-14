@@ -43,21 +43,30 @@ class OrdersController {
         require_once("views/admin/ticket.php");
     }
 
-    // public function cart(){
-    //     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    //         // Recoger la información del carrito enviado desde el cliente
-    //         $cart = $_POST['cart'];
-    //         $totalPrice = $_POST['totalPrice'];
+    public function cart(){
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['cart']) && isset($_POST['totalPrice'])) {
+                $cart = json_decode($_POST['cart'], true); // Decode JSON
 
+                $existingCart = Order::checkExistantCart($_SESSION['user']['email']);
+                if($existingCart == false) {
+                    $newId = Order::insertNewOrder($_SESSION['user']['email'], $_POST['totalPrice']);
+                    Order::insertShoppingDetails($newId, $cart);
+                } else {
+                    Order::updateTotalPrice($_SESSION['user']['email'], $_POST['totalPrice']);
+                    Order::insertShoppingDetails($existingCart, $cart);
+                }
+                $_SESSION['cart'] = $cart;
+            }
             
-    //         $_SESSION['cart'] = $cart;
-    //         $_SESSION['totalPrice'] = $totalPrice;
-    //     } else {
-    //         // Manejar la solicitud de otra manera (opcional)
-    //         echo 'Método no permitido';
-    //     }
-    //     //echo '<meta http-equiv="refresh"content="0;url=index.php?controller=Product&action=principal">';
-    // }
+            $_SESSION['cart'] = $cart;
+            $_SESSION['totalPrice'] = $_POST['totalPrice'];
+        } else {
+            // Manejar la solicitud de otra manera (opcional)
+            echo 'Método no permitido';
+        }
+        //echo '<meta http-equiv="refresh"content="0;url=index.php?controller=Product&action=principal">';
+    }
     
     public function profile() {
         $categories = category::obtain();

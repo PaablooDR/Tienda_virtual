@@ -23,16 +23,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // Obtain the cart and the total price from localStorage
     let cart = localStorage.getItem('cart');
     let totalPrice = localStorage.getItem('totalPrice');
-    console.log(cart);
-    console.log(totalPrice);
     
     if (cart && totalPrice) {
         (async function() {
             try {
                 await sentCartToServer(cart, totalPrice);
                 console.log('Cart and toal price sent correctly');
-                console.log(cart);
-                console.log(totalPrice);
                 // When the cart and the total price are sent, both will be remove
                 localStorage.removeItem('cart');
                 localStorage.removeItem('totalPrice');

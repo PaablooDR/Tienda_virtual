@@ -11,4 +11,4 @@
             <p><a href="index.php?controller=User&action=signup" aria-label="Navigate to sign up page">Sign up</a></p>
         </form>
     </div>
-</div>   
+</div> 
