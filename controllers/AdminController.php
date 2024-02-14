@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once("models/admin.php");
 require_once("models/product.php");
 require_once("models/category.php");

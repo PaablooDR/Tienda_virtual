@@ -3,14 +3,16 @@
         echo "<p>No results have been found related to your search</p>";
     }else{
 ?>
-        <div>Select all</div>
-        <div>Photo</div>
-        <div>Name</div>
-        <div>Code</div>
-        <div>Category</div>
-        <div>Price</div>
-        <div>Stock</div>
-        <div>Edit</div>
+        <div class="list">
+            <div>Select all</div>
+            <div>Photo</div>
+            <div>Name</div>
+            <div>Code</div>
+            <div>Category</div>
+            <div>Price</div>
+            <div>Stock</div>
+            <div>Edit</div>
+        </div>
 <?php
         foreach ($products as $product) { 
 ?>
