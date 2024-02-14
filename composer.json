@@ -2,5 +2,14 @@
     "require": {
         "tecnickcom/tcpdf": "^6.6",
         "spipu/html2pdf": "^5.2.8"
+    },
+    "require-dev": {
+        "phpdocumentor/phpdocumentor": "*",
+        "symfony/flex": "*"
+    },
+    "config": {
+        "allow-plugins": {
+            "symfony/flex": true
+        }
     }
 }

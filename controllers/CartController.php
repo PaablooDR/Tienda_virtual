@@ -2,6 +2,7 @@
 require_once "models/order.php";
 require_once "models/company.php";
 require_once "models/user.php";
+require_once "models/category.php";
 class cartController{
     public function obtainCartStorage(){
         $postData = json_decode(file_get_contents("php://input"), true);
@@ -23,6 +24,7 @@ class cartController{
     }
 
     public function cart(){
+        $categories = Category::obtain();
         require_once "views/general/header.php";
         require_once "views/general/cart/cart.php";
     }
