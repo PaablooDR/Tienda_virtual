@@ -245,8 +245,40 @@ class Order extends BBDD {
         $connect = null;
     }
 
-    public static function existingShoppingDetail($id_shopping, $idProduct) {
+    public static function existingShoppingDetails($id_shopping, $detail) {
+        try {
+            $connect = BBDD::connect();
+            $stmt = $connect->prepare("SELECT * FROM Shopping_details WHERE product=:product AND shopping=:id");
+            $stmt->bindParam(':product', $detail['productId'], PDO::PARAM_STR);
+            $stmt->bindParam(':id', $id_shopping, PDO::PARAM_INT);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if (count($result) > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            echo "Error of connexion: " . $e->getMessage();
+        }
+        //Close connection
+        $connect = null;
+    }
 
+    public static function updateShoppingDetails($id_shopping, $detail) {
+        try {
+            $connect = BBDD::connect();
+            $stmt = $connect->prepare("UPDATE Shopping_details SET amount=amount+:amount, total_price=total_price+:total_price WHERE product=:product AND shopping=:id");
+            $stmt->bindParam(':amount', $detail['productAmount'], PDO::PARAM_INT);
+            $stmt->bindParam(':total_price', $detail['totalPrice'], PDO::PARAM_STR);
+            $stmt->bindParam(':product', $detail['productId'], PDO::PARAM_STR);
+            $stmt->bindParam(':id', $id_shopping, PDO::PARAM_INT);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo "Error of connexion: " . $e->getMessage();
+        }
+        //Close connection
+        $connect = null;
     }
 }
 
