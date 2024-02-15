@@ -159,12 +159,18 @@ class ProductController {
         require_once("views/general/footer.php");
     }
 
-    public function products(){
-        $categories = category::obtain();
-        require_once("views/general/header.php");
-        $products = Product::obtainActiveProducts();
-        require_once("views/general/products/products.php");
-    }
+    public function products(){ 
+        $categories = category::obtain(); 
+        require_once("views/general/header.php"); 
+        // Obtener parámetros de la URL
+        $categoryCode = isset($_GET['categoryCode']) ? $_GET['categoryCode'] : null; 
+        $minPrice = isset($_GET['min']) ? $_GET['min'] : null; 
+        $maxPrice = isset($_GET['max']) ? $_GET['max'] : null; 
+        $order = isset($_GET['order']) ? $_GET['order'] : null; 
+        // Obtener productos filtrados 
+        $products = Product::obtainActiveProducts($categoryCode, $minPrice, $maxPrice, $order); 
+        require_once("views/general/products/products.php"); 
+    }  
     public function buyProduct(){
         $categories = category::obtain();
         require_once("views/general/header.php");

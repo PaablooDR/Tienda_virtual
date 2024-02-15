@@ -1,7 +1,10 @@
+<?php
+require_once("views/general/products/filters.php");
+?>
 <div id="productsView">
-    <?php
+<?php
     foreach($products as $product){
-    ?>
+?>
         <div class="productContainer">
             <div class="imageContainer">
                 <a href="index.php?controller=Product&action=buyProduct&productCode=<?php echo $product->getCode();?>" aria-label="Navigate to see the product"><img class="productImage" src="<?php echo $product->getPhoto(); ?>" alt="<?php echo $product->getDescription(); ?>"></a>
@@ -14,7 +17,7 @@
                 <h4><?php echo $product->getPrice();?> €</h4>
             </div>
         </div>
-    <?php
+<?php
     }
-    ?>
+?>
 </div>
