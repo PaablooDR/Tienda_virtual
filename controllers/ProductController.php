@@ -105,7 +105,7 @@ class ProductController {
     //Form to edit product
     public function edit() {
         if (isset($_GET['code'])){
-            require_once("views/admin/sidebar.php");
+           
             $code = $_GET['code'];
             $ini = Product::initialize($code);
             $product = new Product($code, $ini[0], $ini[1], $ini[2], $ini[3], $ini[4], $ini[5], NULL, NULL);

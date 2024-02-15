@@ -1,17 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>New category</title>
-    </head>
-    <body>
-        <div>
-            <form action="index.php?controller=Category&action=add" method="post" enctype="multipart/form-data">
-                <h1>NEW CATEGORY</h1>
-                <label for="name">Name:</label><input type="text" name="name" placeholder="Name" maxlength="100" required><br>
-                <input type="submit" name="send" value="Enter">
-            </form>
+<div id="containerAdmin">
+    <?php
+        require_once("views/admin/sidebar.php");
+    ?>
+    <div id="invisibleSidebar"></div>
+   
+
+        <div id="adminContent">
+            <div class="fullScreen">
+                <form action="index.php?controller=Category&action=add" method="post" enctype="multipart/form-data">
+                    <h1 id="titleAdmin">NEW CATEGORY</h1>
+                    <label for="name">Name: </label><input type="text" name="name" placeholder="Name" maxlength="100" required><br>
+                    <input type="submit" name="send" id="changeActive" value="Enter">
+                </form>
+            </div>
         </div>
-    </body>
+    </div>
+</div>
 </html>
