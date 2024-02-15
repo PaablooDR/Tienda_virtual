@@ -54,11 +54,33 @@ html {
   padding: 2%;
   background-color: #e9ecef;
   height: 100%;
+  display: grid;
 }
 #containerAdmin #adminContent #titleAdmin {
   border-bottom: 2px solid black;
   font-weight: normal;
   font-size: 40px;
+}
+#containerAdmin #adminContent a {
+  width: 120px;
+}
+#containerAdmin #adminContent a button {
+  color: white;
+  background-color: #292929;
+  margin-bottom: 2%;
+}
+#containerAdmin #adminContent #search {
+  margin-bottom: 2%;
+}
+#containerAdmin #adminContent button {
+  color: white;
+  background-color: #292929;
+  margin-bottom: 2%;
+}
+#containerAdmin #adminContent #changeActive {
+  margin-top: 2%;
+  color: white;
+  background-color: #292929;
 }
 #containerAdmin #adminContent #bodyList {
   border-top: 0px;
@@ -77,6 +99,15 @@ html {
 #containerAdmin #adminContent .list div input {
   transform: scale(2);
   accent-color: #a1a1a1;
+}
+
+#description {
+  display: block;
+  margin-top: 5px; /* Espacio entre la etiqueta y el textarea */
+}
+
+#signatureCanvas {
+  background-color: white;
 }
 
 .list {
@@ -1044,7 +1075,6 @@ html {
 }
 
 .orderContainer {
-  border: 1px solid black;
   background-color: white;
   margin-bottom: 2%;
 }/*# sourceMappingURL=styles.css.map */

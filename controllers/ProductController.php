@@ -41,7 +41,7 @@ class ProductController {
 
     //Form
     public function new() {
-        require_once("views/admin/sidebar.php");
+        
         $categories = Category::obtain();
         require_once("views/admin/newProduct.php");
     }

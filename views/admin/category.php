@@ -7,12 +7,11 @@
     <div id="invisibleSidebar"></div>
 
         <div id="adminContent">
+            <h1 id="titleAdmin">Categories</h1>
+
+            <a href="index.php?controller=Category&action=new"><button>New Category</button></a>
+            <input type="text" id="search" placeholder="Search">
             <div class="fullScreen">
-                <h1 id="titleAdmin">Categories</h1>
-
-                <a href="index.php?controller=Category&action=new"><h3>New Category</h3></a>
-                <input type="text" id="search">
-
                 <form action='index.php?controller=Category&action=desactivate' method='post' enctype='multipart/form-data'>
                     <div id="bodyList">
                         <div class="list">
@@ -28,14 +27,14 @@
                                 <div> <input type='checkbox' name='selectedItems[]' value='<?php echo $category['code']; ?>'> </div>
                                 <div><?php echo $category['code']; ?></div>
                                 <div><?php echo $category['name']; ?></div>
-                                <a href='index.php?controller=Category&action=edit&code=<?php echo $category['code']; ?>'>
+                                <div><a href='index.php?controller=Category&action=edit&code=<?php echo $category['code']; ?>'>
                                     <div><img src='sources/web/edit.png' style='width: 50px;'></div>
-                                </a>
+                                </a></div>
                             </div>
             <?php
                         }
             ?>
-                        <input type='submit' name='desactivate' value='Change active'>
+                        <input type='submit' name='desactivate' id="changeActive" value='Change active'>
                     </div>
                 </form>
             </div>

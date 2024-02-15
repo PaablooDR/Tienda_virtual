@@ -39,7 +39,7 @@
             <?php
                         }
             ?>
-                        <input type='submit' name='desactivate' value='Change active'>
+                        <input type='submit' name='desactivate' id="changeActive" value='Change active'>
                 
                 </form>
             </div>

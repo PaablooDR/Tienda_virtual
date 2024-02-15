@@ -10,8 +10,8 @@
         <div id="adminContent">
             <h1 id="titleAdmin">Products</h1>
 
-            <a href="index.php?controller=Product&action=new"><h3>New Product</h3></a>
-            <input type="text" id="search">
+            <a href="index.php?controller=Product&action=new"><button>New Product</button></a>
+            <input type="text" id="search" placeholder="Search">
 
             <form action='index.php?controller=Product&action=desactivate' method='post' enctype='multipart/form-data'>
                 <div id="bodyList">
@@ -43,7 +43,7 @@
         <?php 
                     } 
         ?>
-                    <input type='submit' name='desactivate' value='Change active'>
+                    <input type='submit' name='desactivate' id="changeActive" value='Change active'>
                 </div>
             </form>
         </div>
