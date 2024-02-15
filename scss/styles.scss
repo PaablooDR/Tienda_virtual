@@ -735,7 +735,12 @@ html {
     background-color: #f5f5f5;
     text-align: center;
     padding-top: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 4%;
+    h2{
+        font-size: 30px;
+        font-weight: 600;
+        padding: 3%;
+    }
     a{
         color: black;
     }
@@ -756,6 +761,10 @@ html {
                 border-radius: 2%;
             }
         }
+    }
+    p{
+        font-weight: 200;
+        font-size: 20px;
     }
 }
 
@@ -840,6 +849,11 @@ html {
 
 
 #otherCategories {
+    h2{
+        font-size: 30px;
+        font-weight: 600;
+        padding: 4%;
+    }
     text-align: center;
     .productContainer {
         width: 60%;
@@ -847,6 +861,7 @@ html {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 10px;
+        margin-bottom: 8%;
         div {
             position: relative;
             overflow: hidden;
