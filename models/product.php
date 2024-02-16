@@ -296,10 +296,10 @@ class Product extends BBDD{
         } 
         // Ejecutar la consulta
         $statement->execute(); 
+        // Inicializa un array para almacenar objetos de tipo Product 
+        $activeProducts = []; 
         // Verifica si la consulta fue exitosa 
         if ($statement) { 
-            // Inicializa un array para almacenar objetos de tipo Product 
-            $activeProducts = []; 
             // Recorre los resultados y crea objetos Product 
             while ($row = $statement->fetch(PDO::FETCH_ASSOC)) { 
                 $product = new Product($row['code'], $row['name'], $row['description'], $row['category'], $row['photo'], $row['price'], $row['stock'], $row['active'], $row['outstanding'] );
@@ -311,7 +311,7 @@ class Product extends BBDD{
         } else { 
             // Manejar el caso en el que la consulta no fue exitosa 
             echo "Error en la consulta SQL"; 
-            return []; 
+            return $activeProducts;  
         } 
     }
     //Initialize the attributs of the class
