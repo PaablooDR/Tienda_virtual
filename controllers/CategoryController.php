@@ -38,7 +38,6 @@ class CategoryController {
 
     //Form
     public function new() {
-        require_once("views/admin/sidebar.php");
         require_once("views/admin/newCategory.php");
     }
 
@@ -76,7 +75,7 @@ class CategoryController {
     //Edit category
     public function edit() {
         if (isset($_GET['code'])){
-            require_once("views/admin/sidebar.php");
+          
             $code = $_GET['code'];
             $name = category::initialize($code);
             $data = [$code, $name];

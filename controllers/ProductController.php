@@ -41,7 +41,7 @@ class ProductController {
 
     //Form
     public function new() {
-        require_once("views/admin/sidebar.php");
+        
         $categories = Category::obtain();
         require_once("views/admin/newProduct.php");
     }
@@ -105,7 +105,7 @@ class ProductController {
     //Form to edit product
     public function edit() {
         if (isset($_GET['code'])){
-            require_once("views/admin/sidebar.php");
+           
             $code = $_GET['code'];
             $ini = Product::initialize($code);
             $product = new Product($code, $ini[0], $ini[1], $ini[2], $ini[3], $ini[4], $ini[5], NULL, NULL);
@@ -159,12 +159,18 @@ class ProductController {
         require_once("views/general/footer.php");
     }
 
-    public function products(){
-        $categories = category::obtain();
-        require_once("views/general/header.php");
-        $products = Product::obtainActiveProducts();
-        require_once("views/general/products/products.php");    
-    }
+    public function products(){ 
+        $categories = category::obtain(); 
+        require_once("views/general/header.php"); 
+        // Obtener parámetros de la URL
+        $categoryCode = isset($_GET['categoryCode']) ? $_GET['categoryCode'] : null; 
+        $minPrice = isset($_GET['min']) ? $_GET['min'] : null; 
+        $maxPrice = isset($_GET['max']) ? $_GET['max'] : null; 
+        $order = isset($_GET['order']) ? $_GET['order'] : null; 
+        // Obtener productos filtrados 
+        $products = Product::obtainActiveProducts($categoryCode, $minPrice, $maxPrice, $order); 
+        require_once("views/general/products/products.php"); 
+    }  
     public function buyProduct(){
         $categories = category::obtain();
         require_once("views/general/header.php");

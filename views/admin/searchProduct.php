@@ -24,9 +24,9 @@
                 <div><?php echo $product['category_name']; ?></div>
                 <div><?php echo $product['price']; ?></div>
                 <div><?php echo $product['stock']; ?></div>
-                <a href='index.php?controller=Product&action=edit&code=<?php echo $product['code']; ?>&photo=<?php echo $product['photo']; ?>'>
+                <div><a href='index.php?controller=Product&action=edit&code=<?php echo $product['code']; ?>&photo=<?php echo $product['photo']; ?>'>
                     <div><img src='sources/web/edit.png' alt='edit' style='width: 50px;'></div>
-                </a>
+                </a></div>
             </div>
 <?php 
         } 

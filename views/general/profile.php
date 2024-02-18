@@ -19,7 +19,7 @@
                 echo "<div>Status: " . $Orders['status'] . "</div>";
                 echo "<div>Total price: " . $Orders['total_price'] . "</div>";
                 echo "<div> <button id='btn-open-popup'>Show order</button></div>";
-                echo "<div> <button id='btn-open-popup'>Download bill</button></div>";
+                echo "<div> <a href='index.php?controller=Orders&action=ticket&ticket=". $Orders['id_shopping'] ."'> <button id='btn-open-popup'>Download bill</button> </a></div>";
                 echo "</div>";
                 
                 echo "<dialog id='popup'>";

@@ -16,9 +16,9 @@
                 <div> <input type='checkbox' name='selectedItems[]' value='<?php echo $category['code']; ?>'> </div>
                 <div><?php echo $category['code']; ?></div>
                 <div><?php echo $category['name']; ?></div>
-                <a href='index.php?controller=Category&action=edit&code=<?php echo $category['code']; ?>'>
-                    <div><img src='sources/web/edit.png' style='width: 150px;'></div>
-                </a>
+                <div><a href='index.php?controller=Category&action=edit&code=<?php echo $category['code']; ?>'>
+                    <div><img src='sources/web/edit.png' style='width: 50px;'></div>
+                </a></div>
             </div>
 <?php
         }

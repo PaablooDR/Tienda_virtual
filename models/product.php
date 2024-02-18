@@ -259,41 +259,60 @@ class Product extends BBDD{
         $connect = null;
     }
     //Obtain active products
-    public static function obtainActiveProducts() {
-        $connect = BBDD::connect();
-        $query = "SELECT * FROM product WHERE active = true";
-        $statement = $connect->query($query);
-    
-        // Verifica si la consulta fue exitosa
-        if ($statement) {
-            // Inicializa un array para almacenar objetos de tipo Product
-            $activeProducts = [];
-    
-            // Recorre los resultados y crea objetos Product
-            while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                $product = new Product(
-                    $row['code'],
-                    $row['name'],
-                    $row['description'],
-                    $row['category'],
-                    $row['photo'],
-                    $row['price'],
-                    $row['stock'],
-                    $row['active'],
-                    $row['outstanding']
-                );
-    
-                // Agrega el objeto Product al array
-                $activeProducts[] = $product;
-            }
-    
-            // Devuelve el array de productos
-            return $activeProducts;
-        } else {
-            // Manejar el caso en el que la consulta no fue exitosa
-            echo "Error en la consulta SQL";
-            return [];
-        }
+    public static function obtainActiveProducts($categoryCode = null, $minPrice = null, $maxPrice = null, $order = null) { 
+        $connect = BBDD::connect(); 
+        // Construir la consulta SQL base
+        $query = "SELECT * FROM product WHERE active = true"; 
+        // Agregar cláusulas WHERE para los filtros
+        if ($categoryCode !== null && $categoryCode != 0) { 
+            $query .= " AND category = ?"; 
+        } 
+        if ($minPrice !== null) { 
+            $query .= " AND price >= ?"; 
+        } 
+        if ($maxPrice !== null) { 
+            $query .= " AND price <= ?"; 
+        } 
+        // Agregar ORDER BY para el orden 
+        if ($order === "ascendant") { 
+            $query .= " ORDER BY price ASC"; 
+        } elseif ($order === "descendant") { 
+            $query .= " ORDER BY price DESC"; 
+        } 
+        // Preparar la consulta 
+        $statement = $connect->prepare($query); 
+        // Bind los parámetros si existen 
+        $paramIndex = 1;
+        if ($categoryCode !== null && $categoryCode != 0) { 
+            $statement->bindParam($paramIndex++, $categoryCode); 
+        } 
+        if ($minPrice !== null && $maxPrice !== null) { 
+            $statement->bindParam($paramIndex++, $minPrice, PDO::PARAM_INT); 
+            $statement->bindParam($paramIndex++, $maxPrice, PDO::PARAM_INT); 
+        } elseif ($minPrice !== null) { 
+            $statement->bindParam($paramIndex++, $minPrice, PDO::PARAM_INT); 
+        } elseif ($maxPrice !== null) { 
+            $statement->bindParam($paramIndex++, $maxPrice, PDO::PARAM_INT); 
+        } 
+        // Ejecutar la consulta
+        $statement->execute(); 
+        // Inicializa un array para almacenar objetos de tipo Product 
+        $activeProducts = []; 
+        // Verifica si la consulta fue exitosa 
+        if ($statement) { 
+            // Recorre los resultados y crea objetos Product 
+            while ($row = $statement->fetch(PDO::FETCH_ASSOC)) { 
+                $product = new Product($row['code'], $row['name'], $row['description'], $row['category'], $row['photo'], $row['price'], $row['stock'], $row['active'], $row['outstanding'] );
+                // Agrega el objeto Product al array 
+                $activeProducts[] = $product; 
+            } 
+            // Devuelve el array de productos 
+            return $activeProducts; 
+        } else { 
+            // Manejar el caso en el que la consulta no fue exitosa 
+            echo "Error en la consulta SQL"; 
+            return $activeProducts;  
+        } 
     }
     //Initialize the attributs of the class
     public static function initialize($code) {

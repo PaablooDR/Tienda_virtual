@@ -11,5 +11,5 @@
     }
 ?>
     </div>
-    <a href="index.php?controller=Product&action=products"><p>See more posters</p></a>
+    <p><a href="index.php?controller=Product&action=products">See more posters</a></p>
 </div>

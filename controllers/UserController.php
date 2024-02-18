@@ -22,7 +22,7 @@ class UserController {
         if($user != false) {
             $_SESSION["user"] = $user;
             echo "<script src='js/checkCart.js'></script>";
-            echo '<meta http-equiv="refresh"content="10;url=index.php?controller=Product&action=principal">';
+            echo '<meta http-equiv="refresh"content="0;url=index.php?controller=Product&action=principal">';
         } else {
             echo "<script>
                 alert('Email or password are incorrect');

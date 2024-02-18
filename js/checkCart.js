@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
         (async function() {
             try {
                 await sentCartToServer(cart, totalPrice);
-                console.log('Cart and toal price sent correctly');
+                console.log('Cart and total price sent correctly');
                 // When the cart and the total price are sent, both will be remove
                 localStorage.removeItem('cart');
                 localStorage.removeItem('totalPrice');
