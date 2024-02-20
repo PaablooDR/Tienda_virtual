@@ -18,7 +18,7 @@
                 <input type="text" placeholder="Search for a theme..." id="search">
                 <div class="searchTheme" id="bodyList"></div>
             </li>
-            <?php if(!$_SESSION) {?>
+            <?php if(!isset($_SESSION['user'])) {?>
                 <a href="index.php?controller=Cart&action=cart"><li><img src="sources/web/cart.png" alt="shopping cart"></li></a>
                 <a href="index.php?controller=User&action=login" aria-label="Navigate to login"><li><img src="sources/web/user.png" alt="user"></li></a>
             <?php } else {?>
