@@ -206,9 +206,10 @@ html {
   overflow: hidden;
 }
 #outstanding #carousel img {
-  width: 40%;
+  width: 38%;
   height: auto;
-  margin: 5% auto;
+  margin: 4% auto;
+  margin-left: 50%;
   border-radius: 10px;
 }
 #outstanding #outstandingProducts {
@@ -218,9 +219,9 @@ html {
   width: 60%;
   background-color: #c7bfbf;
   padding: 2%;
-  margin: 5% auto;
+  margin: 4% auto;
   overflow-y: auto;
-  height: 63%;
+  height: 53%;
   overflow-x: hidden;
   border-radius: 5px;
 }
