@@ -1,10 +1,11 @@
-const btnOpenPopup = document.querySelector("#btn-open-popup");
-const btnClosePopup = document.querySelector("#btn-close-popup");
-const popup = document.querySelector("#popup");
 
-btnOpenPopup.addEventListener("click",()=>{
-    popup.showModal();
-})
-btnClosePopup.addEventListener("click",()=>{
-    popup.close();
-})
+$(document).ready(function() {
+    $('.btn-open-popup').on('click', function() {
+        var targetPopup = $(this).data('popup-target');
+        $(targetPopup).show()[0].showModal();
+    });
+
+    $('.btn-close-popup').on('click', function() {
+        $(this).closest('dialog').hide()[0].close();
+    });
+});

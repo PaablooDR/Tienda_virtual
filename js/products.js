@@ -1,13 +1,3 @@
-$(document).ready(function(){
-    $('.imageContainer').tilt({
-        maxTilt: 15,
-        transition: true,
-        glare: true,
-        maxGlare: .1,
-    })
-});
-
-
 function increaseCount(a, b) {
     var input = b.previousElementSibling;
     var value = parseInt(input.value, 10);
