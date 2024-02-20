@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
     eraserPencil.addEventListener('click', function() {
         isEraserActive = !isEraserActive;
         if (isEraserActive) {
-            context.strokeStyle = '#e9ecef';
+            context.strokeStyle = '#FFFFFF';
             eraserPencil.textContent = "Pencil";
         } else {
             context.strokeStyle = '#000000';
