@@ -18,12 +18,22 @@
                             <button class="amount-btn" id="sum" onclick="increaseCount(event,this)">+</button>
                         </div>
                         <div id="buttons">
-                            <a href="index.php?controller=Orders&action=cart&productId=<?php echo $productInfo['code'];?>&"><button id="purchaseProduct">Purchase</button></a>
-                            <a href="#" id="addToCartLink">
-                                <div id="iconContainer">
-                                    <img id="productIcon" src="sources/web/addToCart.png">
-                                </div>
-                            </a>
+                            <?php
+                            if(isset($_SESSION['user'])) {
+                            ?>
+                                
+                            <?php
+                            } else {
+                            ?>
+                                <a href="index.php?controller=Orders&action=cart&productId=<?php echo $productInfo['code'];?>"><button id="purchaseProduct">Purchase</button></a>
+                                <a href="#" id="addToCartLink">
+                                    <div id="iconContainer">
+                                        <img id="productIcon" src="sources/web/addToCart.png">
+                                    </div>
+                                </a>
+                            <?php
+                            }
+                            ?>
                         </div>
                         <div id="drawerOptions">
                             <button class="openDrawer" data-drawer="drawerOption1" aria-label="Button to see more info about the product">More info</button>

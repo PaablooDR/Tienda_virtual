@@ -78,12 +78,12 @@ class User extends BBDD{
             $address = $this->address;
             $password = password_hash($this->password, PASSWORD_BCRYPT);
             $connection = BBDD::connect();
-            $stmt = $connection->prepare("SELECT * FROM Client WHERE email = :email");
+            $stmt = $connection->prepare("SELECT * FROM client WHERE email = :email");
             $stmt->bindParam(':email', $email, PDO::PARAM_STR);
             $stmt->execute();
             $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
             if (count($resultado) == 0) {
-                $stmt = $connection->prepare("INSERT INTO Client (email, name, surname, telephone, address, password, dni) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                $stmt = $connection->prepare("INSERT INTO client (email, name, surname, telephone, address, password, dni) VALUES (?, ?, ?, ?, ?, ?, ?)");
                 $success = $stmt->execute([$email, $name, $surname, $telephone, $address, $password, $dni]);
                 if ($success) {
                     return true;
@@ -107,26 +107,32 @@ class User extends BBDD{
             $stmt->bindParam(':email', $email, PDO::PARAM_STR);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            if (count($result) > 0) {
-                if(password_verify($password, $result['password'])) {
-                    $data = [
-                        'email' => $email,
-                        'name' => $result['name'],
-                        'surname' => $result['surname'],
-                        'dni' => $result['dni'],
-                        'telephone' => $result['telephone'],
-                        'address' => $result['address']
-                    ];
-                    return $data;
+            if ($result !== false && is_array($result)) {
+                if (count($result) > 0) {
+                    if (password_verify($password, $result['password'])) {
+                        $data = [
+                            'email' => $email,
+                            'name' => $result['name'],
+                            'surname' => $result['surname'],
+                            'dni' => $result['dni'],
+                            'telephone' => $result['telephone'],
+                            'address' => $result['address']
+                        ];
+                        // Cerrar la conexión
+                        $connection = null;
+                        return $data;
+                    } else {
+                        // Cerrar la conexión
+                        $connection = null;
+                        return false;
+                    }
                 }
-                else {
-                    return false;
-                }
-            }else{
+            } else {
+                // Cerrar la conexión
+                $connection = null;
                 return false;
             }
-            // Cerrar la conexión
-            $connection = null;
+            
         } catch (PDOException $e) {
             echo "Error of connexion: " . $e->getMessage();
         }  

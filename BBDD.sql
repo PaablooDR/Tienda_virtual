@@ -1,5 +1,5 @@
 -- Crear la base de datos PlateArt
-CREATE DATABASE PlateArt;
+-- CREATE DATABASE PlateArt;
 
 -- Conectar a la base de datos PlateArt
 \c PlateArt;

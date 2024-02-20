@@ -280,6 +280,48 @@ class Order extends BBDD {
         //Close connection
         $connect = null;
     }
+
+    public static function getLogedUserCartInfo(){
+        try {
+            $connect = BBDD::connect();
+            $stmt = $connect->prepare("SELECT 
+                sh.id_shopping,
+                sh.shopping_date,
+                sh.status,
+                sh.total_price,
+                sd.id,
+                sd.product,
+                sd.price_per_product,
+                sd.amount,
+                sd.total_price AS detail_total_price,
+                pr.name AS product_name,
+                pr.description AS product_description,
+                pr.photo,
+                pr.price AS product_price,
+                pr.stock
+            FROM 
+                Shopping sh
+            INNER JOIN 
+                Shopping_details sd ON sh.id_shopping = sd.shopping
+            INNER JOIN 
+                Product pr ON sd.product = pr.code
+            INNER JOIN 
+                Client cl ON sh.client = cl.email
+            WHERE 
+                sh.status = 'cart' AND
+                cl.email = :userEmail
+            ");
+            $stmt->bindParam(':userEmail', $_SESSION['user']['email'], PDO::PARAM_STR);
+            $stmt->execute();
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $connect = null;
+            return $results;
+        } catch (PDOException $e) {
+            echo "Error of connexion: " . $e->getMessage();
+        }
+        //Close connection
+        $connect = null;
+    }
 }
 
 ?>
