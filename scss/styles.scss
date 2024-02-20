@@ -91,12 +91,16 @@ html {
         .list {
             background-color: $color-list-admin;
             display: grid;
-            grid-template-columns: repeat(auto-fit, 25%);
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             border-top: 2px solid black;
             min-height: 50px;
             align-content: center;
+        
             div {
+                display: grid;
+                align-items: center;
                 text-align: center;
+                justify-content: center;
                 input {
                     transform: scale(2);
                     accent-color: #a1a1a1;
@@ -1134,10 +1138,10 @@ html {
                 height: 50px;
             }
         }
-        #popup{
+        .popup{
             width: 30%;
         }
-        #popup::backdrop{
+        .popup::backdrop{
             background-color: rgba(0, 0, 0, 0.55);
         }
         #popup-div{
@@ -1172,6 +1176,7 @@ html {
         width: 90%;
         display: grid;
         grid-template-columns: 25% 45% 15% 15%;
+        align-items: center;
     }
     #OrderDiv{
         padding-left: 20%;
@@ -1317,10 +1322,10 @@ html {
     #adminContent{
         width: 75% !important;
         .list {
-            div {
-                display: grid;
-                justify-content: center;
-            }
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 25% )!important;
+            justify-content: center;
+
         }
     }
     #buyProduct {
@@ -1522,5 +1527,10 @@ html {
             place-items: center;
             height: 80px !important;
         }
+    }
+     #filters{
+
+        display: grid;
+        grid-template-columns: 25% 35% 25% 15% !important;
     }
 }

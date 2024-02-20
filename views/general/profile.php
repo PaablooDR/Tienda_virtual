@@ -22,7 +22,7 @@
                 echo "<div> <a href='index.php?controller=Orders&action=ticket&ticket=". $Orders['id_shopping'] ."'> <button id='btn-open-popup'>Download bill</button> </a></div>";
                 echo "</div>";
                 
-                echo "<dialog id='popup-" . $id . "'>";
+                echo "<dialog class='popup' id='popup-" . $id . "'>";
                         echo "<h1>Order details</h1>";
                         echo"<div id='popup-div'>";
                                 echo "<div><b>Product</b></div>";
