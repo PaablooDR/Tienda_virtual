@@ -91,7 +91,7 @@ html {
         .list {
             background-color: $color-list-admin;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, 25%);
             border-top: 2px solid black;
             min-height: 50px;
             align-content: center;
@@ -112,10 +112,10 @@ html {
 #signatureCanvas{
     background-color: white;
 }
-.list {
+.listUser {
     background-color: $color-list-admin;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, 30%);
     border-top: 2px solid black;
     min-height: 50px;
     align-content: center;
@@ -1289,6 +1289,15 @@ html {
     }
     #AdminLogin div {
         width: auto;
+    }
+    #sidebar{
+        width: 25% !important;
+    }
+    #invisibleSidebar{
+        width: 25% !important;
+    }
+    #adminContent{
+        width: 75% !important;
     }
 
 
