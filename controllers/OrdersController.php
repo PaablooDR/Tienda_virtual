@@ -161,11 +161,17 @@ class OrdersController {
     }
 
     public function payment() {
-        $categories = category::obtain();
-        $order = Order::checkExistantCart($_SESSION['user']['email']);
-        $today = date("d/m/Y");
-        require_once("views/general/header.php");
-        require_once("views/general/payment.php");
+        if(isset($_GET['totalPrice'])) {
+            $categories = category::obtain();
+            $order = Order::checkExistantCart($_SESSION['user']['email']);
+            $today = date("d/m/Y");
+            $totalPrice = $_GET['totalPrice'];
+            require_once("views/general/header.php");
+            require_once("views/general/payment.php");
+        } else {
+            echo "No se recibió el estado del pedido.";
+            echo '<meta http-equiv="refresh"content="0;url=index.php?controller=Cart&action=logedUserCart">';
+        }
     }
 
     public function orderPaid() {
