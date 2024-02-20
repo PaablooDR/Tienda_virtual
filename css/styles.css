@@ -551,7 +551,7 @@ html {
 #ls_container #background_ls {
   width: 70%;
   height: 100vh;
-  background-color: darkgrey;
+  background-image: url("../sources/web/login_signup.jpg");
 }
 #ls_container #background_ls img {
   width: 22%;
