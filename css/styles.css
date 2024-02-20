@@ -1110,29 +1110,11 @@ html {
     margin-top: 5%;
   }
   #footer {
-    padding: 5%;
-    background-color: black;
-    color: white;
     display: grid;
     grid-template-columns: 1fr;
     justify-items: center;
   }
   #footer div {
     margin-bottom: 2%;
-  }
-  #footer #title {
-    font-size: 40px;
-    font-weight: 100;
-    letter-spacing: 40px;
-  }
-  #footer #icons {
-    display: grid;
-    grid-template-columns: repeat(3, 40px);
-  }
-  #footer .icon {
-    max-width: 30px;
-  }
-  #footer #paypal {
-    max-width: 120px;
   }
 }/*# sourceMappingURL=styles.css.map */

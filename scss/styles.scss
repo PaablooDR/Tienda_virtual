@@ -1195,9 +1195,6 @@ html {
     }
 
     #footer {
-        padding: 5%;
-        background-color: black;
-        color: white;
         display: grid;
         grid-template-columns: 1fr;
         justify-items: center;
@@ -1205,21 +1202,6 @@ html {
             margin-bottom: 2%;
         }
 
-        #title{
-            font-size: 40px;
-            font-weight: 100;
-            letter-spacing: 40px;
-        }
-        #icons{
-            display: grid;
-            grid-template-columns: repeat(3, 40px);
-        }
-        .icon{
-            max-width: 30px;
-        }
-        #paypal{
-            max-width: 120px;
-        }
        
     }
     
