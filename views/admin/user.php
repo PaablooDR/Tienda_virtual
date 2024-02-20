@@ -9,7 +9,7 @@
                 <h1 id="titleAdmin">Users</h1>
 
                 <form action='index.php?controller=Product&action=desactivate' method='post' enctype='multipart/form-data'>
-                    <div id="bodyList" class="list">
+                    <div id="bodyList" class="listUser">
                         <div>Select all</div>
                         <div>DNI</div>
                         <div>Email</div>
@@ -22,7 +22,7 @@
                         if($users != false) {
                             foreach ($users as $user) { 
             ?>
-                                <div class='list'>
+                                <div class='listUser'>
                                     <div><input type='checkbox' name='selectedItems[]' value='<?php echo $user['code']; ?>'></div>
                                     <div><?php echo $user['dni']; ?></div>
                                     <div><?php echo $user['email']; ?></div>

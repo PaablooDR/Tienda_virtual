@@ -21,12 +21,12 @@
             </div>
             <h1 id="tittle2Whats">Find a PlateArt you love!</h1>
             <div class="findPlate">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+                <div><img src="sources/products/An008-Wi.jpg" alt="Snake"></div>
+                <div><img src="sources/products/Ga005-Ga.jpg" alt="Gameboy"></div>
+                <div><img src="sources/products/Ma008-An.jpg" alt="Anime Girl"></div>
+                <div><img src="sources/products/Mo005-Ja.jpg" alt="Jake Sparrow"></div>
                 <div class="seeMoreProducts">
-                    <a href="#">See all posters</a>
+                    <a href="index.php?controller=Product&action=products">See all posters</a>
                 </div>
             </div>
         </div>

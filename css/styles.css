@@ -88,7 +88,7 @@ html {
 #containerAdmin #adminContent .list {
   background-color: #ffffff;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, 25%);
   border-top: 2px solid black;
   min-height: 50px;
   align-content: center;
@@ -110,20 +110,20 @@ html {
   background-color: white;
 }
 
-.list {
+.listUser {
   background-color: #ffffff;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, 30%);
   border-top: 2px solid black;
   min-height: 50px;
   align-content: center;
 }
-.list div {
+.listUser div {
   display: grid;
   place-items: center;
   text-align: center;
 }
-.list div input {
+.listUser div input {
   transform: scale(2);
   accent-color: #a1a1a1;
 }
@@ -551,7 +551,7 @@ html {
 #ls_container #background_ls {
   width: 70%;
   height: 100vh;
-  background-color: darkgrey;
+  background-image: url("../sources/web/login_signup.jpg");
 }
 #ls_container #background_ls img {
   width: 22%;
@@ -634,9 +634,11 @@ html {
   gap: 20px;
 }
 .principalContainerWhats .ContainerWhats .findPlate div {
-  background-color: rgb(152, 152, 255);
-  border: 1px solid black;
-  height: 200px;
+  margin-bottom: 10%;
+  width: 80%;
+}
+.principalContainerWhats .ContainerWhats .findPlate div img {
+  width: 100%;
 }
 .principalContainerWhats .ContainerWhats .findPlate .seeMoreProducts {
   display: grid;
@@ -1174,5 +1176,14 @@ html {
   }
   #AdminLogin div {
     width: auto;
+  }
+  #sidebar {
+    width: 25% !important;
+  }
+  #invisibleSidebar {
+    width: 25% !important;
+  }
+  #adminContent {
+    width: 75% !important;
   }
 }/*# sourceMappingURL=styles.css.map */
