@@ -903,48 +903,31 @@ html {
         }
     }
 }
-
 #footer {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-right: 10%;
+    padding: 5%;
     background-color: black;
     color: white;
-    ul {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
-        align-items: center;
-        #title{
-            font-size: 40px;
-            font-weight: 100;
-            letter-spacing: 40px;
-        }
-        li {
-            list-style: none;
-            flex-direction: column;
-            display: flex;
-            align-items: center;
-            ul {
-                display: flex;
-                gap: 10px;
-                align-items: center;
-                max-width: 400px;
-                margin-top: 5%;
-                margin-left: -10%;
-                .icon{
-                    height: 30px;
-                    width: 30px;
-                    border-radius: 7%;
-                }
-                #paypal{
-                    height: 40px;
-                    width: 100px;
-                    border-radius: 7%;
-                }
-            }
-        }
+    display: grid;
+    grid-template-columns:25% 45% 15% 15% ;
+    align-items: center;
+    #title{
+        font-size: 40px;
+        font-weight: 100;
+        letter-spacing: 40px;
     }
+    #icons{
+        display: grid;
+        grid-template-columns: repeat(3, 40px);
+    }
+    .icon{
+        max-width: 30px;
+    }
+    #paypal{
+        max-width: 120px;
+    }
+   
 }
+
 #coming_soon{
     width:80%;
 }
@@ -1210,4 +1193,34 @@ html {
             margin-top: 5%;
         }
     }
+
+    #footer {
+        padding: 5%;
+        background-color: black;
+        color: white;
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+        div{
+            margin-bottom: 2%;
+        }
+
+        #title{
+            font-size: 40px;
+            font-weight: 100;
+            letter-spacing: 40px;
+        }
+        #icons{
+            display: grid;
+            grid-template-columns: repeat(3, 40px);
+        }
+        .icon{
+            max-width: 30px;
+        }
+        #paypal{
+            max-width: 120px;
+        }
+       
+    }
+    
   }
