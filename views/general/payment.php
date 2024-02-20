@@ -18,5 +18,4 @@
             <input type="submit" name="send" value="Accept" aria-label="Pay">
         </form>
     </div>
-    
 </div>
