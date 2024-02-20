@@ -21,11 +21,16 @@
                             <?php
                             if(isset($_SESSION['user'])) {
                             ?>
-                                
+                                <a><button id="purchaseProduct" onclick="addAndCart(0)">Purchase</button></a>
+                                <a id="addToCartLink">
+                                    <div id="iconContainer" onclick="addAndCart(1)">
+                                        <img id="productIcon" src="sources/web/addToCart.png">
+                                    </div>
+                                </a>
                             <?php
                             } else {
                             ?>
-                                <a href="index.php?controller=Orders&action=cart&productId=<?php echo $productInfo['code'];?>"><button id="purchaseProduct">Purchase</button></a>
+                                <a href="index.php?controller=User&action=login"><button id="purchaseProduct">Purchase</button></a>
                                 <a href="#" id="addToCartLink">
                                     <div id="iconContainer">
                                         <img id="productIcon" src="sources/web/addToCart.png">

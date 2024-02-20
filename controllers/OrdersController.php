@@ -3,6 +3,7 @@ require_once "models/order.php";
 require_once "models/company.php";
 require_once "models/user.php";
 require_once "models/category.php";
+require_once "models/product.php";
 
 class OrdersController {
 
@@ -84,6 +85,40 @@ class OrdersController {
         $myOrders = Order::obtainMyOrders(); 
         $myOrdersDetailsArray = Order::obtainMyOrdersDetails(); 
         require_once("views/general/profile.php");
+    }
+
+    public function addAndCart() {
+        if(isset($_GET['amount']) && isset($_GET['product'])) {
+            $existingCart = Order::checkExistantCart($_SESSION['user']['email']);
+            $productInfo = Product::getProductByCode($_GET['product']);
+            $totalPrice = $_GET['amount'] * $productInfo[0]['price'];
+            $detail = array(
+                'productId' => $_GET['product'],
+                'productPrice' => $productInfo[0]['price'],
+                'productAmount' => $_GET['amount'],
+                'totalPrice' => $productInfo[0]['price'] * $_GET['amount'],
+            );
+            if($existingCart == false) {
+                $newId = Order::insertNewOrder($_SESSION['user']['email'], $totalPrice);
+                Order::insertShoppingDetails($newId, $detail);
+            } else {
+                Order::updateTotalPrice($_SESSION['user']['email'], $totalPrice);
+                $existing = Order::existingShoppingDetails($existingCart, $detail);
+                if($existing != true) { 
+                    Order::insertShoppingDetails($existingCart, $detail);
+                } else {
+                    Order::updateShoppingDetails($existingCart, $detail);
+                }
+            }
+            if(isset($_GET['return'])) {
+                echo '<meta http-equiv="refresh"content="0;url=index.php?controller=Product&action=buyProduct&productCode='.$_GET['product'].'">';
+            } else {
+                echo '<meta http-equiv="refresh"content="0;url=index.php?controller=Cart&action=logedUserCart">';
+            }
+        } else {
+            echo "No se recibió el estado del pedido.";
+            echo '<meta http-equiv="refresh"content="0;url=index.php?controller=Product&action=buyProduct&productCode='.$_GET['product'].'">';
+        }
     }
 }
 
