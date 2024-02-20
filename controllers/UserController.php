@@ -1,6 +1,7 @@
 <?php
 require_once("models/user.php");
 require_once("models/order.php");
+require_once("models/category.php");
 
 class UserController {
     //Menu
@@ -12,6 +13,7 @@ class UserController {
     }
 
     public function login() {
+        $categories = category::obtain();
         require_once("views/general/header.php");
         require_once("views/general/login.php");
     }
