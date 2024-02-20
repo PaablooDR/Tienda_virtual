@@ -322,6 +322,25 @@ class Order extends BBDD {
         //Close connection
         $connect = null;
     }
+
+    public static function productsAmount($order) {
+        try {
+            $connect = BBDD::connect();
+            $stmt = $connect->prepare("SELECT product,amount FROM Shopping_details WHERE shopping=:id");
+            $stmt->bindParam(':id', $order, PDO::PARAM_INT);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if ($result) {
+                return $result;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            echo "Error of connexion: " . $e->getMessage();
+        }
+        //Close connection
+        $connect = null;
+    }
 }
 
 ?>

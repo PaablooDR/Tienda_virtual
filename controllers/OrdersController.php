@@ -120,6 +120,29 @@ class OrdersController {
             echo '<meta http-equiv="refresh"content="0;url=index.php?controller=Product&action=buyProduct&productCode='.$_GET['product'].'">';
         }
     }
+
+    public function payment() {
+        $categories = category::obtain();
+        $order = Order::checkExistantCart($_SESSION['user']['email']);
+        $today = date("d/m/Y");
+        require_once("views/general/header.php");
+        require_once("views/general/payment.php");
+    }
+
+    public function orderPaid() {
+        if(isset($_GET['order'])) {
+            $idOrder = $_GET['order'];
+            $products = Order::productsAmount($idOrder);
+            foreach($products as $product) {
+                Product::updateAmount($product['product'], $product['amount']);
+            }
+            Order::cambiarEstado($idOrder, 'pending');
+            echo '<meta http-equiv="refresh"content="0;url=index.php?controller=Product&action=principal">';
+        } else {
+            echo "No se recibió el estado del pedido.";
+            echo '<meta http-equiv="refresh"content="0;url=index.php?controller=Product&action=buyProduct&productCode='.$_GET['product'].'">';
+        }
+    }
 }
 
 ?>
