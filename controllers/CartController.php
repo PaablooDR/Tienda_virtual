@@ -30,6 +30,7 @@ class cartController{
     }
 
     public function logedUserCart() {
+        echo "<script src='js/logedUserCart.js'></script>";
         $categories = Category::obtain();
         $cartInfo = Order::getLogedUserCartInfo();
         require_once "views/general/header.php";

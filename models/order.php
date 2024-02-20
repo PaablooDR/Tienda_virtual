@@ -323,6 +323,55 @@ class Order extends BBDD {
         $connect = null;
     }
 
+    public static function updateAmountOnCart($newAmount,$productId,$id_shopping){
+        try {
+            $connect = BBDD::connect();
+            $stmt = $connect->prepare("UPDATE shopping_details s
+            SET amount = :newAmount, total_price = :amount * s.price_per_product
+            WHERE product = :product AND shopping = :id;");
+            $stmt->bindParam(':newAmount', $newAmount, PDO::PARAM_INT);
+            $stmt->bindParam(':amount', $newAmount, PDO::PARAM_INT);
+            $stmt->bindParam(':product', $productId, PDO::PARAM_STR);
+            $stmt->bindParam(':id', $id_shopping, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $connect = null;
+        } catch (PDOException $e) {
+            $connect = null;
+            echo "Error of connexion: " . $e->getMessage();
+        }
+        //Close connection
+        $connect = null;
+    }
+    public static function updateTotalPriceShopping($totalPrice,$shoppingId) {
+        try {
+            $connect = BBDD::connect();
+            $stmt = $connect->prepare("UPDATE shopping SET total_price = :totalPrice WHERE id_shopping = :shoppingId");
+            $stmt->bindParam(':totalPrice', $totalPrice, PDO::PARAM_STR);
+            $stmt->bindParam(':shoppingId', $shoppingId, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $connect = null;
+        } catch (PDOException $e) {
+            $connect = null;
+            echo "Error of connexion: " . $e->getMessage();
+        }
+        //Close connection
+        $connect = null;
+    }
+    public static function deleteProductFromShopping($productId,$shoppingId) {
+        try {
+            $connect = BBDD::connect();
+            $stmt = $connect->prepare("DELETE FROM shopping_details WHERE product = :productId AND shopping = :shoppingId");
+            $stmt->bindParam(':productId', $productId, PDO::PARAM_STR);
+            $stmt->bindParam(':shoppingId', $shoppingId, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $connect = null;
+        } catch (PDOException $e) {
+            $connect = null;
+        }
+    }
     public static function productsAmount($order) {
         try {
             $connect = BBDD::connect();

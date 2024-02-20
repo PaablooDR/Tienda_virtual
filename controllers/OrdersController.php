@@ -87,6 +87,45 @@ class OrdersController {
         require_once("views/general/profile.php");
     }
 
+    public function updateCartAmount() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['productId']) && isset($_POST['newQuantity']) && isset($_POST['shoppingId'])) {
+                $productId = $_POST['productId'];
+                $amount = $_POST['newQuantity'];
+                $shoppingId = $_POST['shoppingId']; 
+
+                Order::updateAmountOnCart($amount,$productId,$shoppingId);
+            }
+        } else {
+            // Manejar la solicitud de otra manera (opcional)
+            echo 'Método no permitido';
+        }
+    }
+    public function updateShoppingPrice() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['totalPrice']) && isset($_POST['shoppingId'])) {
+                $totalPrice = $_POST['totalPrice'];
+                $shoppingId = $_POST['shoppingId']; 
+
+                Order::updateTotalPriceShopping($totalPrice,$shoppingId);
+            }
+        } else {
+            // Manejar la solicitud de otra manera (opcional)
+            echo 'Método no permitido';
+        }
+    }
+    public function deleteProductFromCart() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['productId']) && isset($_POST['shoppingId'])) {
+                $productId = $_POST['productId']; 
+                $shoppingId = $_POST['shoppingId'];
+                Order::deleteProductFromShopping($productId,$shoppingId);
+            }
+        } else {
+            // Manejar la solicitud de otra manera (opcional)
+            echo 'Método no permitido';
+        }
+    }
     public function addAndCart() {
         if(isset($_GET['amount']) && isset($_GET['product'])) {
             $existingCart = Order::checkExistantCart($_SESSION['user']['email']);
