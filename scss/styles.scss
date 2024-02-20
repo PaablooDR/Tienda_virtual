@@ -274,9 +274,19 @@ html {
     display: flex;
     flex-direction: row;
     #coming_soon{
-        margin-left: 15vw;
+        margin-left: 10%;
     }
 }
+@media (max-width: 1000px) {
+    #section2 {
+        display: grid;
+        #coming_soon{
+            margin-bottom: 5%;
+            margin-top: 5%;
+        }
+    }
+  }
+  
 
 #productsView {
     display: grid;
@@ -941,13 +951,16 @@ html {
         }
     }
 }
+#coming_soon{
+    width:80%;
+}
 
 #coming_soon_list {
     .soon {
         box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         border-radius: 10px;
-        height: 185px;
-        width: 375px;
+        height: 100%;
+        width: 100%;
         margin-bottom: 10px;
         display: flex;
         div{
