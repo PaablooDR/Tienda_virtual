@@ -677,10 +677,11 @@ html {
             grid-template-columns: repeat(5, 1fr);
             gap: 20px;
             div{
-                background-color: rgb(152, 152, 255);
-                border: 1px solid black;
-                height: 200px;
-                
+                margin-bottom: 10%;
+                width: 80%;
+                img{
+                    width: 100%;
+                }
             }
             .seeMoreProducts{
                 display: grid;

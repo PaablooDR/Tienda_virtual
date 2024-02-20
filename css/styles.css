@@ -634,9 +634,11 @@ html {
   gap: 20px;
 }
 .principalContainerWhats .ContainerWhats .findPlate div {
-  background-color: rgb(152, 152, 255);
-  border: 1px solid black;
-  height: 200px;
+  margin-bottom: 10%;
+  width: 80%;
+}
+.principalContainerWhats .ContainerWhats .findPlate div img {
+  width: 100%;
 }
 .principalContainerWhats .ContainerWhats .findPlate .seeMoreProducts {
   display: grid;
