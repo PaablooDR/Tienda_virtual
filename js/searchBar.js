@@ -91,7 +91,7 @@ function busquedaProduct2(searchValue) {
   });
 }
   
-if (nombreDeArchivo == 'index.php?controller=Product&action=principal' || nombreDeArchivo == '' || nombreDeArchivo.includes('index.php?controller=Product&action=buyProduct') || nombreDeArchivo == 'index.php?controller=Product&action=products' || nombreDeArchivo == 'index.php?controller=Category&action=categories' || nombreDeArchivo.includes('index.php?controller=Product&action=singleCategory') || nombreDeArchivo == 'index.php?controller=Product&action=plateart') {
+if (nombreDeArchivo == 'index.php?controller=Product&action=principal' || nombreDeArchivo == '' || nombreDeArchivo.includes('index.php?controller=Product&action=buyProduct') || nombreDeArchivo == 'index.php?controller=Product&action=products' || nombreDeArchivo == 'index.php?controller=Category&action=categories' || nombreDeArchivo.includes('index.php?controller=Product&action=singleCategory') || nombreDeArchivo == 'index.php?controller=Product&action=plateart' || nombreDeArchivo == 'index.php?controller=User&action=login' || nombreDeArchivo == 'index.php?controller=Cart&action=cart' || nombreDeArchivo == 'index.php?controller=Cart&action=logedUserCart' || nombreDeArchivo == 'index.php?controller=Orders&action=profile') {
   $(document).ready(function () {
     $('#search').keyup(function () {
       var searchValue = $(this).val();

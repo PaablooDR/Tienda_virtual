@@ -1,7 +1,7 @@
 <div id="section2">
     <div id="video">
         <h2>What's a PlateArt</h2>
-        <video width="850" height="600" autoplay loop muted>
+        <video width="100%" height="100%" autoplay loop muted>
             <source src="sources/video.mp4" type="video/mp4">
         </video>
     </div>

@@ -88,5 +88,17 @@ function handleKeyPress(event, input) {
     
 }
 
+function addAndCart($return) {
+    let inputAmount = document.getElementById('amountParagraph');
+    let amount = inputAmount.value;
 
+    let url = window.location.href;
+    var params = new URLSearchParams(new URL(url).search);
+    var productCode = params.get('productCode');
+    if($return == 1) {
+        window.location.href = "index.php?controller=Orders&action=addAndCart&amount="+amount+"&product="+productCode+"&return=1";
+    } else {
+        window.location.href = "index.php?controller=Orders&action=addAndCart&amount="+amount+"&product="+productCode;
+    } 
+}
 

@@ -1,6 +1,6 @@
 <div id="AdminLogin">
     <div>
-        <img src="sources/web/logo.png" alt="logo" style="width: 150px;">
+        <img src="sources/web/logo.png" alt="logo">
         <h1>LOGIN</h1>
         <hr>
         <form action="index.php?controller=Admin&action=checkLogin" method="post" enctype="multipart/form-data">

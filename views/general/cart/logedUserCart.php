@@ -33,7 +33,7 @@
         <div id="cartDetails">
             <h2>Cart Details</h2>
             <p>Total price: <span id="totalCartPrice"><?php echo $totalPrice;?> $</span></p>
-            <button id="buyButton"><a href="index.php?controller=User&action=login">Purchase</a></button>
+            <button id="buyButton"><a href="index.php?controller=Orders&action=payment">Purchase</a></button>
         </div>
     </div>
 </div>

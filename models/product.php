@@ -451,5 +451,19 @@ class Product extends BBDD{
         //Close connection
         $connect = null;
     }
+
+    public static function updateAmount($idProduct, $amount) {
+        try {
+            $connect = BBDD::connect();
+            $stmt = $connect->prepare("UPDATE Product SET stock=stock-:amount WHERE code=:idProduct");
+            $stmt->bindParam(':amount', $amount, PDO::PARAM_INT);
+            $stmt->bindParam(':idProduct', $idProduct, PDO::PARAM_INT);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo "Error of connexion: " . $e->getMessage();
+        }
+        //Close connection
+        $connect = null;
+    }
 }
 ?>

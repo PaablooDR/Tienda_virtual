@@ -14,7 +14,7 @@
                             </div>
                         <?php endforeach; ?>
                         <div class="seeMoreProducts">
-                            <a href="">See more products</a>
+                            <a href="index.php?controller=Product&action=singleCategory&id=<?php echo $category['code']; ?>" aria-label="Navigate to the category <?php echo $category['name']; ?>">See more products</a>
                         </div>
                     </div>
                 <?php else: ?>
