@@ -42,4 +42,4 @@
     </div>
 </div>
 <script src='js/profile.js'></script>
-<script src='js/deleteLocalStorage.js'></script>
+<script src='js/deleteLocalS.js'></script>
