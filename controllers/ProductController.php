@@ -99,7 +99,7 @@ class ProductController {
                 }
             }
         }
-        echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Product&action=products">';
+        echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Product&action=productsAdmin">';
     }
 
     //Form to edit product
@@ -108,7 +108,7 @@ class ProductController {
            
             $code = $_GET['code'];
             $ini = Product::initialize($code);
-            $product = new Product($code, $ini[0], $ini[1], $ini[2], $ini[3], $ini[4], $ini[5], NULL, NULL);
+            $product = new Product($code, $ini[0], $ini[1], $ini[2], $ini[3], $ini[4], $ini[5], NULL, $ini[6]);
             $data = $product->info();
             $categories = Category::obtain();
             require_once("views/admin/editProduct.php");
@@ -116,7 +116,7 @@ class ProductController {
             echo "<script>
                 alert('No identity');
             </script>";
-            echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Product&action=products">';
+            echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Product&action=productsAdmin">';
         }
     }
 
@@ -131,18 +131,23 @@ class ProductController {
             $category = $arrayCategory[0];
             $price = $_POST['price'];
             $stock = $_POST['stock'];
+            if(isset($_POST['outstanding'])){
+                $outstanding = 1;
+            }else{
+                $outstanding = 0;
+            }
             if(is_uploaded_file($_FILES['photo']['tmp_name'])){
                 Product::removeImage($path);
                 $newPath = Product::moveImage($code);
-                $product = new Product($code, $name, $description, $category, $newPath, $price, $stock, NULL, NULL);
+                $product = new Product($code, $name, $description, $category, $newPath, $price, $stock, NULL, $outstanding);
             } else {
-                $product = new Product($code, $name, $description, $category, $path, $price, $stock, NULL, NULL);
+                $product = new Product($code, $name, $description, $category, $path, $price, $stock, NULL, $outstanding);
             }
 
             
             $product->update();
         }
-        echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Product&action=products">';
+        echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Product&action=productsAdmin">';
     }
     //Shop
     //Principal page

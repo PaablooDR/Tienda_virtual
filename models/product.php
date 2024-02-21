@@ -150,7 +150,7 @@ class Product extends BBDD{
             $categoryName = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($result) {
-                return [$this->code, $this->name, $this->description, $this->category, $this->photo, $this->price, $this->stock, $categoryName['name']];
+                return [$this->code, $this->name, $this->description, $this->category, $this->photo, $this->price, $this->stock, $categoryName['name'], $this->outstanding];
             } else {
                 return "Category not found.";
             }
@@ -170,9 +170,10 @@ class Product extends BBDD{
         $photo = $this->photo;
         $price = $this->price;
         $stock = $this->stock;
+        $outstanding = $this->outstanding;
         try {
             $connect = BBDD::connect();
-            $stmt = $connect->prepare("UPDATE Product SET name = :name, description = :description, category = :category, photo = :photo, price = :price, stock = :stock WHERE code = :code");
+            $stmt = $connect->prepare("UPDATE Product SET name = :name, description = :description, category = :category, photo = :photo, price = :price, stock = :stock, outstanding = :outstanding WHERE code = :code");
             $stmt->bindParam(':name', $name, PDO::PARAM_STR);
             $stmt->bindParam(':description', $description, PDO::PARAM_STR);
             $stmt->bindParam(':category', $category, PDO::PARAM_INT);
@@ -180,6 +181,7 @@ class Product extends BBDD{
             $stmt->bindParam(':price', $price, PDO::PARAM_INT);
             $stmt->bindParam(':stock', $stock, PDO::PARAM_STR);
             $stmt->bindParam(':code', $code, PDO::PARAM_INT);
+            $stmt->bindParam(':outstanding', $outstanding, PDO::PARAM_BOOL);
             $stmt->execute();
         } catch (PDOException $e) {
             echo "Error of connexion: " . $e->getMessage();
@@ -318,13 +320,13 @@ class Product extends BBDD{
     public static function initialize($code) {
         try {
             $connect = BBDD::connect();
-            $stmt = $connect->prepare("SELECT name, description, category, photo, price, stock FROM Product WHERE code = :code");
+            $stmt = $connect->prepare("SELECT name, description, category, photo, price, stock, outstanding FROM Product WHERE code = :code");
             $stmt->bindParam(':code', $code, PDO::PARAM_INT);
             $res = $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($result) {
-                return [$result['name'], $result['description'], $result['category'], $result['photo'], $result['price'], $result['stock']];
+                return [$result['name'], $result['description'], $result['category'], $result['photo'], $result['price'], $result['stock'], $result['outstanding']];
             } else {
                 echo "Product not found.";
             }

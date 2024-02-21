@@ -50,12 +50,12 @@ class CategoryController {
             echo "<script>
                 alert('Insert completed');
             </script>";
-            echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Category&action=categories">';
+            echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Category&action=categoriesAdmin">';
         } else {
             echo "<script>
                 alert('Insert failed');
             </script>";
-            echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Category&action=categories">';
+            echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Category&action=categoriesAdmin">';
         }
     }
 
@@ -69,7 +69,7 @@ class CategoryController {
                 }
             }
         }
-        echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Category&action=categories">';
+        echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Category&action=categoriesAdmin">';
     }
 
     //Edit category
@@ -84,7 +84,7 @@ class CategoryController {
             echo "<script>
                 alert('No identity');
             </script>";
-            echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Category&action=categories">';
+            echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Category&action=categoriesAdmin">';
         }
     }
 
@@ -96,7 +96,7 @@ class CategoryController {
             $category = new Category($code, $name, NULL);
             $category->update();
         }
-        echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Category&action=categories">';
+        echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Category&action=categoriesAdmin">';
     }
 }
 ?>

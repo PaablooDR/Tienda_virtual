@@ -8,7 +8,6 @@
         <div id="adminContent">
             <div class="fullScreen">
                 <form action="index.php?controller=Product&action=update&code=<?php echo "$data[0]"; ?>&photo=<?php echo "$data[4]"; ?>" method="post" enctype="multipart/form-data">
-                    <!-- <?php print_r($data); ?> -->
                     <h1><?php echo "$data[0]"; ?></h1>
                     <img src=<?php echo "$data[4]"; ?> alt="logo" style="width: 150px;"> <br><br>
                     Name: <input type="text" name="name" placeholder="Name" value="<?php echo "$data[1]"; ?>" maxlength="100" required><br><br>
@@ -28,7 +27,12 @@
                     </select><br><br>
                     New photo: <input type="file" name="photo" accept=".jpg, .png, .JPEG"><br><br>
                     Price: <input type="number" name="price" placeholder="Price" value=<?php echo "$data[5]"; ?> required><br><br>
-                    Stock: <input type="number" name="stock" placeholder="Stock" value=<?php echo "$data[6]"; ?> required><br>
+                    Stock: <input type="number" name="stock" placeholder="Stock" value=<?php echo "$data[6]"; ?> required><br><br>
+                    <?php if($data[8] == 1) { ?>
+                    Outstanding: <input type="checkbox" name="outstanding" placeholder="Outstanding" checked><br>
+                    <?php } else { ?>
+                    Outstanding: <input type="checkbox" name="outstanding" placeholder="Outstanding"><br>
+                    <?php } ?>
                     <input type="submit" name="send" id="changeActive" value="Enter">
                 </form>
             </div>
