@@ -27,6 +27,7 @@ class cartController{
         $categories = Category::obtain();
         require_once "views/general/header.php";
         require_once "views/general/cart/cart.php";
+        require_once("views/general/footer.php");
     }
 
     public function logedUserCart() {
@@ -35,6 +36,7 @@ class cartController{
         $cartInfo = Order::getLogedUserCartInfo();
         require_once "views/general/header.php";
         require_once "views/general/cart/logedUserCart.php";
+        require_once("views/general/footer.php");
     }
 }
 ?>

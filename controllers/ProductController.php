@@ -37,11 +37,11 @@ class ProductController {
         $code = $_GET["id"];
         $products = Product::specificCategory($code);
         require_once("views/general/products/singleCategory.php");
+        require_once("views/general/footer.php");
     }
 
     //Form
     public function new() {
-        
         $categories = Category::obtain();
         require_once("views/admin/newProduct.php");
     }
@@ -174,7 +174,8 @@ class ProductController {
         $order = isset($_GET['order']) ? $_GET['order'] : null; 
         // Obtener productos filtrados 
         $products = Product::obtainActiveProducts($categoryCode, $minPrice, $maxPrice, $order); 
-        require_once("views/general/products/products.php"); 
+        require_once("views/general/products/products.php");
+        require_once("views/general/footer.php");
     }  
     public function buyProduct(){
         $categories = category::obtain();
@@ -182,11 +183,13 @@ class ProductController {
         $product = Product::getProductByCode($_GET['productCode']);
         require_once("views/general/products/buyProduct.php");
         echo "<script src='./js/productDrawers.js'></script>";
+        require_once("views/general/footer.php");
     }
     public function plateart(){
         $categories = category::obtain();
         require_once("views/general/header.php");
         require_once("views/general/whatsaPlateArt.php");
+        require_once("views/general/footer.php");
     }
 }
 ?>

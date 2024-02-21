@@ -16,7 +16,7 @@ class CategoryController {
         }
 
         require_once "views/general/categories/categories.php";
-        
+        require_once("views/general/footer.php");
     }
 
     //Menu

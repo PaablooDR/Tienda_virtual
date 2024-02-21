@@ -85,6 +85,7 @@ class OrdersController {
         $myOrders = Order::obtainMyOrders(); 
         $myOrdersDetailsArray = Order::obtainMyOrdersDetails(); 
         require_once("views/general/profile.php");
+        require_once("views/general/footer.php");
     }
 
     public function updateCartAmount() {
@@ -168,6 +169,7 @@ class OrdersController {
             $totalPrice = $_GET['totalPrice'];
             require_once("views/general/header.php");
             require_once("views/general/payment.php");
+            require_once("views/general/footer.php");
         } else {
             echo "No se recibió el estado del pedido.";
             echo '<meta http-equiv="refresh"content="0;url=index.php?controller=Cart&action=logedUserCart">';
