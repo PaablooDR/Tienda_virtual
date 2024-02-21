@@ -75,6 +75,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 localStorage.setItem('cart', JSON.stringify(updatedCart));
                 updateTotalPrice(updatedCart);
                 console.log(JSON.parse(localStorage.getItem('cart')));
+                alert('You added the product correctly!');
+                location.href ='index.php?controller=Product&action=products';
             })
             .catch(error => {
                 alert(error);
