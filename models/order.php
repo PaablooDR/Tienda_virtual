@@ -124,8 +124,9 @@ class Order extends BBDD {
         $query = "
             SELECT * 
             FROM Shopping
-            WHERE client = :email;
-        ";
+            WHERE client = :email
+            AND (status = 'pending' OR status = 'sent'); 
+        "; //AND añadido
         try {
             // Preparar la consulta utilizando PDO.
             $statement = BBDD::connect()->prepare($query);
