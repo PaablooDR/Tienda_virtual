@@ -8,7 +8,7 @@
             <div><b>Address:</b> <?php echo $_SESSION['user']['address']; ?></div>
             <div><b>DNI:</b> <?php echo $_SESSION['user']['dni']; ?></div>
         </div>
-        <a href="index.php?controller=User&action=logout"><button>Log out</button></a>
+        <a href="index.php?controller=User&action=logout"><button id="logOut">Log out</button></a>
         <h1>My Orders</h1>
         <?php
             foreach ($myOrders as $Orders) {
@@ -42,3 +42,4 @@
     </div>
 </div>
 <script src='js/profile.js'></script>
+<script src='js/deleteLocalStorage.js'></script>
