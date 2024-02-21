@@ -116,7 +116,7 @@ html {
 .listUser {
   background-color: #ffffff;
   display: grid;
-  grid-template-columns: repeat(auto-fit, 30%);
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   border-top: 2px solid black;
   min-height: 50px;
   align-content: center;
@@ -1389,5 +1389,9 @@ html {
   #filters {
     display: grid;
     grid-template-columns: 25% 35% 25% 15% !important;
+  }
+  .listUser {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 26%);
   }
 }/*# sourceMappingURL=styles.css.map */

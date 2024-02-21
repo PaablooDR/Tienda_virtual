@@ -119,7 +119,7 @@ html {
 .listUser {
     background-color: $color-list-admin;
     display: grid;
-    grid-template-columns: repeat(auto-fit, 30%);
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     border-top: 2px solid black;
     min-height: 50px;
     align-content: center;
@@ -1533,5 +1533,9 @@ html {
 
         display: grid;
         grid-template-columns: 25% 35% 25% 15% !important;
+    }
+    .listUser {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 26%);
     }
 }
