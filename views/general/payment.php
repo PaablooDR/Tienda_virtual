@@ -15,7 +15,7 @@
             <form action="index.php?controller=Orders&action=orderPaid&order=<?php echo $order; ?>" autocomplete="off" method="post" enctype="multipart/form-data">
                 <input type="text" name="email" placeholder="Email" required><br>
                 <input type="password" name="password" placeholder="Password" required><br>
-                <input type="submit" name="send" value="Accept" aria-label="Pay">
+                <input type="submit" name="send" value="Accept" id="paymentButton" aria-label="Pay">
             </form>
         </div>
     </div>

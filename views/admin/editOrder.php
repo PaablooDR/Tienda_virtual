@@ -24,7 +24,7 @@ if (isset($_GET['id'])) {
                     <option value="sent">sent</option>
                     <option value="cart">cart</option>
                 </select>
-                <input type="submit" value="Change status">
+                <input type="submit" value="Change status" id="changeStatus">
             </form>
         </div>
     </div>

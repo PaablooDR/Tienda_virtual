@@ -82,6 +82,10 @@ html {
   color: white;
   background-color: #292929;
 }
+#containerAdmin #adminContent #changeStatus {
+  color: white;
+  background-color: #292929;
+}
 #containerAdmin #adminContent #bodyList {
   border-top: 0px;
 }
@@ -870,6 +874,15 @@ html {
 }
 #footer #paypal {
   max-width: 120px;
+}
+
+#paypal form #paymentButton {
+  color: white;
+  background-color: #292929;
+  margin-left: 9%;
+}
+#paypal form input {
+  margin-bottom: 2%;
 }
 
 #coming_soon {
