@@ -1184,8 +1184,18 @@ html {
     }
 }
 
+.titlePayment{
+    text-align: center;
+}
 
-
+#paymentContainer{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-bottom: 2%;
+    div{
+        margin-left: 40%;
+    }
+}
 
 
 //mediaquerys
