@@ -876,10 +876,13 @@ html {
   max-width: 120px;
 }
 
+#paypal form {
+  width: 30%;
+  text-align: center;
+}
 #paypal form #paymentButton {
   color: white;
   background-color: #292929;
-  margin-left: 9%;
 }
 #paypal form input {
   margin-bottom: 2%;

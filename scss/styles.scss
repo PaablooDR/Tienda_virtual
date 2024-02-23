@@ -940,10 +940,11 @@ html {
 }
 #paypal{
     form{
+        width: 30%;
+        text-align: center;
         #paymentButton{
             color: white;
             background-color: #292929;
-            margin-left: 9%;
         }
         input{
             margin-bottom: 2%;
