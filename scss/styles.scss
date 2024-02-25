@@ -152,6 +152,16 @@ html {
 
     #tamañoHeader{
         width: 90%;
+        #menuHeader{
+            display: none;
+        }
+        .menu-icon{
+            width: 25px;
+        }
+        label{
+            cursor: pointer;
+            display: none;
+        }
         ul {
             list-style: none;
             padding: 0;
@@ -178,6 +188,82 @@ html {
             }
             li {
                 margin: 0 50px;
+                color: white;
+                a {
+                    text-decoration: none; 
+                    color: white; 
+                }
+                .dropdown-content{
+                    display: none;
+                }
+            }
+            .dropdown:hover {
+                .dropdown-content{
+                    display: block;
+                    list-style: none;
+                    position: absolute;
+                    background-color: black;
+                    z-index: 1;
+                    li {
+                        padding: 4%;
+                    }
+                } 
+            }
+
+            img {
+                max-height: 30px; 
+                max-width: 30px; 
+            }
+
+            input {
+                margin: 0 0px; // Ajusta el margen según tus necesidades
+                padding: 5px 50px; // Ajusta el relleno según tus necesidades
+            }
+        }
+    }
+}
+#header2 {
+    display: none;
+
+
+    #tamañoHeader2{
+        width: 90%;
+        #menuHeader{
+            display: none;
+        }
+        .menu-icon{
+            width: 25px;
+        }
+        label{
+            cursor: pointer;
+            display: none;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: 14.28% 14.28% 14.28% 22.88% 24.28% 5% 5%;
+            align-items: center;
+            a{
+                text-decoration: none;
+                #logoPhoto{
+                    width: 66px;
+                    height: 66px;
+                    max-height: 66px; 
+                    max-width: 66px;
+                }
+                img{
+                    max-height: 30px; 
+                    max-width: 30px;
+                }
+  
+            }
+            .marginHeader{
+                margin: 0;
+            }
+            li {
+                
                 color: white;
                 a {
                     text-decoration: none; 
@@ -773,7 +859,7 @@ html {
                 max-width: 100%;
                 height: 100%;
                 transition: transform 0.3s ease-in-out;
-                border-radius: 2%;
+                
             }
         }
     }
@@ -1568,5 +1654,68 @@ html {
     .listUser {
         display: grid;
         grid-template-columns: repeat(auto-fit, 26%);
+    }
+}
+@media (max-width:940px){
+    #header{
+        display: none;
+    }
+    #header2{
+        background-color: black;
+        padding: 30px;
+        display: flex;
+        justify-content: center;
+        padding: 40px 0;
+        #tamañoHeader2{
+            
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            label{
+                display: initial;
+            }
+            .menu-icon {
+                float: right;
+            }
+            .logo {
+                letter-spacing: 20px; /* Ajusta el espaciado entre letras según necesites */
+                color: white;
+                text-decoration: none; /* Quita el subrayado */
+                font-weight: 200; /* Define la ligereza de la fuente (extra light) */
+                font-size: 25px; /* Ajusta el tamaño de la fuente según necesites */
+            }
+            .navbar{
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: black;
+                display: none;
+                ul{
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                    text-align: center;
+                    grid-template-columns: 1fr;
+
+                    li{
+                        font-size: 18px;
+                        padding-top: 2%;
+                        padding-bottom:2% ;
+                        width: 100%;
+                    }
+                }
+            }
+
+            #menuHeader:checked ~ .navbar{
+                display: initial;
+            }
+        }
+    }
+    #outstandingProducts{
+        width: 90% !important;
+    }
+    #footer {
+        display: none;
+       
     }
 }

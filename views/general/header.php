@@ -28,5 +28,25 @@
         </ul>
     </div>
 </div>
+<div id="header2">
+    <div id="tamañoHeader2">
+        <a href="index.php?controller=Product&action=principal" class="logo">PlateArt</a>
+        <input type="checkbox" id="menuHeader">
+        <label for="menuHeader">
+            <img src="sources/web/menu-hamburguesa.png" class="menu-icon" alt="logo">
+        </label>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.php?controller=Product&action=products">Products</a></li>
+                <li><a href="index.php?controller=Category&action=categories">Categories</a></li>
+                <li><a href="index.php?controller=Product&action=plateart">What's a PlateArt</a></li>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Inicio</a></li>
+
+            </ul>
+        </nav>
+    </div>
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="js/searchBar.js"></script>
