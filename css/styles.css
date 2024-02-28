@@ -1660,4 +1660,27 @@ html {
   #OrderDiv {
     padding-left: 0 !important;
   }
+  #cartContainer #order-container #cartInfo .product-container {
+    padding: 10px;
+    margin: 0;
+    max-width: 340px;
+  }
+  #cartContainer #order-container #cartInfo .product-container .product-details .quantity-controls input {
+    width: 90px;
+  }
+  #cartContainer #order-info {
+    max-width: 340px;
+  }
+  #cartContainer #order-info #cartDetails p {
+    max-width: 200px;
+  }
+  #profile #profile-div .user-info {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  #profile #profile-div .orders-div {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  #profile #profile-div .orders-div div {
+    height: 50px !important;
+  }
 }/*# sourceMappingURL=styles.css.map */

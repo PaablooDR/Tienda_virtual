@@ -1817,4 +1817,43 @@ html {
     #OrderDiv {
         padding-left: 0 !important;
     }
+    #cartContainer {
+        #order-container {
+            #cartInfo {
+                .product-container {
+                    padding: 10px;
+                    margin: 0;
+                    max-width: 340px;
+                    .product-details {
+                        .quantity-controls {
+                            input {
+                                width: 90px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        #order-info {
+            max-width: 340px;
+            #cartDetails {
+                p {
+                    max-width: 200px;
+                }
+            }
+        }
+    }
+    #profile {
+        #profile-div {
+            .user-info {
+                grid-template-columns: repeat(1, 1fr);
+            }
+            .orders-div {
+                grid-template-columns: repeat(1, 1fr);
+                div {
+                    height: 50px !important;
+                }
+            }
+        }
+    }
 }
