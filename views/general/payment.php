@@ -5,7 +5,7 @@
     <div id="paymentContainer">
         <div id="purchaseInformation">
             <h3>Purchase information</h3>
-            <p>Import: <?php echo $totalPrice; ?> </p>
+            <p>Import: <?php echo $totalPrice; ?> €</p>
             <p>Comerce: PlateArt</p>
             <p>Order: <?php echo $order; ?> </p>
             <p>Date: <?php echo $today; ?> </p>
