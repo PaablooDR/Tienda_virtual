@@ -108,8 +108,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
     function updateQuantity(productId, newQuantity) {
-        let shoppingIdDiv = document.getElementById(productId);
+        let shoppingIdDiv = document.getElementById('productContainer' + productId);
         let shoppingId = shoppingIdDiv.getAttribute('shopping-id-data');
+        console.log(shoppingId,productId,newQuantity);
         return new Promise(function(resolve, reject) {
             let xhr = new XMLHttpRequest();
             xhr.open('POST', 'index.php?controller=Orders&action=updateCartAmount', true);

@@ -182,16 +182,28 @@ class OrdersController {
             $products = Order::productsAmount($idOrder);
             foreach($products as $product) {
                 $productStock = Product::getProductStock($product['product']);
-                if($productStock == 0) {
+                if($productStock['stock'] == 0) {
                     Order::deleteProductFromShopping($product['product'],$idOrder);
                     $purchase_validated = false;
-                }elseif($productStock < $product['amount']){
-                    
+                }elseif($productStock['stock'] < $product['amount']){
+                    Order::updateShoppingAmountPurchase($idOrder,$productStock['stock'],$product['product']);
+                    $purchase_validated = false;
                 }
-                Product::updateAmount($product['product'], $product['amount']);
             }
-            Order::cambiarEstado($idOrder, 'pending');
-            echo '<meta http-equiv="refresh"content="0;url=index.php?controller=Product&action=principal">';
+            if($purchase_validated) {
+                foreach($products as $product) {
+                    Product::updateAmount($product['product'], $product['amount']);
+                }
+                Order::updateTotalShoppingPrice($idOrder);
+                Order::cambiarEstado($idOrder, 'pending');
+                echo "<script> alert('Congratulations for your purchase!');</script>";
+                echo '<meta http-equiv="refresh"content="0;url=index.php?controller=Orders&action=profile">';
+            }else {
+                Order::updateTotalShoppingPrice($idOrder);
+                echo "<script> alert('Some products were out of stock.');</script>";
+                echo '<meta http-equiv="refresh"content="0;url=index.php?controller=Cart&action=logedUserCart">';
+            }
+            
         } else {
             echo "No se recibió el estado del pedido.";
             echo '<meta http-equiv="refresh"content="0;url=index.php?controller=Product&action=buyProduct&productCode='.$_GET['product'].'">';

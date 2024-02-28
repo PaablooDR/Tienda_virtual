@@ -472,8 +472,12 @@ class Product extends BBDD{
         try {
             $connect = BBDD::connect();
             $stmt = $connect->prepare("SELECT stock FROM Product WHERE code = :idProduct");
-            $stmt->bindParam(':idProduct', $idProduct, PDO::PARAM_INT);
+            $stmt->bindParam(':idProduct', $idProduct, PDO::PARAM_STR);
             $stmt->execute();
+
+            $stock = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $stock;
         } catch (PDOException $e) {
             echo "Error of connexion: " . $e->getMessage();
         }
