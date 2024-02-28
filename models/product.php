@@ -229,7 +229,7 @@ class Product extends BBDD{
     public static function specificCategory($code) {
         try {
             $connect = BBDD::connect();
-            $query = "SELECT p.*, c.name as category_name FROM Product p JOIN Category c ON p.category = c.code::integer WHERE CAST(p.category AS TEXT) LIKE :code";
+            $query = "SELECT p.*, c.name as category_name FROM Product p JOIN Category c ON p.category = c.code::integer WHERE CAST(p.category AS TEXT) LIKE :code AND p.stock <> 0";
             $statement = $connect->prepare($query);
             $statement->bindValue(':code', '%' . $code . '%', PDO::PARAM_STR);
             $statement->execute();
@@ -264,7 +264,7 @@ class Product extends BBDD{
     public static function obtainActiveProducts($categoryCode = null, $minPrice = null, $maxPrice = null, $order = null) { 
         $connect = BBDD::connect(); 
         // Construir la consulta SQL base
-        $query = "SELECT * FROM product WHERE active = true"; 
+        $query = "SELECT * FROM product WHERE active = true AND stock <> 0"; 
         // Agregar cláusulas WHERE para los filtros
         if ($categoryCode !== null && $categoryCode != 0) { 
             $query .= " AND category = ?"; 
