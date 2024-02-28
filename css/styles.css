@@ -967,8 +967,9 @@ html {
 }
 
 #apply {
+  border: none;
   color: white;
-  background-color: #292929;
+  background-color: #000;
 }
 
 #coming_soon {
@@ -1682,5 +1683,26 @@ html {
   }
   #profile #profile-div .orders-div div {
     height: 50px !important;
+  }
+  #buyProduct {
+    padding-bottom: 45%;
+    height: 120vh;
+  }
+  #buyProduct #productContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  #buyProduct #productContainer #productImage {
+    margin: 10% auto;
+  }
+  #buyProduct #productContainer #productDetails {
+    display: flex;
+    width: 70%;
+    height: 550px;
+    margin: 0 auto;
+    position: static;
+  }
+  #buyProduct #productContainer #productDetails #productInfo {
+    margin: 10% 0% 0% 15%;
   }
 }/*# sourceMappingURL=styles.css.map */
