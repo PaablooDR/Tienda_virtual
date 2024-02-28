@@ -1,6 +1,11 @@
-<?php
-require_once("views/general/products/filters.php");
-?>
+
+<button id="filterButton">Filters</button>
+<div id="filtersPanel">
+    <h2>Filter Options</h2>
+    <?php
+    require_once("views/general/products/filters.php");
+    ?>
+</div>
 <div id="productsView">
 <?php
     if($products != []){
@@ -27,3 +32,4 @@ require_once("views/general/products/filters.php");
     }
 ?>
 </div>
+<script src="./js/filters.js"></script>

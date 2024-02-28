@@ -1774,4 +1774,47 @@ html {
             text-align: center;
         }
     }
+    .findPlate {
+        display: grid;
+        align-content: center;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 0 !important;
+    }
+    #filtersPanel {
+        position: absolute;
+        top: 0;
+        left: -200px; /* Fuera de la pantalla inicialmente */
+        width: 200px;
+        background-color: #fff;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        transition: left 0.3s ease; /* Transición suave */
+        margin-top: 200px;
+      }
+      
+    #filtersPanel.open {
+        left: 0; /* Muestra el panel moviéndolo hacia la derecha */
+        margin-top: 200px;
+        left: 0;
+        z-index: 100;
+        padding: 50px;
+    }
+    #filterButton{
+        margin-top: 4%;
+        margin-left: 4%;
+        font-size: 20px;
+        border: none;
+        color: white;
+        background-color: #000;
+    }
+    #filters {
+        width: 90% !important;
+        display: grid;
+        grid-template-columns: 1fr !important;
+        align-items: center;
+        z-index: 1000;
+        background: white;
+    }
+    #OrderDiv {
+        padding-left: 0 !important;
+    }
 }
