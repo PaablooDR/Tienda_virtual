@@ -1131,10 +1131,20 @@ html {
         &:hover {
             background-color: grey;
         }
+        &:disabled {
+            background-color: #ccc;
+            color: #666;
+            cursor: not-allowed;
+        }
         a{
             text-decoration: none;
             color:white;
         }
+    }
+    button.disabled {
+        background-color: #ccc; 
+        color: #666; 
+        cursor: not-allowed;
     }
 }
 .product-container {

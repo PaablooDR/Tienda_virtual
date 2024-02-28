@@ -177,9 +177,17 @@ class OrdersController {
 
     public function orderPaid() {
         if(isset($_GET['order'])) {
+            $purchase_validated = true;
             $idOrder = $_GET['order'];
             $products = Order::productsAmount($idOrder);
             foreach($products as $product) {
+                $productStock = Product::getProductStock($product['product']);
+                if($productStock == 0) {
+                    Order::deleteProductFromShopping($product['product'],$idOrder);
+                    $purchase_validated = false;
+                }elseif($productStock < $product['amount']){
+                    
+                }
                 Product::updateAmount($product['product'], $product['amount']);
             }
             Order::cambiarEstado($idOrder, 'pending');
@@ -190,5 +198,4 @@ class OrdersController {
         }
     }
 }
-
 ?>

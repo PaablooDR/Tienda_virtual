@@ -1,6 +1,5 @@
 
 document.addEventListener("DOMContentLoaded", function() {
-    // Esta función se ejecutará cuando la página esté completamente cargada
     createCartContainer();
     updateTotalPriceAllProducts();
 });
@@ -9,8 +8,13 @@ function createCartContainer(){
 
     var cartInfo = document.getElementById('cartInfo');
 
+    var buyBtn = document.getElementById('buyButton');
+    var buyLink = document.getElementById('purchaseLink');
+
     if(productsLocalStorage.length === 0){
         console.log('nothing in the cart');
+        buyLink.style.pointerEvents = 'none';
+        buyBtn.disabled = true;
     }else{
         productsLocalStorage.forEach(function(product) {
             var productDiv = document.createElement('div');
@@ -102,7 +106,16 @@ function deleteProductAndUpdateUI(productId) {
                 setTimeout(function() {
                     productDiv.remove();
                     updateTotalPriceAllProducts();
-                }, 0.4); // Ajusta el tiempo de espera según la duración de tu animación
+
+                    var remainingProducts = JSON.parse(localStorage.getItem('cart')) || [];
+                    if (remainingProducts.length === 0) {
+                        var buyBtn = document.getElementById('buyButton');
+                        var buyLink = document.getElementById('purchaseLink');
+                        buyLink.style.pointerEvents = 'none';
+                        buyBtn.disabled = true;
+                        console.log('no products');
+                    }
+                }, 0.4); 
             }
         })
         .catch(function(error) {

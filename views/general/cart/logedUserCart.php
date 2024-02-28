@@ -4,8 +4,10 @@
         <div id="cartInfo">
         <?php
             $totalPrice = 0;
+            $cartIsEmpty = true;
             foreach($cartInfo as $productInfo){
                 $totalPrice = $totalPrice + $productInfo['detail_total_price'];
+                $cartIsEmpty = false;
         ?>
             <div class="product-container" id="productContainer<?php echo $productInfo['product'];?>" shopping-id-data="<?php echo $productInfo['id_shopping'];?>">
                 <img src='<?php echo $productInfo['photo'];?>' class='productImg' alt='<?php echo $productInfo['product_name'];?>' >
@@ -33,7 +35,11 @@
         <div id="cartDetails">
             <h2>Cart Details</h2>
             <p>Total price: <span id="totalCartPrice"><?php echo $totalPrice;?> $</span></p>
-            <button id="buyButton"><a href="index.php?controller=Orders&action=payment&totalPrice=<?php echo $totalPrice;?>">Purchase</a></button>
+            <?php if(!$cartIsEmpty): ?>
+                <button id="buyButton"><a id="purchaseLink" href="index.php?controller=Orders&action=payment&totalPrice=<?php echo $totalPrice;?>">Purchase</a></button>
+            <?php else: ?>
+                <button id="buyButton" disabled>Purchase</button>
+            <?php endif; ?>
         </div>
     </div>
 </div>

@@ -467,5 +467,18 @@ class Product extends BBDD{
         //Close connection
         $connect = null;
     }
+
+    public static function getProductStock($idProduct) {
+        try {
+            $connect = BBDD::connect();
+            $stmt = $connect->prepare("SELECT stock FROM Product WHERE code = :idProduct");
+            $stmt->bindParam(':idProduct', $idProduct, PDO::PARAM_INT);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo "Error of connexion: " . $e->getMessage();
+        }
+        //Close connection
+        $connect = null;
+    }
 }
 ?>

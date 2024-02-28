@@ -1,8 +1,9 @@
+<script type="module" src="./js/cart.js"></script>
 <?php 
     if(empty($_GET['productCode'])){
         echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Product&action=products">';
     } else {
-        foreach($product as $productInfo){
+        foreach($product as $productInfo) {
 ?>
         <div id="buyProduct" style="background-image: url('sources/web/salon1.jpg');">
             <div id="productContainer">
@@ -12,12 +13,13 @@
                         <h2 id="productName"><?php echo $productInfo['name'];?></h2>
                         <p><?php echo $productInfo['description'];?></p>
                         <p id="productPrice"><?php echo $productInfo['price'];?> €</p>
-                        <div id="productAmount">
-                            <button class="amount-btn" id="rest" onclick="decreaseCount(event,this)">-</button>
-                            <input type="text" id="amountParagraph" value="1" max-stock="<?php echo $productInfo['stock']; ?>" onblur="validateInput(this)" onkeydown="handleKeyPress(event, this)"></input>
-                            <button class="amount-btn" id="sum" onclick="increaseCount(event,this)">+</button>
-                        </div>
-                        <div id="buttons">
+                        <?php if($productInfo['stock'] > 0): ?>
+                            <div id="productAmount">
+                                <button class="amount-btn" id="rest" onclick="decreaseCount(event,this)">-</button>
+                                <input type="text" id="amountParagraph" value="1" max-stock="<?php echo $productInfo['stock']; ?>" onblur="validateInput(this)" onkeydown="handleKeyPress(event, this)"></input>
+                                <button class="amount-btn" id="sum" onclick="increaseCount(event,this)">+</button>
+                            </div>
+                            <div id="buttons">
                             <?php
                             if(isset($_SESSION['user'])) {
                             ?>
@@ -39,6 +41,9 @@
                             <?php
                             }
                             ?>
+                        <?php else: ?>
+                            <p>No stock available</p>
+                        <?php endif; ?>
                         </div>
                         <div id="drawerOptions">
                             <button class="openDrawer" data-drawer="drawerOption1" aria-label="Button to see more info about the product">More info</button>

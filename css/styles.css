@@ -1059,9 +1059,19 @@ html {
 #cartDetails button:hover {
   background-color: grey;
 }
+#cartDetails button:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
 #cartDetails button a {
   text-decoration: none;
   color: white;
+}
+#cartDetails button.disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
 }
 
 .product-container {

@@ -88,12 +88,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 productContainer.parentNode.removeChild(productContainer);
                 deleteProduct(productId,shoppingId).then(function(response) {
                     // Manejar la respuesta si es necesario
-                    console.log(response);
-                    // También puedes agregar lógica adicional si es necesario
                 }).catch(function(error) {
                     console.error(error);
                 });
 
+                var remainingProducts = document.querySelectorAll('.product-container');
+                console.log(remainingProducts);
+                if (remainingProducts.length === 0) {
+                    var buyButton = document.getElementById('buyButton');
+                    var purchaseLink = document.getElementById('purchaseLink');
+
+                    buyButton.disabled = true;
+                    purchaseLink.style.pointerEvents = 'none';
+                }
+                
                 updateCartTotalPrice();
                 updateTotalPriceShopping(shoppingId);
             }, 500); 
