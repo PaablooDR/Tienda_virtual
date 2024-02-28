@@ -13,37 +13,33 @@
                         <h2 id="productName"><?php echo $productInfo['name'];?></h2>
                         <p><?php echo $productInfo['description'];?></p>
                         <p id="productPrice"><?php echo $productInfo['price'];?> €</p>
-                        <?php if($productInfo['stock'] > 0): ?>
-                            <div id="productAmount">
-                                <button class="amount-btn" id="rest" onclick="decreaseCount(event,this)">-</button>
-                                <input type="text" id="amountParagraph" value="1" max-stock="<?php echo $productInfo['stock']; ?>" onblur="validateInput(this)" onkeydown="handleKeyPress(event, this)"></input>
-                                <button class="amount-btn" id="sum" onclick="increaseCount(event,this)">+</button>
-                            </div>
-                            <div id="buttons">
-                            <?php
-                            if(isset($_SESSION['user'])) {
-                            ?>
-                                <a><button id="purchaseProduct" onclick="addAndCart(0)">Purchase</button></a>
-                                <a id="addToCartLink">
-                                    <div id="iconContainer" onclick="addAndCart(1)">
-                                        <img id="productIcon" src="sources/web/addToCart.png">
-                                    </div>
-                                </a>
-                            <?php
-                            } else {
-                            ?>
-                                <a href="index.php?controller=User&action=login"><button id="purchaseProduct">Purchase</button></a>
-                                <a href="#" id="addToCartLink">
-                                    <div id="iconContainer">
-                                        <img id="productIcon" src="sources/web/addToCart.png">
-                                    </div>
-                                </a>
-                            <?php
-                            }
-                            ?>
-                        <?php else: ?>
-                            <p>No stock available</p>
-                        <?php endif; ?>
+                        <div id="productAmount">
+                            <button class="amount-btn" id="rest" onclick="decreaseCount(event,this)">-</button>
+                            <input type="text" id="amountParagraph" value="1" max-stock="<?php echo $productInfo['stock']; ?>" onblur="validateInput(this)" onkeydown="handleKeyPress(event, this)"></input>
+                            <button class="amount-btn" id="sum" onclick="increaseCount(event,this)">+</button>
+                        </div>
+                        <div id="buttons">
+                        <?php
+                        if(isset($_SESSION['user'])) {
+                        ?>
+                            <a><button id="purchaseProduct" onclick="addAndCart(0)">Purchase</button></a>
+                            <a id="addToCartLink">
+                                <div id="iconContainer" onclick="addAndCart(1)">
+                                    <img id="productIcon" src="sources/web/addToCart.png">
+                                </div>
+                            </a>
+                        <?php
+                        } else {
+                        ?>
+                            <a href="index.php?controller=User&action=login"><button id="purchaseProduct">Purchase</button></a>
+                            <a href="#" id="addToCartLink">
+                                <div id="iconContainer">
+                                    <img id="productIcon" src="sources/web/addToCart.png">
+                                </div>
+                            </a>
+                        <?php
+                        }
+                        ?>
                         </div>
                         <div id="drawerOptions">
                             <button class="openDrawer" data-drawer="drawerOption1" aria-label="Button to see more info about the product">More info</button>

@@ -327,9 +327,9 @@ class Order extends BBDD {
     public static function updateAmountOnCart($newAmount,$productId,$id_shopping){
         try {
             $connect = BBDD::connect();
-            $stmt = $connect->prepare("UPDATE shopping_details s
-            SET amount = :newAmount, total_price = :amount * s.price_per_product
-            WHERE product = :product AND shopping = :id;");
+            $stmt = $connect->prepare("UPDATE shopping_details 
+            SET amount = :newAmount, total_price = price_per_product * :amount
+            WHERE product = :product AND shopping = :id");
             $stmt->bindParam(':newAmount', $newAmount, PDO::PARAM_INT);
             $stmt->bindParam(':amount', $newAmount, PDO::PARAM_INT);
             $stmt->bindParam(':product', $productId, PDO::PARAM_STR);
@@ -391,18 +391,34 @@ class Order extends BBDD {
         //Close connection
         $connect = null;
     }
-    public static function updateShoppingAmountPurchase($idShopping,$maxStock) {
+    public static function updateShoppingAmountPurchase($idShopping,$maxStock,$idProduct) {
         try {
             $connect = BBDD::connect();
-            $stmt = $connect->prepare("UPDATE shopping_details SET amount = :newAmount WHERE shopping = :shoppingId AND product = :idProduct");
-            $stmt->bindParam(':id', $order, PDO::PARAM_INT);
+            $stmt = $connect->prepare("UPDATE shopping_details SET amount = :maxStock , total_price = price_per_product * :newAmount
+            WHERE shopping = :idShopping AND product = :idProduct");
+            $stmt->bindParam(':maxStock', $maxStock, PDO::PARAM_INT);
+            $stmt->bindParam(':newAmount', $maxStock, PDO::PARAM_INT);
+            $stmt->bindParam(':idShopping', $idShopping, PDO::PARAM_INT);
+            $stmt->bindParam(':idProduct', $idProduct, PDO::PARAM_STR);
             $stmt->execute();
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            if ($result) {
-                return $result;
-            } else {
-                return false;
-            }
+        } catch (PDOException $e) {
+            echo "Error of connexion: " . $e->getMessage();
+        }
+        //Close connection
+        $connect = null;
+    }
+
+    public static function updateTotalShoppingPrice($idShopping) {
+        try {
+            $connect = BBDD::connect();
+            $stmt = $connect->prepare("UPDATE Shopping
+            SET total_price = (
+                SELECT SUM(total_price)
+                FROM Shopping_details
+                WHERE Shopping_details.shopping = :idShopping
+            )");
+            $stmt->bindParam(':idShopping', $idShopping, PDO::PARAM_INT);
+            $stmt->execute();
         } catch (PDOException $e) {
             echo "Error of connexion: " . $e->getMessage();
         }
