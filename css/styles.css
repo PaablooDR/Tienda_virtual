@@ -1628,12 +1628,14 @@ html {
   #filtersPanel {
     position: absolute;
     top: 0;
-    left: -200px; /* Fuera de la pantalla inicialmente */
+    left: -300px; /* Fuera de la pantalla inicialmente */
     width: 200px;
     background-color: #fff;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    transition: left 0.3s ease; /* Transición suave */
+    transition: left 0.4s ease; /* Transición suave */
     margin-top: 200px;
+    padding: 50px;
+    z-index: 100;
   }
   #filtersPanel.open {
     left: 0; /* Muestra el panel moviéndolo hacia la derecha */
