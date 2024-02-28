@@ -203,7 +203,7 @@ html {
                     list-style: none;
                     position: absolute;
                     background-color: black;
-                    z-index: 1;
+                    z-index: 1000;
                     li {
                         padding: 4%;
                     }
@@ -1725,7 +1725,53 @@ html {
         width: 90% !important;
     }
     #footer {
+        #title{
+            font-size: 20px;
+            letter-spacing: 30px;
+        }
+        #logoPlate{
+            width: 100px !important;
+        }
+    }
+
+    #outstanding {
+        justify-items: center;
+        height: auto;
+        #carousel {
+            height: auto;
+            img {
+                width: 100%;
+                height: auto; 
+                margin: 4% auto;
+                margin-left: 0 !important; 
+                border-radius: 10px;
+            }
+        }
+    }
+    #outstandingProducts{
         display: none;
-       
+        
+    }
+    .productContainer {
+        width: auto;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-bottom: 8%;
+        a{
+            display: grid;
+            justify-content: center;
+        }
+    }
+    .productsByCategory {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr)!important;
+        gap: 20px;
+    }
+    .seeMoreProducts {
+        font-size: 20px !important;
+        a{
+            text-align: center;
+        }
     }
 }

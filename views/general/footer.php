@@ -1,6 +1,6 @@
 <div id="footer">
     <div>
-        <img src="sources/web/logo.png" alt="logo" style="width: 250px;">
+        <img src="sources/web/logo.png" alt="logo" id="logoPlate" style="width: 250px;">
     </div>
     <div id="title">PlateArt</div>
     <div>Find us
