@@ -40,9 +40,13 @@
                 <li><a href="index.php?controller=Product&action=products">Products</a></li>
                 <li><a href="index.php?controller=Category&action=categories">Categories</a></li>
                 <li><a href="index.php?controller=Product&action=plateart">What's a PlateArt</a></li>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Inicio</a></li>
+                <?php if(!isset($_SESSION['user'])) {?>
+                    <li><a href="index.php?controller=Cart&action=cart">Cart</a></li>
+                    <li><a href="index.php?controller=User&action=login">Log in</a></li>
+                <?php } else {?>
+                    <li><a href="index.php?controller=Cart&action=logedUserCart">Cart</a></li>
+                    <li><a href="index.php?controller=Orders&action=profile">Profile</a></li>
+                <?php } ?>
 
             </ul>
         </nav>
