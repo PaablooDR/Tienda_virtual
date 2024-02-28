@@ -373,7 +373,9 @@ html {
         margin-left: 10%;
     }
 }
-
+#filterButton{
+    display: none;
+}
   
 
 #productsView {
@@ -1802,6 +1804,7 @@ html {
         padding: 50px;
     }
     #filterButton{
+        display: block;
         margin-top: 4%;
         margin-left: 4%;
         font-size: 20px;
