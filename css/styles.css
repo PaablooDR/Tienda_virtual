@@ -1161,6 +1161,10 @@ html {
 #profile #profile-div {
   width: 90%;
 }
+#profile #profile-div button {
+  color: white;
+  background-color: #000;
+}
 #profile #profile-div .user-info {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -1711,5 +1715,14 @@ html {
   }
   #buyProduct #productContainer #productDetails #productInfo {
     margin: 10% 0% 0% 15%;
+  }
+  #payment {
+    height: 50vh;
+  }
+  #payment #paymentContainer div {
+    margin-left: 10%;
+  }
+  #payment #paymentContainer #paypal form input {
+    width: 155px;
   }
 }/*# sourceMappingURL=styles.css.map */

@@ -1241,6 +1241,10 @@ html {
     justify-content: center;
     #profile-div{
         width: 90%;
+        button {
+            color: white;
+            background-color: #000;
+        }
         .user-info{
             display: grid;
             grid-template-columns: repeat(5, 1fr);
@@ -1879,6 +1883,21 @@ html {
                 position: static;
                 #productInfo {
                     margin: 10% 0% 0% 15%;
+                }
+            }
+        }
+    }
+    #payment {
+        height: 50vh;
+        #paymentContainer {
+            div {
+                margin-left: 10%;
+            }
+            #paypal {
+                form {
+                    input {
+                        width: 155px;
+                    }
                 }
             }
         }
