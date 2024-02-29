@@ -28,9 +28,14 @@ class UserController {
             echo '<meta http-equiv="refresh"content="0;url=index.php?controller=Product&action=principal">';
         } else {
             echo "<script>
-                alert('Email or password are incorrect');
-            </script>";
-            echo '<meta http-equiv="refresh"content="0;url=index.php?controller=User&action=login">';
+                Swal.fire({
+                    title: 'Incorrect email or password',
+                    text: 'The email or password is wrong, try again',
+                    icon: 'error',
+                    showConfirmButton: false
+                }); 
+                </script>";
+            echo '<meta http-equiv="refresh"content="2.5;url=index.php?controller=User&action=login">';
         }
     }
 
@@ -56,14 +61,25 @@ class UserController {
         $usu = $user->checkSignUp();
         
         if($usu) {
-            echo '<script>alert("Registrado con exito");</script>';
-            
-            echo '<meta http-equiv="refresh"content="0;url=index.php?controller=User&action=login">';
+            echo "<script>
+                Swal.fire({
+                    title: 'Welcome!',
+                    icon: 'success',
+                    showConfirmButton: false
+                }); 
+                </script>";
+            echo '<meta http-equiv="refresh"content="2;url=index.php?controller=User&action=login">';
         }
         else {
-            echo '<script>alert("Error en el registro");</script>';
-            echo $usu;
-            echo '<meta http-equiv="refresh"content="20;url=index.php?controller=User&action=signup">';
+            echo "<script>
+                Swal.fire({
+                    title: 'Something went wrong',
+                    text: 'Enter the correct information',
+                    icon: 'error',
+                    showConfirmButton: false
+                }); 
+                </script>";
+            echo '<meta http-equiv="refresh"content="2.5;url=index.php?controller=User&action=signup">';
         }
     }
 }

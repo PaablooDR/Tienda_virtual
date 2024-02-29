@@ -41,7 +41,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     resolve(existingCart);
                 } else {
                     // La promesa rejectea porque la cantidad total es mas grande que el stock maximo
-                    reject('Max stock reached');
+                    Swal.fire({
+                        title: 'Something went wrong!',
+                        text: 'Max stock reached on this product. Check your cart',
+                        icon: 'error',
+                        confirmButtonText: 'Accept'
+                    }); 
+                    reject;
                 }
             } else {
                 // Se añade el nuevo producto con su informacion al local storage
@@ -75,8 +81,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 localStorage.setItem('cart', JSON.stringify(updatedCart));
                 updateTotalPrice(updatedCart);
                 console.log(JSON.parse(localStorage.getItem('cart')));
-                alert('You added the product correctly!');
-                location.href ='index.php?controller=Product&action=products';
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'You added this product to your cart!',
+                    icon: 'success',
+                    showConfirmButton: false
+                }); 
+                setTimeout(function() {
+                    location.href = 'index.php?controller=Product&action=products';
+                }, 2000);
             })
             .catch(error => {
                 alert(error);

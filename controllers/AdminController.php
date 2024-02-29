@@ -18,9 +18,14 @@ class AdminController {
             echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Stadistics&action=stadistics">';
         } else {
             echo "<script>
-                alert('Email or password are incorrect');
+                Swal.fire({
+                    title: 'Incorrect email or password',
+                    text: 'Put the correct email or password',
+                    icon: 'error',
+                    showConfirmButton: false
+                });
             </script>";
-            echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Admin&action=login">';
+            echo '<meta http-equiv="refresh" content="2.5;url=index.php?controller=Admin&action=login">';
         }
     }
 

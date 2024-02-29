@@ -15,7 +15,12 @@ document.addEventListener("DOMContentLoaded", function () {
         if (isValid) {
             signUpForm.submit();
         } else {
-            alert("Complete the data correctly");
+            Swal.fire({
+                title: 'Something went wrong!',
+                text: 'Some information is wrong, check it.',
+                icon: 'error',
+                confirmButtonText: 'Accept'
+            }); 
         }
     });
 

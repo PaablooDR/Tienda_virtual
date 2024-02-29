@@ -196,12 +196,26 @@ class OrdersController {
                 }
                 Order::updateTotalShoppingPrice($idOrder);
                 Order::cambiarEstado($idOrder, 'pending');
-                echo "<script> alert('Congratulations for your purchase!');</script>";
-                echo '<meta http-equiv="refresh"content="0;url=index.php?controller=Orders&action=profile">';
+                echo "<script>
+                Swal.fire({
+                    title: '¡Your purchase has been successful!',
+                    text: 'Thank you for buying on PlateArt!',
+                    icon: 'success',
+                    showConfirmButton: false
+                });
+                </script>";
+                echo '<meta http-equiv="refresh"content="2.5;url=index.php?controller=Orders&action=profile">';
             }else {
                 Order::updateTotalShoppingPrice($idOrder);
-                echo "<script> alert('Some products were out of stock.');</script>";
-                echo '<meta http-equiv="refresh"content="0;url=index.php?controller=Cart&action=logedUserCart">';
+                echo "<script>
+                Swal.fire({
+                    title: 'Something went wrong',
+                    text: 'Check the cart, some products may have changed stock, check it before buying.',
+                    icon: 'error',
+                    showConfirmButton: false
+                }); 
+                </script>";
+                echo '<meta http-equiv="refresh"content="2.5;url=index.php?controller=Cart&action=logedUserCart">';
             }
             
         } else {
