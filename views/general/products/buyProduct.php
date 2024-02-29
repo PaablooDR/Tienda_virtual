@@ -1,5 +1,9 @@
-<script type="module" src="./js/cart.js"></script>
-<?php 
+<?php
+if(!isset($_SESSION['user'])) {
+?>
+    <script type="module" src="./js/cart.js"></script>
+<?php
+}
     if(empty($_GET['productCode'])){
         echo '<meta http-equiv="refresh" content="0;url=index.php?controller=Product&action=products">';
     } else {

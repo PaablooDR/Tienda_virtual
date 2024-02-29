@@ -150,7 +150,8 @@ class OrdersController {
                 }
             }
             if(isset($_GET['return'])) {
-                echo '<meta http-equiv="refresh"content="0;url=index.php?controller=Product&action=buyProduct&productCode='.$_GET['product'].'">';
+                // echo '<meta http-equiv="refresh"content="0;url=index.php?controller=Product&action=buyProduct&productCode='.$_GET['product'].'">';
+                echo '<meta http-equiv="refresh"content="0;url=index.php?controller=Product&action=products&min=0.00&max=100.00">';
             } else {
                 echo '<meta http-equiv="refresh"content="0;url=index.php?controller=Cart&action=logedUserCart">';
             }
