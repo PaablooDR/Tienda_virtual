@@ -1725,4 +1725,16 @@ html {
   #payment #paymentContainer #paypal form input {
     width: 155px;
   }
+  .popup {
+    width: 80% !important;
+  }
+  .popup button {
+    border: none;
+  }
+  #logOut {
+    border: none;
+  }
+  .orders-div button {
+    border: none;
+  }
 }/*# sourceMappingURL=styles.css.map */

@@ -1902,4 +1902,18 @@ html {
             }
         }
     }
+    .popup{
+        width: 80% !important;
+        button{
+            border: none;
+        }
+    }
+    #logOut{
+        border: none;
+    }
+    .orders-div{
+        button{
+            border: none;
+        }
+    }
 }
